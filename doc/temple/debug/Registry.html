@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../override.css" type="text/css"><meta name="keywords" content="Registry,temple.debug.Registry,add,add,addAsChild,forceGarbageCollection,getDebuggables,getDebuggablesAsXml,getId,getInstance,getObject,getRegistryObjects,getRegistryObjectsAsXml,registerObject,setDebugFor,setDebugForChilds,totalRegisteredObject,traceRegistry"><title>temple.debug.Registry</title></head><body><script language="javascript" type="text/javascript" src="../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../help.js"></script><script language="javascript" type="text/javascript" src="../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+				asdocTitle = 'Registry - Temple API Documentation';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">Temple API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../package-summary.html" onclick="loadClassListFrame('../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../class-summary.html" onclick="loadClassListFrame('../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../all-index-A.html" onclick="loadClassListFrame('../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../index.html?temple/debug/Registry.html&amp;temple/debug/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">Registry</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Registry"); titleBar_setSubNav(false,false,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">temple.debug</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  Registry</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Registry  <img src="../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr></table><p></p><p></p>
+	 This class holds objects with their unique id to identify them when needed
+	 All objects added are stored in a weak-referenced-Dictionary with an
+	 autoincrementing id as value;
+	 When 'Temple.REGISTER_OBECTS' is set to true, all objects added to the Registry
+	 are also added to the Memory, to track their memory usage
+	 
+	 At the moment, the Registry is used for storing objects in the Memory class,
+	 using their unique id for Logging (tracing) and in the DebugManager
+	 
+	 <p></p><br/><hr></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#add()" class="signatureLink">add</a>(object:*):uint</div><div class="summaryTableDescription">[static] 
+		 Adding an object the the registry
+		 When 'Temple.REGISTER_OBJECTS' is set to true, the object is also added to the Memory
+		 Throws a warning when the object is added before
+		 </div></td><td class="summaryTableOwnerCol">Registry</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getId()" class="signatureLink">getId</a>(object:*):uint</div><div class="summaryTableDescription">[static] 
+		 Gets the id of an object
+		 </div></td><td class="summaryTableOwnerCol">Registry</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getObject()" class="signatureLink">getObject</a>(id:uint):*</div><div class="summaryTableDescription">[static] 
+		 Gets the object by id
+		 </div></td><td class="summaryTableOwnerCol">Registry</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="add()"></a><a name="add()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">add</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public static function add(object:*):uint</code><p></p><p>
+		 Adding an object the the registry
+		 When 'Temple.REGISTER_OBJECTS' is set to true, the object is also added to the Memory
+		 Throws a warning when the object is added before
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">object</span>:*</code> &mdash; The object to add
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>uint</code> &mdash; uint An unique id for the object added
+	 	 </td></tr></table><p><span class="label">See also</span></p><div class="seeAlso"><a href="Memory.html#registerObject()" target="">temple.debug.Memory.registerObject()</a></div><br/><span class="label"> Example </span><br/><div class="detailBody">
+		 <div class="listing" version="3.0"><pre>
+         // In the constructor
+         public function TestClass()
+         {
+                 var id:uint = Registry.add(this);
+         }
+         
+         // or after creating an object
+         var testClass:TestClass = new TestClass();
+         var id:uint = Registry.add(testClass);
+         </pre></div>
+		 </div></div><a name="getId()"></a><a name="getId()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getId</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getId(object:*):uint</code><p></p><p>
+		 Gets the id of an object
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">object</span>:*</code> &mdash; The object added in the registry before
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>uint</code> &mdash; uint The id of the Object
+		 </td></tr></table><br/><span class="label"> Example </span><br/><div class="detailBody">
+		 <div class="listing" version="3.0"><pre>
+         var objectId:uint = Registry.getId(object);
+         </pre></div>
+		 </div></div><a name="getObject()"></a><a name="getObject(uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getObject</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getObject(id:uint):*</code><p></p><p>
+		 Gets the object by id
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">id</span>:uint</code> &mdash; the unique id of the object
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>*</code> &mdash; the object
+		 </td></tr></table><br/><span class="label"> Example </span><br/><div class="detailBody">
+		 <div class="listing" version="3.0"><pre>
+         var object:= Registry.getObject(id);
+         </pre></div>
+		 </div></div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->
