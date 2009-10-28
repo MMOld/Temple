@@ -41,6 +41,8 @@ package temple.debug.errors
 {
 
 	/**
+	 * TODO: Missing documentation
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public interface ITempleError 

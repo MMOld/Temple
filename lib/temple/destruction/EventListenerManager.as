@@ -38,22 +38,28 @@
  */
 
 package temple.destruction 
-{	import temple.core.CoreObject;
+{	import temple.debug.errors.TempleError;
+	import temple.debug.errors.TempleArgumentError;
+	import temple.debug.errors.throwError;
+	import temple.core.CoreObject;
 
 	import flash.events.Event;
 	import flash.events.IEventDispatcher;
-	import flash.utils.getQualifiedClassName;
-
-	public class EventListenerManager extends CoreObject implements IEventDispatcher, IDestructableEventDispatcher 	{		protected var _eventDispatcher:IEventDispatcher;		protected var _events:Array;		protected var _blockRequest:Boolean;
+	
+	/**
+	 * The EventListenerManager store information about event listeners on an object. Since all listeners are stored they can easely be removed, by type, listener or all.
+	 */
+	public class EventListenerManager extends CoreObject implements IEventDispatcher, IDestructableEventDispatcher 	{		private var _eventDispatcher:IEventDispatcher;		private var _events:Array;		private var _blockRequest:Boolean;
 
 		/**
-		 * Returns a list of all listeners of the dispatcher (registered by the ListenerManager)
+		 * Returns a list of all listeners of the dispatcher (registered by the EventListenerManager)
+		 * @param dispatcher The dispatcher you want info about
 		 */
 		public static function getDispatcherInfo(dispatcher:IDestructableEventDispatcher):Array
 		{
 			var list:Array = new Array();
 			
-			var listenerManager:EventListenerManager = dispatcher.listenerManager;
+			var listenerManager:EventListenerManager = dispatcher.eventListenerManager;
 			
 			if (listenerManager && listenerManager._events.length)
 			{
@@ -62,14 +68,17 @@ package temple.destruction
 					list.push(eventData.type);
 				}
 			}
-			
 			return list;
 		}
-		/**		 * Creates a new instance of a ListenerManager. Do not create more one ListenerManager for each IDestructableEventDispatcher!		 */		public function EventListenerManager(dispatcher:IDestructableEventDispatcher) 		{			this._eventDispatcher = dispatcher;			this._events = new Array();
-			
+		/**		 * Creates a new instance of a EventListenerManager. Do not create more one EventListenerManager for each IDestructableEventDispatcher!
+		 * @param dispatcher the dispatcher of this EventListenerManager		 */		public function EventListenerManager(dispatcher:IDestructableEventDispatcher) 		{
+			this._eventDispatcher = dispatcher;			this._events = new Array();			
 			super();
+			
+			if(dispatcher == null) throwError(new TempleArgumentError(this, "dispatcher can not be null"));
+			if(dispatcher.eventListenerManager) throwError(new TempleError(this, "dispatcher already has an EventListenerManager"));
 		}		/**		 * Notifies the ListenerManager instance that a listener has been added to the {@code IEventDispatcher}.		 * 			 * @param type The type of event.		 * @param listener The listener function that processes the event.		 * @param useCapture Determines whether the listener works in the capture phase or the target and bubbling phases.		 * @param priority The priority level of the event listener.		 * @param useWeakReference Determines whether the reference to the listener is strong or weak.		 */		public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void 		{			var l:int = this._events.length;			while (l--)
-			{				if (this._events[l].equals(type, listener, useCapture)) return;
+			{				if ((this._events[l] as EventData).equals(type, listener, useCapture)) return;
 			}			this._events.push(new EventData(type, listener, useCapture));		}		/**
 		 * @inheritDoc
 		 */
@@ -80,7 +89,7 @@ package temple.destruction
 		 */
 		public function willTrigger(type:String):Boolean 		{
 			return this._eventDispatcher.willTrigger(type);		}		/**		 * Notifies the ListenerManager instance that a listener has been removed from the {@code IEventDispatcher}.		 * 			 * @param type The type of event.		 * @param listener The listener function that processes the event.		 * @param useCapture Determines whether the listener works in the capture phase or the target and bubbling phases.		 */		public function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void 		{			if (this._blockRequest || !this._events) return;						var l:int = this._events.length;			while (l--)
-			{				if (this._events[l].equals(type, listener, useCapture))
+			{				if ((this._events[l] as EventData).equals(type, listener, useCapture))
 				{					EventData(this._events.splice(l, 1)[0]).destruct();
 				}
 			}		}		/**
@@ -106,7 +115,7 @@ package temple.destruction
 		/**
 		 * @inheritDoc
 		 */
-		public function get listenerManager():EventListenerManager
+		public function get eventListenerManager():EventListenerManager
 		{
 			return null;
 		}		/**
@@ -126,10 +135,11 @@ package temple.destruction
 		 * @inheritDoc
 		 */
 		override public function toString():String
-		{			return getQualifiedClassName(this) + " : " + this._eventDispatcher;		}
+		{
+			return super.toString() + " : " + this._eventDispatcher;		}
 	}}
 
-import flash.utils.getQualifiedClassName;
+import temple.debug.getClassName;
 
 class EventData{	public var type:String;	public var listener:Function;	public var useCapture:Boolean;		public function EventData(type:String, listener:Function, useCapture:Boolean) 	{		this.type = type;
 		this.listener = listener;		this.useCapture = useCapture;
@@ -137,7 +147,7 @@ class EventData{	public var type:String;	public var listener:Function;	publi
 		super();	}	public function equals(type:String, listener:Function, useCapture:Boolean):Boolean 	{		return this.type == type && this.listener == listener && this.useCapture == useCapture;	}
 
 	/**
-	 * @inheritDoc
+	 * Destructs the object
 	 */
 	public function destruct():void
 	{
@@ -145,10 +155,7 @@ class EventData{	public var type:String;	public var listener:Function;	publi
 		this.listener = null;
 	}
 	
-	/**
-	 * @inheritDoc
-	 */
 	public function toString():String
 	{
-		return getQualifiedClassName(this) + " : " + this.type;
+		return getClassName(this) + ":" + this.type;
 	}}

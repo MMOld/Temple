@@ -46,12 +46,16 @@ package temple.destruction
 	import flash.events.IEventDispatcher;
 
 	/**
+	 * The Destructor is a helper class for destruction. It can destruct several types of objects.
+	 * 
+	 * <p>All methods are static so therefore this class does not need to be instantiated</p>
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public class Destructor 
 	{
 		/**
-		 * Recursivly desctructs the object and all his children, grantchildren, grantgrantchildren, etc.
+		 * Recursively destructs the object and all his descendants
 		 */
 		public static function destruct(object:*):void
 		{

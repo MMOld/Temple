@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../override.css" type="text/css"><meta name="keywords" content="IDestructable,temple.destruction.IDestructable,DESTRUCT,_blockRequest,_eventDispatcher,_events,destructOnError,isDestructed,listenerManager,listenerManager,addEventListener,destruct,destruct,destruct,destructChildren,dispatchEvent,getDispatcherInfo,hasEventListener,removeAllEventListeners,removeAllEventListeners,removeAllEventsForListener,removeAllEventsForListener,removeAllEventsForType,removeAllEventsForType,removeEventListener,toString,willTrigger"><title>temple.destruction.IDestructable</title></head><body><script language="javascript" type="text/javascript" src="../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../help.js"></script><script language="javascript" type="text/javascript" src="../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../override.css" type="text/css"><meta name="keywords" content="IDestructable,temple.destruction.IDestructable,DESTRUCT,destructOnError,eventListenerManager,eventListenerManager,isDestructed,addEventListener,destruct,destruct,destruct,destructChildren,dispatchEvent,getDispatcherInfo,hasEventListener,removeAllEventListeners,removeAllEventListeners,removeAllEventsForListener,removeAllEventsForListener,removeAllEventsForType,removeAllEventsForType,removeEventListener,toString,willTrigger"><title>temple.destruction.IDestructable</title></head><body><script language="javascript" type="text/javascript" src="../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../help.js"></script><script language="javascript" type="text/javascript" src="../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
 				asdocTitle = 'IDestructable - Temple API Documentation';
 				var baseRef = '../../';
 				window.onload = configPage;
@@ -10,8 +10,16 @@
 				
 					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IDestructable"); titleBar_setSubNav(false,true,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
 				-->
-			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">temple.destruction</a></td></tr><tr><td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  IDestructable</td></tr><tr><td class="classHeaderTableLabel">Implementors</td><td> <a href="../../temple/core/CoreObject.html">CoreObject</a></td></tr></table><p></p><p></p>
-	 <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isDestructed" class="signatureLink">isDestructed</a> : Boolean<div class="summaryTableDescription">[read-only] 
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">temple.destruction</a></td></tr><tr><td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  IDestructable</td></tr></table><p></p><p></p>
+	 Interface for objects that can be destructed.
+	 
+	 <p>When creating stable and maintainable code, you should always make sure the object can be completely destructed.
+	 Since Flash player 9 has a huge problem with removing unnecessary objects, it's really hard to remove object from
+	 Memory. Destructing objects is one of the key-features of the Temple. If you enabled object registration in the main
+	 Temple class. You can track your objects in Memory. If you destruct the objects they should disappear after a garbage
+	 collection.</p>
+	 
+	           <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isDestructed" class="signatureLink">isDestructed</a> : Boolean<div class="summaryTableDescription">[read-only] 
 		 If an object is destructed, this property is set to true.</div></td><td class="summaryTableOwnerCol">IDestructable</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#destruct()" class="signatureLink">destruct</a>():void</div><div class="summaryTableDescription">
 		 Destroys the objects, all intern listeners will be removed
 		 
@@ -22,14 +30,20 @@
 		 	Remove all event listeners on this object (use removeAllEventListeners on Temple objects)
 		 	Remove all event listeners from this object
 		 	Set all non-primitive variables to null
+		 	Set all references to this object to null in other objects
 		 
 		 
 		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
+		 
 		 </div></td><td class="summaryTableOwnerCol">IDestructable</td></tr></table></div><script language="javascript" type="text/javascript"><!--
 										showHideInherited();
 										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="isDestructed"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">isDestructed</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>isDestructed:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p>
 		 If an object is destructed, this property is set to true.
-		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isDestructed():Boolean</code><br/></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="destruct()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">destruct</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function destruct():void</code><p></p><p>
+		 
+		 <p>After a garbage collection the object should be disappeared from Memory (if Temple.REGISTER_OBJECTS is set to true).
+		 If the object still exists, you should check your code.</p>
+		 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isDestructed():Boolean</code><br/><p><span class="label">See also</span></p><div class="seeAlso"><a href="../../temple/Temple.html" target="">temple.Temple</a><br/><a href="../../temple/debug/Registry.html" target="">temple.debug.Registry</a><br/><a href="../../temple/debug/Memory.html" target="">temple.debug.Memory</a></div></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="destruct()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">destruct</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function destruct():void</code><p></p><p>
 		 Destroys the objects, all intern listeners will be removed
 		 
 		 <p>When overriding this method, always call super.destruct() at last!</p>
@@ -39,7 +53,9 @@
 		 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects)</li>
 		 	<li>Remove all event listeners from this object</li>
 		 	<li>Set all non-primitive variables to null</li>
+		 	<li>Set all references to this object to null in other objects</li>
 		 </ul>
 		 
 		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
-		 </p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->
+		 
+		 </p><p><span class="label">See also</span></p><div class="seeAlso"><a href="DestructEvent.html" target="">temple.destruction.DestructEvent</a></div></div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->

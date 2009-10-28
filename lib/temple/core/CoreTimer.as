@@ -40,6 +40,7 @@
 package temple.core 
 {
 	import temple.debug.Registry;
+	import temple.debug.getClassName;
 	import temple.debug.log.Log;
 	import temple.destruction.DestructEvent;
 	import temple.destruction.EventListenerManager;
@@ -47,7 +48,6 @@ package temple.core
 
 	import flash.events.Event;
 	import flash.utils.Timer;
-	import flash.utils.getQualifiedClassName;
 
 	/**
 	 * Dispatched just before the object is destructed
@@ -59,7 +59,7 @@ package temple.core
 	 * Base class for all Timers in the Temple. The CoreTimer handles some core features of the Temple:
 	 * <ul>
 	 * 	<li>Registration to the Registry class</li>
-	 * 	<li>Event dispatch optimalisation</li>
+	 * 	<li>Event dispatch optimization</li>
 	 * 	<li>Easy remove of all EventListeners</li>
 	 * 	<li>Wrapper for Log class for easy logging</li>
 	 * 	<li>Completely destructable</li>
@@ -70,9 +70,9 @@ package temple.core
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class CoreTimer extends Timer implements IDestructableEventDispatcher
+	public class CoreTimer extends Timer implements IDestructableEventDispatcher, ICoreObject
 	{
-		private var _listenerManager:EventListenerManager;
+		private var _eventListenerManager:EventListenerManager;
 		private var _isDestructed:Boolean;
 		private var _registryId:uint;
 
@@ -80,10 +80,18 @@ package temple.core
 		{
 			super(delay, repeatCount);
 			
-			this._listenerManager = new EventListenerManager(this);
+			this._eventListenerManager = new EventListenerManager(this);
 			
 			// Register object for destruction testing
 			this._registryId = Registry.add(this);
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public final function get registryId():uint
+		{
+			return this._registryId;
 		}
 		
 		/**
@@ -107,7 +115,7 @@ package temple.core
 		override public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void 
 		{
 			super.addEventListener(type, listener, useCapture, priority, useWeakReference);
-			this._listenerManager.addEventListener(type, listener, useCapture, priority, useWeakReference);
+			this._eventListenerManager.addEventListener(type, listener, useCapture, priority, useWeakReference);
 		}
 
 		/**
@@ -116,7 +124,7 @@ package temple.core
 		override public function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void 
 		{
 			super.removeEventListener(type, listener, useCapture);
-			this._listenerManager.removeEventListener(type, listener, useCapture);
+			this._eventListenerManager.removeEventListener(type, listener, useCapture);
 		}
 
 		/**
@@ -124,7 +132,7 @@ package temple.core
 		 */
 		public function removeAllEventsForType(type:String):void 
 		{
-			this._listenerManager.removeAllEventsForType(type);
+			this._eventListenerManager.removeAllEventsForType(type);
 		}
 
 		/**
@@ -132,7 +140,7 @@ package temple.core
 		 */
 		public function removeAllEventsForListener(listener:Function):void 
 		{
-			this._listenerManager.removeAllEventsForListener(listener);
+			this._eventListenerManager.removeAllEventsForListener(listener);
 		}
 
 		/**
@@ -140,15 +148,15 @@ package temple.core
 		 */
 		public function removeAllEventListeners():void 
 		{
-			this._listenerManager.removeAllEventListeners();
+			this._eventListenerManager.removeAllEventListeners();
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function get listenerManager():EventListenerManager
+		public function get eventListenerManager():EventListenerManager
 		{
-			return this._listenerManager;
+			return this._eventListenerManager;
 		}
 
 		/**
@@ -223,11 +231,11 @@ package temple.core
 			this.dispatchEvent(new DestructEvent(DestructEvent.DESTRUCT));
 			
 			this.stop();
-			if (this._listenerManager)
+			if (this._eventListenerManager)
 			{
 				this.removeAllEventListeners();
-				this._listenerManager.destruct();
-				this._listenerManager = null;
+				this._eventListenerManager.destruct();
+				this._eventListenerManager = null;
 			}
 			
 			this._isDestructed = true;
@@ -238,7 +246,7 @@ package temple.core
 		 */
 		override public function toString():String
 		{
-			return getQualifiedClassName(this) + "; delay: " + this.delay + ", repeatCount: " + this.repeatCount;
+			return getClassName(this) + "; delay: " + this.delay + ", repeatCount: " + this.repeatCount;
 		}
 	}
 }

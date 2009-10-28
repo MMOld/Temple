@@ -40,18 +40,17 @@
 package temple.core 
 {
 	import temple.debug.Registry;
+	import temple.debug.getClassName;
 	import temple.debug.log.Log;
 	import temple.destruction.DestructEvent;
 	import temple.destruction.Destructor;
 	import temple.destruction.EventListenerManager;
-	import temple.destruction.IDestructableEventDispatcher;
 	import temple.utils.StageProvider;
 
 	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.Event;
-	import flash.utils.getQualifiedClassName;
 
 	/**
 	 * Dispatched just before the object is destructed
@@ -65,7 +64,7 @@ package temple.core
 	 * 	<li>Registration to the Registry class</li>
 	 * 	<li>Global reference to the stage trough the StageProvider</li>
 	 * 	<li>Corrects a timeline bug in Flash (see http://www.tyz.nl/2009/06/23/weird-parent-thing-bug-in-flash/)</li>
-	 * 	<li>Event dispatch optimalisation</li>
+	 * 	<li>Event dispatch optimization</li>
 	 * 	<li>Easy remove of all EventListeners</li>
 	 * 	<li>Wrapper for Log class for easy logging</li>
 	 * 	<li>Completely destructable</li>
@@ -76,11 +75,11 @@ package temple.core
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class CoreSprite extends Sprite implements IDestructableEventDispatcher, ICoreDisplayObject 
+	public class CoreSprite extends Sprite implements ICoreDisplayObject 
 	{
 		private namespace temple;
 		
-		private var _listenerManager:EventListenerManager;
+		private var _eventListenerManager:EventListenerManager;
 		private var _isDestructed:Boolean;
 		private var _onStage:Boolean;
 		private var _onParent:Boolean;
@@ -88,7 +87,7 @@ package temple.core
 
 		public function CoreSprite()
 		{
-			this._listenerManager = new EventListenerManager(this);
+			this._eventListenerManager = new EventListenerManager(this);
 			super();
 			
 			if (this.loaderInfo) this.loaderInfo.addEventListener(Event.UNLOAD, temple::handleCoreUnload, false, 0, true);
@@ -101,6 +100,14 @@ package temple.core
 			this.addEventListener(Event.ADDED_TO_STAGE, temple::handleAddedToStage);
 			this.addEventListener(Event.REMOVED, temple::handleRemoved);
 			this.addEventListener(Event.REMOVED_FROM_STAGE, temple::handleRemovedFromStage);
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public final function get registryId():uint
+		{
+			return this._registryId;
 		}
 		
 		/**
@@ -169,7 +176,7 @@ package temple.core
 		override public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void 
 		{
 			super.addEventListener(type, listener, useCapture, priority, useWeakReference);
-			if (this._listenerManager) this._listenerManager.addEventListener(type, listener, useCapture, priority, useWeakReference);
+			if (this._eventListenerManager) this._eventListenerManager.addEventListener(type, listener, useCapture, priority, useWeakReference);
 		}
 
 		/**
@@ -178,7 +185,7 @@ package temple.core
 		override public function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void 
 		{
 			super.removeEventListener(type, listener, useCapture);
-			if (this._listenerManager) this._listenerManager.removeEventListener(type, listener, useCapture);
+			if (this._eventListenerManager) this._eventListenerManager.removeEventListener(type, listener, useCapture);
 		}
 
 		/**
@@ -186,7 +193,7 @@ package temple.core
 		 */
 		public function removeAllEventsForType(type:String):void 
 		{
-			if (this._listenerManager) this._listenerManager.removeAllEventsForType(type);
+			if (this._eventListenerManager) this._eventListenerManager.removeAllEventsForType(type);
 		}
 
 		/**
@@ -194,7 +201,7 @@ package temple.core
 		 */
 		public function removeAllEventsForListener(listener:Function):void 
 		{
-			if (this._listenerManager) this._listenerManager.removeAllEventsForListener(listener);
+			if (this._eventListenerManager) this._eventListenerManager.removeAllEventsForListener(listener);
 		}
 
 		/**
@@ -202,15 +209,15 @@ package temple.core
 		 */
 		public function removeAllEventListeners():void 
 		{
-			if (this._listenerManager) this._listenerManager.removeAllEventListeners();
+			if (this._eventListenerManager) this._eventListenerManager.removeAllEventListeners();
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function get listenerManager():EventListenerManager
+		public function get eventListenerManager():EventListenerManager
 		{
-			return this._listenerManager;
+			return this._eventListenerManager;
 		}
 		
 		/**
@@ -337,11 +344,11 @@ package temple.core
 			
 			this.removeEventListener(Event.ENTER_FRAME, temple::handleDestructedFrameDelay);
 			
-			if (this._listenerManager)
+			if (this._eventListenerManager)
 			{
 				this.removeAllEventListeners();
-				this._listenerManager.destruct();
-				this._listenerManager = null;
+				this._eventListenerManager.destruct();
+				this._eventListenerManager = null;
 			}
 			
 			Destructor.destructChildren(this);
@@ -376,7 +383,7 @@ package temple.core
 		 */
 		override public function toString():String
 		{
-			return getQualifiedClassName(this) + ":" + this.name;
+			return getClassName(this) + ":" + this.name;
 		}
 	}
 }

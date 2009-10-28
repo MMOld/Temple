@@ -42,17 +42,16 @@ package temple.core
 	import temple.data.loader.IPreloader;
 	import temple.data.loader.PreloadableBehavior;
 	import temple.debug.Registry;
+	import temple.debug.getClassName;
 	import temple.debug.log.Log;
 	import temple.destruction.DestructEvent;
 	import temple.destruction.EventListenerManager;
-	import temple.destruction.IDestructableEventDispatcher;
 
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.ProgressEvent;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
-	import flash.utils.getQualifiedClassName;
 
 	/**
 	 * Dispatched just before the object is destructed
@@ -63,9 +62,9 @@ package temple.core
 	/**
 	 * Base class for all NetStreams in the Temple.
 	 */
-	public class CoreNetStream extends NetStream implements IDestructableEventDispatcher, ICoreLoader
+	public class CoreNetStream extends NetStream implements ICoreLoader
 	{
-		private var _listenerManager:EventListenerManager;
+		private var _eventListenerManager:EventListenerManager;
 		private var _isDestructed:Boolean;
 		private var _preloaderBehavior:PreloadableBehavior;
 		private var _isLoaded:Boolean;
@@ -79,14 +78,25 @@ package temple.core
 		{
 			super(nc);
 			
-			this._listenerManager = new EventListenerManager(this);
+			this._eventListenerManager = new EventListenerManager(this);
 			
 			// Register object for destruction testing
 			this._registryId = Registry.add(this);
 			
 			this._preloaderBehavior = new PreloadableBehavior(this);
 		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public final function get registryId():uint
+		{
+			return this._registryId;
+		}
 
+		/**
+		 * @inheritDoc
+		 */
 		override public function play(...args:*):void
 		{
 			this._isLoaded = false;
@@ -180,7 +190,7 @@ package temple.core
 		override public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void 
 		{
 			super.addEventListener(type, listener, useCapture, priority, useWeakReference);
-			this._listenerManager.addEventListener(type, listener, useCapture, priority, useWeakReference);
+			this._eventListenerManager.addEventListener(type, listener, useCapture, priority, useWeakReference);
 		}
 
 		/**
@@ -189,7 +199,7 @@ package temple.core
 		override public function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void 
 		{
 			super.removeEventListener(type, listener, useCapture);
-			this._listenerManager.removeEventListener(type, listener, useCapture);
+			this._eventListenerManager.removeEventListener(type, listener, useCapture);
 		}
 
 		/**
@@ -197,7 +207,7 @@ package temple.core
 		 */
 		public function removeAllEventsForType(type:String):void 
 		{
-			this._listenerManager.removeAllEventsForType(type);
+			this._eventListenerManager.removeAllEventsForType(type);
 		}
 
 		/**
@@ -205,7 +215,7 @@ package temple.core
 		 */
 		public function removeAllEventsForListener(listener:Function):void 
 		{
-			this._listenerManager.removeAllEventsForListener(listener);
+			this._eventListenerManager.removeAllEventsForListener(listener);
 		}
 
 		/**
@@ -213,15 +223,15 @@ package temple.core
 		 */
 		public function removeAllEventListeners():void 
 		{
-			this._listenerManager.removeAllEventListeners();
+			this._eventListenerManager.removeAllEventListeners();
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function get listenerManager():EventListenerManager
+		public function get eventListenerManager():EventListenerManager
 		{
-			return this._listenerManager;
+			return this._eventListenerManager;
 		}
 		
 		/**
@@ -303,10 +313,10 @@ package temple.core
 				this._framePulseSprite = null;
 			}
 			
-			if(this._listenerManager)
+			if(this._eventListenerManager)
 			{
-				this._listenerManager.destruct();
-				this._listenerManager = null;
+				this._eventListenerManager.destruct();
+				this._eventListenerManager = null;
 			}
 			
 			this._isDestructed = true;
@@ -317,7 +327,7 @@ package temple.core
 		 */
 		override public function toString():String 
 		{
-			return getQualifiedClassName(this);
+			return getClassName(this);
 		}
 	}
 }

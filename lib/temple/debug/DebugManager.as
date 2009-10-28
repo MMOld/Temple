@@ -74,8 +74,7 @@ package temple.debug
 	 */
 	public class DebugManager extends CoreObject implements IDebuggable
 	{
-		// TODO
-		private static const _instance:DebugManager = new DebugManager();
+		private static var _instance:DebugManager;
 		private static var _debugMode:uint;
 
 		// pool of debuggables with there Registry-id
@@ -94,7 +93,7 @@ package temple.debug
 
 		public function DebugManager() 
 		{
-			if (_instance) throwError(new TempleError(this, "Singleton, use DebugManager.getInstance"));
+			if (DebugManager._instance) throwError(new TempleError(this, "Singleton, use DebugManager.getInstance()"));
 			
 			this._debuggables = new Dictionary(true);
 			this._debuggableChilds = new Dictionary(true);
@@ -104,8 +103,11 @@ package temple.debug
 		
 		public static function getInstance():DebugManager
 		{
-			DebugManager.add(DebugManager._instance);
-			
+			if(DebugManager._instance == null)
+			{
+				DebugManager._instance = new DebugManager();
+				DebugManager.add(DebugManager._instance);
+			}
 			return DebugManager._instance;
 		}
 		
@@ -115,7 +117,7 @@ package temple.debug
 		 */
 		public static function add(object:IDebuggable):void
 		{
-			if (DebugManager._instance._debug) DebugManager._instance.logDebug("add(object = " + [object] + ")");
+			if (DebugManager.getInstance()._debug) DebugManager.getInstance().logDebug("add(object = " + [object] + ")");
 			
 			// check via javascript if debug is set in the url
 			if (DebugManager._debugMode == 0 && ExternalInterface.available)
@@ -126,7 +128,7 @@ package temple.debug
 				}
 				catch (e:SecurityError)
 				{
-					DebugManager._instance.logWarn("application is running in sandbox, or isn't running in a browser at all");
+					DebugManager.getInstance().logWarn("application is running in sandbox, or isn't running in a browser at all");
 				}
 			}
 			
@@ -144,10 +146,10 @@ package temple.debug
 			}
 			
 			// store the object with their id
-			DebugManager._instance._debuggables[object] = objectId;
+			DebugManager.getInstance()._debuggables[object] = objectId;
 			
 			// if _debugMode is set to ALL or NONE, apply it to the added object
-			if (DebugManager._debugMode != DebugManagerDebugMode.CUSTOM) object.debug = (DebugManager._debugMode == DebugManagerDebugMode.ALL);
+			if (DebugManager._debugMode != DebugMode.CUSTOM) object.debug = (DebugManager._debugMode == DebugMode.ALL);
 		}
 
 		/**
@@ -165,67 +167,67 @@ package temple.debug
 		 */
 		public static function addAsChild(object:IDebuggable, parent:IDebuggable):void
 		{
-			if (DebugManager._instance._debug) DebugManager._instance.logDebug("addAsChild(object, parent = " + [object, parent] + ")");
+			if (DebugManager.getInstance()._debug) DebugManager.getInstance().logDebug("addAsChild(object, parent = " + [object, parent] + ")");
 			
 			var parentId:uint = Registry.getId(parent);
 			var objectId:uint = Registry.getId(object);
 			
 			// if parent is not a debuggable
-			if (!DebugManager._instance._debuggables[parent])
+			if (!DebugManager.getInstance()._debuggables[parent])
 			{
 				// check if parent is a child itself
-				if (DebugManager._instance._debuggableChilds[parent])
+				if (DebugManager.getInstance()._debuggableChilds[parent])
 				{
 					// find parent recursively
-					DebugManager.addAsChild(object, Registry.getObject(DebugManager._instance._debuggableChilds[parent]));
+					DebugManager.addAsChild(object, Registry.getObject(DebugManager.getInstance()._debuggableChilds[parent]));
 				}
 				else
 				{
 					// parent is not found, place in queue
-					DebugManager._instance._debuggableChildQueue[object] = parentId;
+					DebugManager.getInstance()._debuggableChildQueue[object] = parentId;
 					
 					// if no child for parent is added yet, create the array
-					if (!DebugManager._instance._debuggableChildList[parentId])
+					if (!DebugManager.getInstance()._debuggableChildList[parentId])
 					{
-						DebugManager._instance._debuggableChildList[parentId] = new Array();
+						DebugManager.getInstance()._debuggableChildList[parentId] = new Array();
 					}
 					// add child in parent-array
-					(DebugManager._instance._debuggableChildList[parentId] as Array).push(objectId);
+					(DebugManager.getInstance()._debuggableChildList[parentId] as Array).push(objectId);
 				}
 			}
 			else
 			{
 				// if no child for parent is added yet, create the array
-				if (!DebugManager._instance._debuggableChildList[parentId])
+				if (!DebugManager.getInstance()._debuggableChildList[parentId])
 				{
-					DebugManager._instance._debuggableChildList[parentId] = new Array();
+					DebugManager.getInstance()._debuggableChildList[parentId] = new Array();
 				}
 				// add child in parent-array
-				(DebugManager._instance._debuggableChildList[parentId] as Array).push(objectId);
+				(DebugManager.getInstance()._debuggableChildList[parentId] as Array).push(objectId);
 				
 				// add child with its parentid
 				// for quick lookup
-				DebugManager._instance._debuggableChilds[object] = parentId;
+				DebugManager.getInstance()._debuggableChilds[object] = parentId;
 				
 				object.debug = parent.debug;	
 				
 				
 				// check for childs in the queue
-				for (var i:* in DebugManager._instance._debuggableChildQueue)
+				for (var i:* in DebugManager.getInstance()._debuggableChildQueue)
 				{
 					// if parentid in list is equal to this objectid
-					if (DebugManager._instance._debuggableChildQueue[i] == objectId)
+					if (DebugManager.getInstance()._debuggableChildQueue[i] == objectId)
 					{
 						// add child in list to this object as parent
 						//DebugManager.addAsChild(i as IDebuggable, Registry.getObject(DebugManager._INSTANCE._debuggableChildQueue[i]));
 						
 						// add child with its parentid
 						// for quick lookup
-						DebugManager._instance._debuggableChilds[i as IDebuggable] = DebugManager._instance._debuggableChildQueue[i];
+						DebugManager.getInstance()._debuggableChilds[i as IDebuggable] = DebugManager.getInstance()._debuggableChildQueue[i];
 						
 						object.debug = parent.debug;	
 						
-						DebugManager._instance._debuggableChildQueue[i] = null;
+						DebugManager.getInstance()._debuggableChildQueue[i] = null;
 					}
 				}
 			}
@@ -237,13 +239,14 @@ package temple.debug
 		 */
 		public static function getDebuggables():Array
 		{
-			if (DebugManager._instance._debug) DebugManager._instance.logDebug("getDebuggables");
+			if (DebugManager.getInstance()._debug) DebugManager.getInstance().logDebug("getDebuggables");
 			
 			var list:Array = new Array();
 			
-			for (var object:* in DebugManager._instance._debuggables)
+			for (var object:* in DebugManager.getInstance()._debuggables)
 			{
-				list.push({object: String(object).split('::').pop().split(',').shift(), childs:getDebuggableChilds(DebugManager._instance._debuggables[object]), debug:IDebuggable(object).debug, id: DebugManager._instance._debuggables[object]});
+				list.push(new DebuggableData(String(String(object).split('::').pop()).split(',').shift(), getDebuggableChilds(DebugManager.getInstance()._debuggables[object]), IDebuggable(object).debug, DebugManager.getInstance()._debuggables[object]));
+				
 			}
 			
 			return list;
@@ -262,7 +265,7 @@ package temple.debug
 			for (var i:int = 0; i < childs.length; ++i)
 			{
 				var object:IDebuggable = Registry.getObject(childs[i]);
-				childs[i] = {object: String(object).split('::').pop().split(',').shift(), childs:getDebuggableChilds(childs[i]), debug:IDebuggable(object).debug, id: childs[i]};
+				childs[i] = {object: String(String(object).split('::').pop()).split(',').shift(), childs:getDebuggableChilds(childs[i]), debug:IDebuggable(object).debug, id: childs[i]};
 			}
 			
 			return childs;
@@ -276,8 +279,9 @@ package temple.debug
 		{
 			var xml:XML = new XML(<root></root>);
 			
-			var debuggables:Array = getDebuggables();
+			var debuggables:Array = DebugManager.getDebuggables();
 			
+			var debuggableData:DebuggableData;
 			var object:String;
 			var childs:String;
 			var debug:String;
@@ -286,15 +290,17 @@ package temple.debug
 			
 			for (var i:int = 0; i < debuggables.length; ++i)
 			{
-				object = debuggables[i].object;
-				childs = debuggables[i].childs.join(',');
-				debug = debuggables[i].debug ? 'true' : 'false';
-				id = String(debuggables[i].id);
+				debuggableData = debuggables[i] as DebuggableData;
+				
+				object = debuggableData.object;
+				childs = debuggableData.childs.join(',');
+				debug = debuggableData.debug ? 'true' : 'false';
+				id = String(debuggableData.id);
 				label =  id + ' | ' + object;
 				
 				var node:XML = <node object={object} childs={childs} debug={debug} id={id} label={label} usedebug="true" icon="iconFolder" />;
 				
-				var childNodes:XMLList = getDebuggableChildsAsXml(debuggables[i].id);
+				var childNodes:XMLList = getDebuggableChildsAsXml(debuggableData.id);
 				
 				for (var j:int = 0; j < childNodes.length(); ++j)
 				{
@@ -315,6 +321,7 @@ package temple.debug
 		{
 			var xml:XML = new XML(<root></root>);
 			
+			var debuggableData:DebuggableData;
 			var object:String;
 			var childs:String;
 			var id:String;
@@ -324,14 +331,15 @@ package temple.debug
 			
 			for (var i:int = 0; i < debuggableChilds.length; ++i)
 			{
-				object = debuggableChilds[i].object;
-				childs = debuggableChilds[i].childs.join(',');
-				id = String(debuggableChilds[i].id);
+				debuggableData = debuggableChilds[i] as DebuggableData;
+				object = debuggableData.object;
+				childs = debuggableData.childs.join(',');
+				id = String(debuggableData.id);
 				label =  id + ' | ' + object;
 				
 				var node:XML = <node object={object} childs={childs} id={id} usedebug="false" label={label} />;
 				
-				var childNodes:XMLList = getDebuggableChildsAsXml(debuggableChilds[i].id);
+				var childNodes:XMLList = getDebuggableChildsAsXml(debuggableData.id);
 				
 				for (var j:int = 0; j < childNodes.length(); ++j)
 				{
@@ -351,7 +359,7 @@ package temple.debug
 		 */
 		private static function getChildsOf(id:uint):Array
 		{
-			return DebugManager._instance._debuggableChildList[id] ? (DebugManager._instance._debuggableChildList[id] as Array).concat() : null;
+			return DebugManager.getInstance()._debuggableChildList[id] ? (DebugManager.getInstance()._debuggableChildList[id] as Array).concat() : null;
 		}
 
 		/**
@@ -397,9 +405,9 @@ package temple.debug
 		{
 			DebugManager._debugMode = value;
 			
-			for (var object:* in DebugManager._instance._debuggables)
+			for (var object:* in DebugManager.getInstance()._debuggables)
 			{
-				if (value != DebugManagerDebugMode.CUSTOM) IDebuggable(object).debug = (value == DebugManagerDebugMode.ALL);
+				if (value != DebugMode.CUSTOM) IDebuggable(object).debug = (value == DebugMode.ALL);
 			}
 		}
 		
@@ -428,5 +436,21 @@ package temple.debug
 			return this._debug;
 		}
 
+	}
+}
+
+class DebuggableData
+{
+	public var object:String;
+	public var childs:Array;
+	public var debug:Boolean;
+	public var id:uint;
+	
+	public function DebuggableData(object:String, childs:Array, debug:Boolean, id:uint)
+	{
+		this.object = object;
+		this.childs = childs;
+		this.debug = debug;
+		this.id = id;
 	}
 }

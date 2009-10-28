@@ -42,14 +42,26 @@ package temple.behaviors
 	import flash.display.DisplayObject;
 
 	/**
+	 * TODO: Missing documentation
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public interface IBehaviorEvent
 	{
+		/**
+		 * Get the target of the behavior.
+		 * The behaviorTarget is the object that is influenced by the behavior
+		 */
 		function get behaviorTarget():DisplayObject;
 
+		/**
+		 * The event target. This property contains the target node. This property contains the behavior, not the behaviors target. To get the behaviors target use behaviorTarget
+		 */
 		function get target():Object;
 
+		/**
+		 * The type of event. The type is case-sensitive.
+		 */
 		function get type():String;
 	}
 }

@@ -36,25 +36,32 @@
  *	along with Temple Library.  If not, see <http://www.gnu.org/licenses/>.
  *	
  */
-
-package temple.behaviors 
+ 
+package temple.debug 
 {
-	import temple.destruction.IDestructableEventDispatcher;
+	import temple.Temple;
+
+	import flash.utils.getQualifiedClassName;
+	
 
 	/**
-	 * A behavior adds functionality to an object, the object becomes the behaviors target.
-	 * It does not change it target. The implementation of the behavior is derived from the decorator pattern.
-	 * A behavior is always targeted on one (and only one) object.
+	 * Creates a nice readable string of a object or class. Uses getQualifiedClassName internally but you can disable full package display in the Temple.as file
+	 * 
+	 * @see temple.Temple
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public interface IBehavior extends IDestructableEventDispatcher
+	public function getClassName(object:Object):String
 	{
-		/**
-		 * Get the target of the behavior.
-		 * The target is the object that is influenced by the behavior. The target can only be set in the constructor of the behavior and can never be changed.
-		 * 
-		 */
-		function get target():Object;
+		var qualifiedClassName:String = getQualifiedClassName(object);
+		
+		if(Temple.DISPLAY_FULL_PACKAGE_IN_TOSTRING || qualifiedClassName.indexOf('::') == -1)
+		{
+			return qualifiedClassName;
+		}
+		else
+		{
+			return qualifiedClassName.split('::')[1];
+		}
 	}
 }

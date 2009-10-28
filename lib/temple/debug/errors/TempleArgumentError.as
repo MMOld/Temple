@@ -42,6 +42,8 @@ package temple.debug.errors
 	import temple.debug.log.Log;
 
 	/**
+	 * TODO: Missing documentation
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public class TempleArgumentError extends ArgumentError implements ITempleError
@@ -57,10 +59,9 @@ package temple.debug.errors
 		public function TempleArgumentError(sender:Object, message:*, id:* = 0)
 		{
 			this._sender = sender;
+			super(message, id);
 			
 			Log.error("TempleArgumentError: '" + message + "' id:" + id + "\n" + this.getStackTrace(), String(sender));
-			
-			super(message, id);
 		}
 		
 		/**

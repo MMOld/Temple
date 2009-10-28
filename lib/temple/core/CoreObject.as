@@ -40,10 +40,8 @@
 package temple.core 
 {
 	import temple.debug.Registry;
+	import temple.debug.getClassName;
 	import temple.debug.log.Log;
-	import temple.destruction.IDestructable;
-
-	import flash.utils.getQualifiedClassName;
 
 	/**
 	 * Base class for all EventDispatchers in the Temple. The CoreEventDispatcher handles some core features of the Temple:
@@ -58,7 +56,7 @@ package temple.core
 	 * 
 	 * @author Thijs Broerse
 	 */
-	dynamic public class CoreObject extends Object implements IDestructable
+	dynamic public class CoreObject extends Object implements ICoreObject
 	{
 		private var _isDestructed:Boolean;
 		private var _registryId:uint;
@@ -69,6 +67,14 @@ package temple.core
 			this._registryId = Registry.add(this);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
+		public final function get registryId():uint
+		{
+			return this._registryId;
+		}
+
 		/**
 		 * Does a Log.debug, but has already filled in some known data
 		 * @param data the data to be logged
@@ -144,7 +150,7 @@ package temple.core
 		 */
 		public function toString():String
 		{
-			return getQualifiedClassName(this);
+			return getClassName(this);
 		}
 	}
 }

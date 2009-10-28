@@ -42,10 +42,10 @@ package temple.core
 	import temple.data.loader.IPreloader;
 	import temple.data.loader.PreloadableBehavior;
 	import temple.debug.Registry;
+	import temple.debug.getClassName;
 	import temple.debug.log.Log;
 	import temple.destruction.DestructEvent;
 	import temple.destruction.EventListenerManager;
-	import temple.destruction.IDestructableEventDispatcher;
 	import temple.utils.StageProvider;
 
 	import flash.display.Loader;
@@ -57,7 +57,6 @@ package temple.core
 	import flash.net.URLRequest;
 	import flash.system.LoaderContext;
 	import flash.utils.ByteArray;
-	import flash.utils.getQualifiedClassName;
 
 	/**
 	 * Dispatched just before the object is destructed
@@ -71,7 +70,7 @@ package temple.core
 	 * 	<li>Registration to the Registry class</li>
 	 * 	<li>Global reference to the stage trough the StageProvider</li>
 	 * 	<li>Corrects a timeline bug in Flash (see http://www.tyz.nl/2009/06/23/weird-parent-thing-bug-in-flash/)</li>
-	 * 	<li>Event dispatch optimalisation</li>
+	 * 	<li>Event dispatch optimization</li>
 	 * 	<li>Easy remove of all EventListeners</li>
 	 * 	<li>Wrapper for Log class for easy logging</li>
 	 * 	<li>Completely destructable</li>
@@ -82,7 +81,7 @@ package temple.core
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class CoreLoader extends Loader implements IDestructableEventDispatcher, ICoreDisplayObject, ICoreLoader
+	public class CoreLoader extends Loader implements ICoreDisplayObject, ICoreLoader
 	{
 		private static const _DEFAULT_HANDLER : int = -50;
 		
@@ -93,7 +92,7 @@ package temple.core
 		protected var _isLoaded:Boolean;
 		protected var _logErrors:Boolean;
 		
-		private var _listenerManager:EventListenerManager;
+		private var _eventListenerManager:EventListenerManager;
 		private var _isDestructed:Boolean;
 		private var _onStage:Boolean;
 		private var _onParent:Boolean;
@@ -105,7 +104,7 @@ package temple.core
 		 */
 		public function CoreLoader(logErrors:Boolean = true)
 		{
-			this._listenerManager = new EventListenerManager(this);
+			this._eventListenerManager = new EventListenerManager(this);
 			super();
 			
 			this._logErrors = logErrors;
@@ -134,6 +133,14 @@ package temple.core
 			
 			// preloader support
 			this._preloadableBehavior = new PreloadableBehavior(this);
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public final function get registryId():uint
+		{
+			return this._registryId;
 		}
 
 		/**
@@ -262,7 +269,7 @@ package temple.core
 		override public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void 
 		{
 			super.addEventListener(type, listener, useCapture, priority, useWeakReference);
-			this._listenerManager.addEventListener(type, listener, useCapture, priority, useWeakReference);
+			this._eventListenerManager.addEventListener(type, listener, useCapture, priority, useWeakReference);
 		}
 
 		/**
@@ -271,7 +278,7 @@ package temple.core
 		override public function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void 
 		{
 			super.removeEventListener(type, listener, useCapture);
-			if (this._listenerManager) this._listenerManager.removeEventListener(type, listener, useCapture);
+			if (this._eventListenerManager) this._eventListenerManager.removeEventListener(type, listener, useCapture);
 		}
 
 		/**
@@ -279,7 +286,7 @@ package temple.core
 		 */
 		public function removeAllEventsForType(type:String):void 
 		{
-			this._listenerManager.removeAllEventsForType(type);
+			this._eventListenerManager.removeAllEventsForType(type);
 		}
 
 		/**
@@ -287,7 +294,7 @@ package temple.core
 		 */
 		public function removeAllEventsForListener(listener:Function):void 
 		{
-			this._listenerManager.removeAllEventsForListener(listener);
+			this._eventListenerManager.removeAllEventsForListener(listener);
 		}
 
 		/**
@@ -295,15 +302,15 @@ package temple.core
 		 */
 		public function removeAllEventListeners():void 
 		{
-			this._listenerManager.removeAllEventListeners();
+			this._eventListenerManager.removeAllEventListeners();
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function get listenerManager():EventListenerManager
+		public function get eventListenerManager():EventListenerManager
 		{
-			return this._listenerManager;
+			return this._eventListenerManager;
 		}
 		
 		/**
@@ -315,11 +322,28 @@ package temple.core
 		}
 		
 		/**
-		 * @private
+		 * @inheritDoc
 		 */
 		public function set preloader(value:IPreloader):void
 		{
 			this._preloadableBehavior.preloader = value;
+		}
+		
+		/**
+		 * @inheritDoc
+		 * 
+		 * Checks if the object is actually loading or has loaded something before call super.unload();
+		 */
+		override public function unload():void
+		{
+			if (this._isLoaded || this._isLoading)
+			{
+				super.unload();
+			}
+			else
+			{
+				this.logInfo('Nothing is loaded, so unloading is useless');
+			}
 		}
 		
 		/**
@@ -404,17 +428,18 @@ package temple.core
 		temple function handleLoadStart(event:Event):void
 		{
 			this._preloadableBehavior.onLoadStart(event, this._url);
+			this.dispatchEvent(event.clone());
 		}
 
 		temple function handleLoadProgress(event:ProgressEvent):void
 		{
 			this._preloadableBehavior.onLoadProgress(event);
+			this.dispatchEvent(event.clone());
 		}
 		
 		temple function handleLoadInit(event:Event):void
 		{
-			this._isLoading = false;
-			this._isLoaded = true;
+			this.dispatchEvent(event.clone());
 		}
 		
 		temple function handleLoadComplete(event:Event):void
@@ -422,6 +447,8 @@ package temple.core
 			this._isLoading = false;
 			this._isLoaded = true;
 			this._preloadableBehavior.onLoadComplete(event);
+			
+			this.dispatchEvent(event.clone());
 		}
 		
 		/**
@@ -466,11 +493,11 @@ package temple.core
 			
 			this._preloadableBehavior.destruct();
 			
-			if (this._listenerManager)
+			if (this._eventListenerManager)
 			{
 				this.removeAllEventListeners();
-				this._listenerManager.destruct();
-				this._listenerManager = null;
+				this._eventListenerManager.destruct();
+				this._eventListenerManager = null;
 			}
 			
 			if (this._isLoading)
@@ -536,7 +563,7 @@ package temple.core
 		 */
 		override public function toString():String
 		{
-			return getQualifiedClassName(this);
+			return getClassName(this);
 		}
 	}
 }

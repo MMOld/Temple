@@ -48,7 +48,7 @@ package temple.destruction
 	[Event(name = "DestructEvent.destruct", type = "temple.destruction.DestructEvent")]
 
 	/**
-	 * 
+	 * TODO: Missing documentation
 	 */
 	public interface IDestructableEventDispatcher extends IEventDispatcher, IDestructable 
 	{
@@ -75,6 +75,6 @@ package temple.destruction
 		/**
 		 * Returns a reference to the EventListenerManager of the object
 		 */
-		function get listenerManager():EventListenerManager;
+		function get eventListenerManager():EventListenerManager;
 	}
 }

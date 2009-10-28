@@ -41,6 +41,8 @@ package temple.data.loader
 {
 
 	/**
+	 * TODO: Missing documentation
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public interface ILoader 

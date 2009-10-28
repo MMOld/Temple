@@ -39,17 +39,34 @@
 
 package temple.core 
 {
+	import temple.destruction.IDestructableEventDispatcher;
 	import temple.ui.IDisplayObject;
 
 	/**
+	 * The ICoreDisplayObjects extends Flash native DisplayObject classes, like
+	 * Sprite, MovieClip and Loader. The ICoreDisplayObjects extends ICoreObject 
+	 * and are enhanced with some basic functionality, like a better stage and 
+	 * parent check and ‘autoAlpha’.
+	 * 
+	 * <p>Even when an ICoreDisplayObject is not on the stage he has a stage. 
+	 * Since he get his stage reference from the StageProvider who holds a global 
+	 * reference to the stage.</p>
+	 * 
+	 * <p>ICoreDisplayObject are ‘auto-destructed’ if the SWF is unloaded. When a 
+	 * ICoreDisplayObject is destructed we will call also destruct his children, 
+	 * grant-children etcetera.</p>
+	 * 
+	 * @see temple.utils.StageProvider
+	 * 
 	 * @author Thijs Broerse
 	 */
-	public interface ICoreDisplayObject extends IDisplayObject
+	public interface ICoreDisplayObject extends IDisplayObject, ICoreObject, IDestructableEventDispatcher
 	{
 		/**
 		 * Returns true if this object is on the Stage, false if not
+		 * Needed since .stage can't be trusted for timeline objects.
 		 * 
-		 * Needed since .stage can't be trusted for timeline objects
+		 * The stage property can be filled even when the ICoreDisplayObject is not on the stage. The ICoreDisplayObject gets the stage from the StageProvider
 		 */
 		function get onStage():Boolean;
 

@@ -40,32 +40,44 @@
 package temple.behaviors 
 {
 	import temple.core.CoreEventDispatcher;
-	import temple.debug.errors.TempleError;
+	import temple.debug.errors.TempleArgumentError;
 	import temple.debug.errors.throwError;
 	import temple.destruction.DestructEvent;
 
 	import flash.events.IEventDispatcher;
 
 	/**
+	 * Abstract implementation of a Behavior. This class is used as super class 
+	 * for other Behaviors.
+	 * 
+	 * <p>This class will never be instantiated directly but will always be derived. 
+	 * So therefore this class is an 'Abstract' class.</p>
+	 * 
+	 * <p>This class watches his target. When the target is destructed, the behavior 
+	 * will also be destructed (auto destruction). Since this class is useless 
+	 * without its target</p>
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public class AbstractBehavior extends CoreEventDispatcher implements IBehavior 
 	{
+		private namespace temple;
+		
 		protected var _target:Object;
 		
 		/**
 		 * Creates a new AbstractBehavior
-		 * @param target The target of this behavior,
-		 * 	preferable an IEventDispatcher so the behavior will be destructed when the target is destructed
+		 * @param target The target of this behavior, preferable an IEventDispatcher so 
+		 * the behavior will be destructed when the target is destructed
 		 */
 		public function AbstractBehavior(target:Object)
 		{
-			if (target == null) throwError(new TempleError(this, "target cannot be null"));
+			if (target == null) throwError(new TempleArgumentError(this, "target cannot be null"));
 			
 			this._target = target;
 			if (this._target is IEventDispatcher)
 			{
-				(this._target as IEventDispatcher).addEventListener(DestructEvent.DESTRUCT, this.handleTargetDestructed);
+				(this._target as IEventDispatcher).addEventListener(DestructEvent.DESTRUCT, temple::handleTargetDestructed);
 			}
 			else
 			{
@@ -76,16 +88,19 @@ package temple.behaviors
 		/**
 		 * @inheritDoc
 		 */
-		public function get target():Object
+		public final function get target():Object
 		{
 			return this._target;
 		}
 		
-		private function handleTargetDestructed(event:DestructEvent):void
+		temple function handleTargetDestructed(event:DestructEvent):void
 		{
 			this.destruct();
 		}
 
+		/**
+		 * @inheritDoc
+		 */
 		override public function toString():String 
 		{
 			return super.toString() + " : " + this._target;
@@ -98,7 +113,7 @@ package temple.behaviors
 		{
 			if (this._target)
 			{
-				if (this._target is IEventDispatcher) (this._target as IEventDispatcher).removeEventListener(DestructEvent.DESTRUCT, this.handleTargetDestructed);
+				if (this._target is IEventDispatcher) (this._target as IEventDispatcher).removeEventListener(DestructEvent.DESTRUCT, temple::handleTargetDestructed);
 				this._target = null;
 			}
 			super.destruct();

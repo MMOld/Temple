@@ -41,9 +41,17 @@ package temple.debug
 {
 
 	/**
+	 * Interface for objects that can debugged. The interface adds a 'debug' 
+	 * property. If this value is set to true, debug information will be logged.
+	 * 
+	 * <p>IDebuggable objects can be handled by the DebugManager</p>
+	 * 
+	 * @see temple.debug.log.Log
+	 * @see temple.debug.DebugManager
+	 * 
 	 * @author Thijs Broerse
 	 */
-	public interface IDebuggable 
+	public interface IDebuggable
 	{
 		/**
 		 * Set or get the debug mode of the object

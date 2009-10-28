@@ -43,6 +43,8 @@ package temple.data.loader
 	import temple.ui.IDisplayObject;
 
 	/**
+	 * TODO: Missing documentation
+	 * 
 	 * @date 26 jan 2009 16:06:23
 	 * @author Arjan van Wijk (arjan at mediamonks dot com)
 	 */

@@ -62,7 +62,6 @@ package temple.debug.log
 	[Event(name="onEvent", type="temple.debug.log.LogEvent")]
 	
 	/**
-	 * @author stephan.bezoen
 	 * This class implements a simple logging functionality that dispatches an event whenever a log message is received.
 	 * The object sent with the event is of type LogEvent. The LogEvent class contains public properties for the text of the message, 
 	 * a String denoting the sender of the message, and the level of importance of the message.
@@ -99,6 +98,8 @@ package temple.debug.log
 	 * 13	info: This is an info message -- TestClass
 	 * 
 	 * The number "13" is the time at which the log message was generated. This time is not kept in the LogEvent class.
+	 * 
+	 * @author stephan.bezoen
 	 */
 	public class Log extends EventDispatcher 
 	{

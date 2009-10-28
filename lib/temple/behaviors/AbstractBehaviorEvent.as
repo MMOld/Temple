@@ -39,16 +39,25 @@
  
 package temple.behaviors 
 {
+	import temple.debug.getClassName;
 	import flash.display.DisplayObject;
 	import flash.events.Event;
 
 	/**
+	 * Abstract implementation of a BehaviorEvent. This class is used as super class for other BehaviorEvents.
+	 * This class will never be instantiated directly but will always be derived. So therefore this class is an 'Abstract' class.
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public class AbstractBehaviorEvent extends Event implements IBehaviorEvent
 	{
 		private var _target:DisplayObject;
 
+		/**
+		 * Creates a new AbstractBehaviorEvent
+		 * @param type The type of event.
+		 * @param target The target of the behavior (not of the event). This value will be the behaviorTarget
+		 */
 		public function AbstractBehaviorEvent(type:String, target:DisplayObject)
 		{
 			super(type);
@@ -56,9 +65,20 @@ package temple.behaviors
 			this._target = target;
 		}
 
+		/**
+		 * @inheritDoc
+		 */
 		public function get behaviorTarget():DisplayObject
 		{
-			return _target;
+			return this._target;
+		}
+
+		/**
+		 * @inheritDoc
+		 */
+		override public function toString():String
+		{
+			return getClassName(this) + " type:" + this.type + " target:" + this._target;
 		}
 	}
 }

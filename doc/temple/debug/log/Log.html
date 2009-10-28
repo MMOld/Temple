@@ -11,6 +11,10 @@
 					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Log"); titleBar_setSubNav(false,true,false,false,false,false,true,false,true,true,false	,false,false,false,false,false);}	
 				-->
 			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">temple.debug.log</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  Log</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Log  <img src="../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> flash.events.EventDispatcher</td></tr></table><p></p><p></p>
+	 This class implements a simple logging functionality that dispatches an event whenever a log message is received.
+	 The object sent with the event is of type LogEvent. The LogEvent class contains public properties for the text of the message, 
+	 a String denoting the sender of the message, and the level of importance of the message.
+	 By default, log messages are also output as traces to the Flash IDE output window. This behavior can be changed.
 	 <p></p><p><a href="#includeExamplesSummary">View the examples</a></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#showTrace" class="signatureLink">showTrace</a> : Boolean<div class="summaryTableDescription">[static] 
 		 Set whether log messages should be output as a trace
 		 </div></td><td class="summaryTableOwnerCol">Log</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#addLogListener()" class="signatureLink">addLogListener</a>(handler:Function):void</div><div class="summaryTableDescription">[static] 
@@ -150,4 +154,5 @@
 	 13	info: This is an info message -- TestClass
 	 
 	 The number "13" is the time at which the log message was generated. This time is not kept in the LogEvent class.
+	 
 	 </div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->

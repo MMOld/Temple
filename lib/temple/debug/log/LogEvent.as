@@ -56,11 +56,12 @@ limitations under the License.
 
 package temple.debug.log 
 {
+	import temple.debug.getClassName;
+
 	import flash.events.Event;
-	import flash.utils.getQualifiedClassName;
 
 	/**
-	 * 
+	 * TODO: Missing documentation
 	 */
 	public class LogEvent extends Event 
 	{
@@ -120,7 +121,7 @@ package temple.debug.log
 		 */
 		public override function toString():String 
 		{
-			return getQualifiedClassName(this) + ": level=" + this._level + "; data=" + this._data + "; sender=" + this._sender + "; objetId=" + this.objectId;
+			return getClassName(this) + ": level=" + this._level + "; data=" + this._data + "; sender=" + this._sender + "; objetId=" + this.objectId;
 		} 
 	}
 }

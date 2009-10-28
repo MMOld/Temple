@@ -41,6 +41,8 @@ package temple.data.loader
 {
 
 	/**
+	 * TODO: Missing documentation
+	 * 
 	 * @date 1 sep 2009 12:47:59
 	 * @author Arjan van Wijk (arjan at mediamonks dot com)
 	 */

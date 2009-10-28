@@ -42,6 +42,8 @@ package temple.destruction
 	import flash.events.Event;
 
 	/**
+	 * Event for destruction. Just before an object is destructed it will dispatch a DestructEvent.destruct event.
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public class DestructEvent extends Event 

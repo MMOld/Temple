@@ -41,6 +41,14 @@ package temple.destruction
 {
 
 	/**
+	 * Interface for objects that can be destructed.
+	 * 
+	 * <p>When creating stable and maintainable code, you should always make sure the object can be completely destructed.
+	 * Since Flash player 9 has a huge problem with removing unnecessary objects, it's really hard to remove object from
+	 * Memory. Destructing objects is one of the key-features of the Temple. If you enabled object registration in the main
+	 * Temple class. You can track your objects in Memory. If you destruct the objects they should disappear after a garbage
+	 * collection.</p>
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public interface IDestructable 
@@ -55,14 +63,24 @@ package temple.destruction
 		 * 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects)</li>
 		 * 	<li>Remove all event listeners from this object</li>
 		 * 	<li>Set all non-primitive variables to null</li>
+		 * 	<li>Set all references to this object to null in other objects</li>
 		 * </ul>
 		 * 
 		 * When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
+		 * 
+		 * @see temple.destruction.DestructEvent
 		 */
 		function destruct():void;
 		
 		/**
 		 * If an object is destructed, this property is set to true.
+		 * 
+		 * <p>After a garbage collection the object should be disappeared from Memory (if Temple.REGISTER_OBJECTS is set to true).
+		 * If the object still exists, you should check your code.</p>
+		 * 
+		 * @see temple.Temple
+		 * @see temple.debug.Registry
+		 * @see temple.debug.Memory
 		 */
 		function get isDestructed():Boolean
 	}

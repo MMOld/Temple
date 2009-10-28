@@ -36,25 +36,31 @@
  *	along with Temple Library.  If not, see <http://www.gnu.org/licenses/>.
  *	
  */
-
-package temple.behaviors 
+ 
+package temple.debug 
 {
-	import temple.destruction.IDestructableEventDispatcher;
 
 	/**
-	 * A behavior adds functionality to an object, the object becomes the behaviors target.
-	 * It does not change it target. The implementation of the behavior is derived from the decorator pattern.
-	 * A behavior is always targeted on one (and only one) object.
+	 * This class contains possible values for debugMode. DebugMode is used by the DebugManager.
 	 * 
-	 * @author Thijs Broerse
+	 * @date 28 aug 2009 22:15:49
+	 * @author Arjan van Wijk (arjan at mediamonks dot com)
 	 */
-	public interface IBehavior extends IDestructableEventDispatcher
+	public class DebugMode 
 	{
 		/**
-		 * Get the target of the behavior.
-		 * The target is the object that is influenced by the behavior. The target can only be set in the constructor of the behavior and can never be changed.
-		 * 
+		 * Debug will be set to false on all debuggable object. So no debug messages will be logged.
 		 */
-		function get target():Object;
+		public static const NONE:uint = 1;
+		
+		/**
+		 * Debug can be set to each debuggable object individually.
+		 */
+		public static const CUSTOM:uint = 2;
+		
+		/**
+		 * Debug will be set to true on all debuggable object. So debug messages will be logged.
+		 */
+		public static const ALL:uint = 4;
 	}
 }

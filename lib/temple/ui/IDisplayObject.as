@@ -56,104 +56,85 @@ package temple.ui
 
 	public interface IDisplayObject extends IEventDispatcher, IBitmapDrawable
 	{
-		function get y():Number;
+		function get accessibilityProperties():AccessibilityProperties;
+		function set accessibilityProperties(value:AccessibilityProperties):void;
 
-		function get transform():Transform;
-
-		function get stage():Stage;
-
-		function localToGlobal(point:Point):Point;
-
-		function get name():String;
-
-		function set width(value:Number):void;
+		function get alpha():Number;
+		function set alpha(value:Number):void;
 
 		function get blendMode():String;
-
-		function get scale9Grid():Rectangle;
-
-		function set name(value:String):void;
-
-		function set scaleX(value:Number):void;
-
-		function set scaleY(value:Number):void;
-
-		function get accessibilityProperties():AccessibilityProperties;
-
-		function set scrollRect(value:Rectangle):void;
+		function set blendMode(value:String):void;
 
 		function get cacheAsBitmap():Boolean;
+		function set cacheAsBitmap(value:Boolean):void;
+
+		function get filters():Array;
+		function set filters(value:Array):void;
+
+		function getBounds(targetCoordinateSpace:DisplayObject):Rectangle;
+
+		function getRect(targetCoordinateSpace:DisplayObject):Rectangle;
 
 		function globalToLocal(point:Point):Point;
 
 		function get height():Number;
-
-		function set blendMode(value:String):void;
-
-		function get parent():DisplayObjectContainer;
-
-		function getBounds(targetCoordinateSpace:DisplayObject):Rectangle;
-
-		function get opaqueBackground():Object;
-
-		function set scale9Grid(innerRectangle:Rectangle):void;
-
-		function set alpha(value:Number):void;
-
-		function set accessibilityProperties(value:AccessibilityProperties):void;
-
-		function get width():Number;
-
-		function hitTestPoint(x:Number, y:Number, shapeFlag:Boolean = false):Boolean;
-
-		function get scaleX():Number;
-
-		function get scaleY():Number;
-
-		function get mouseX():Number;
-
 		function set height(value:Number):void;
-
-		function set mask(value:DisplayObject):void;
-
-		function getRect(targetCoordinateSpace:DisplayObject):Rectangle;
-
-		function get mouseY():Number;
-
-		function get alpha():Number;
-
-		function set transform(value:Transform):void;
-
-		function get scrollRect():Rectangle;
-
-		function get loaderInfo():LoaderInfo;
-
-		function get root():DisplayObject;
-
-		function set visible(value:Boolean):void;
-
-		function set opaqueBackground(value:Object):void;
-
-		function set cacheAsBitmap(value:Boolean):void;
 
 		function hitTestObject(obj:DisplayObject):Boolean;
 
-		function set x(value:Number):void;
+		function hitTestPoint(x:Number, y:Number, shapeFlag:Boolean = false):Boolean;
 
-		function set y(value:Number):void;
+		function get loaderInfo():LoaderInfo;
+
+		function localToGlobal(point:Point):Point;
 
 		function get mask():DisplayObject;
+		function set mask(value:DisplayObject):void;
 
-		function set filters(value:Array):void;
+		function get mouseX():Number;
+		
+		function get mouseY():Number;
 
-		function get x():Number;
+		function get name():String;
+		function set name(value:String):void;
 
-		function get visible():Boolean;
+		function get opaqueBackground():Object;
+		function set opaqueBackground(value:Object):void;
 
-		function get filters():Array;
+		function get parent():DisplayObjectContainer;
 
-		function set rotation(value:Number):void;
+		function get root():DisplayObject;
 
 		function get rotation():Number;
+		function set rotation(value:Number):void;
+
+		function get scale9Grid():Rectangle;
+		function set scale9Grid(innerRectangle:Rectangle):void;
+
+		function get scaleX():Number;
+		function set scaleX(value:Number):void;
+	
+		function get scaleY():Number;
+		function set scaleY(value:Number):void;
+
+		function get scrollRect():Rectangle;
+		function set scrollRect(value:Rectangle):void;
+
+		function get stage():Stage;
+
+		function get transform():Transform;
+		function set transform(value:Transform):void;
+
+		function get visible():Boolean;
+		function set visible(value:Boolean):void;
+
+		function get width():Number;
+		function set width(value:Number):void;
+
+		function get x():Number;
+		function set x(value:Number):void;
+
+		function get y():Number;
+		function set y(value:Number):void;
 	}
 }

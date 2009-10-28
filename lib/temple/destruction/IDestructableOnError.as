@@ -41,6 +41,8 @@ package temple.destruction
 {
 
 	/**
+	 * TODO: Missing documentation
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public interface IDestructableOnError extends IDestructable

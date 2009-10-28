@@ -40,8 +40,12 @@
 package temple 
 {
 
+	import temple.debug.getClassName;
+	import temple.debug.DebugMode;
 	/**
-	 * This class contains information about the Temple Library and some global properties and settings 
+	 * This class contains information about the Temple Library and some global properties and settings.
+	 * 
+	 * <p>Node: This class contains only static properties. Therefore this class cannot be instantiated.</p> 
 	 */
 	public class Temple 
 	{
@@ -66,21 +70,61 @@ package temple
 		 * After destructing an object (and force a Garbage Collection) the object should no longer exist.
 		 * 
 		 * NOTE: Changing this value must be done here
+		 * 
+		 * @see temple.debug.Registry
+		 * @see temple.debug.Memory
 		 */
 		public static const REGISTER_OBJECTS:Boolean = true;
 		
 		/**
 		 * When debug is not set in the url, this debugmode is used for the DebugManager.
 		 * Possible values are:
-		 * - NONE:uint = 1;
-		 * - CUSTOM:uint = 2;
-		 * - ALL:uint = 4;
+		 * <table class="innertable">
+		 * 	<tr>
+		 * 		<th>DebugMode Constant</th>
+		 * 		<th>Description</th>
+		 * 	</tr>
+		 * 	<tr>
+		 * 		<td>DebugMode.NONE</td>
+		 * 		<td>Debug will be set to false on all debuggable object. So no debug messages will be logged.</td>
+		 * 	</tr>
+		 * 	<tr>
+		 * 		<td>DebugMode.CUSTOM</td>
+		 * 		<td>Debug can be set to each debuggable object individually.</td>
+		 * 	</tr>
+		 * 	<tr>
+		 * 		<td>DebugMode.ALL</td>
+		 * 		<td>Debug will be set to true on all debuggable object. So debug messages will be logged</td>
+		 * 	</tr>
+		 * </table>
+		 * 
+		 * @see temple.debug.DebugManager
 		 */
-		public static const DEFAULT_DEBUG_MODE:int = 2;
-		
+		public static const DEFAULT_DEBUG_MODE:int = DebugMode.CUSTOM;
+
 		/**
 		 * Indicates if Temple errors should be ignored. If set to true, Temple errors are still logged, but not throwed
+		 * 
+		 * @see temple.debug.errors.throwError
 		 */
 		public static const IGNORE_ERRORS:Boolean = false;
+		
+		/**
+		 * Indicates if the package will be displayed when calling a toString() method on an object or class
+		 * Example:
+		 * If set to true trace(Temple) will output 'temple::Temple'
+		 * If set to false trace(Temple) will output 'Temple'
+		 * 
+		 * @see temple.debug.getClassName
+		 */
+		public static var DISPLAY_FULL_PACKAGE_IN_TOSTRING:Boolean = false;
+		
+		/**
+		 * Creates a readable string of the class
+		 */
+		public static function toString():String
+		{
+			return getClassName(Temple);
+		}
 	}
 }

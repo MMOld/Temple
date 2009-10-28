@@ -41,6 +41,7 @@ package temple.utils
 {
 	import temple.debug.errors.TempleArgumentError;
 	import temple.debug.errors.throwError;
+	import temple.debug.getClassName;
 
 	import flash.display.Stage;
 	import flash.events.Event;
@@ -49,9 +50,9 @@ package temple.utils
 	import flash.ui.Keyboard;
 
 	/**
-	 * The StageProvider has a global reference to the stage.
+	 * The StageProvider stores a global reference to the stage.
 	 * 
-	 * The stage has te be set before is can be used.
+	 * The stage has te be set before it can be used.
 	 * 
 	 * @author Thijs Broerse
 	 */
@@ -68,7 +69,7 @@ package temple.utils
 		{
 			if(value == null)
 			{
-				throwError(new TempleArgumentError(StageProvider.toString(), "Stage cannot be set to null"));
+				throwError(new TempleArgumentError(StageProvider, "Stage cannot be set to null"));
 			}
 			else if(StageProvider._STAGE == null)
 			{
@@ -103,7 +104,7 @@ package temple.utils
 
 		public static function toString():String
 		{
-			return 'temple.utils.StageProvider';
+			return getClassName(StageProvider);
 		}
 	}
 }

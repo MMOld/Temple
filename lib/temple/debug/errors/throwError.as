@@ -45,7 +45,9 @@ package temple.debug.errors
 	/**
 	 * Wrapper function for trow. So it can be disabled by the Temple.
 	 * 
-	 * Note: When using this, code will continue to run after the call. So maybe you should do a return after this call.
+	 * <p>Note: When using this, code will continue to run after the call. So maybe you should do a return after this call.</p>
+	 * 
+	 * @see temple.Temple
 	 * 
 	 * @author Thijs Broerse
 	 */

@@ -36,25 +36,36 @@
  *	along with Temple Library.  If not, see <http://www.gnu.org/licenses/>.
  *	
  */
-
-package temple.behaviors 
+ 
+package temple.core 
 {
-	import temple.destruction.IDestructableEventDispatcher;
-
+	import temple.destruction.IDestructable;
+	
 	/**
-	 * A behavior adds functionality to an object, the object becomes the behaviors target.
-	 * It does not change it target. The implementation of the behavior is derived from the decorator pattern.
-	 * A behavior is always targeted on one (and only one) object.
+	 * Interface for all core classes of the Temple. The Temple’s core classes are 
+	 * extensions on the native (base) classes of Flash enhanced with the basic features 
+	 * of the Temple, like memory registration and event listener registration.
+	 * 
+	 * <p>Temple’s core classes are designed for easy destruction. ICoreObject extends 
+	 * IDestructable. Therefore are all objects enhanced with a destruction method.</p>
+	 * 
+	 * <p>Since all core objects are registered in memory (if that feature is enabled) 
+	 * they can be tracked. After destructing the object and a garbage collection the 
+	 * object should be disappeared from Memory. If the object is still exists in Memory, 
+	 * you have to check your code.</p>
+	 * 
+	 * @see temple.Temple
+	 * @see temple.debug.Registry
+	 * @see temple.debug.Memory
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public interface IBehavior extends IDestructableEventDispatcher
+	public interface ICoreObject extends IDestructable
 	{
 		/**
-		 * Get the target of the behavior.
-		 * The target is the object that is influenced by the behavior. The target can only be set in the constructor of the behavior and can never be changed.
-		 * 
+		 * The unique identifier of the object. The id is generated and registered by the Registry class
+		 * @see temple.debug.Registry#add()
 		 */
-		function get target():Object;
+		function get registryId():uint;
 	}
 }
