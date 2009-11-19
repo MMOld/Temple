@@ -54,6 +54,7 @@ package temple.core
 	import flash.events.IOErrorEvent;
 	import flash.events.ProgressEvent;
 	import flash.events.SecurityErrorEvent;
+	import flash.geom.Point;
 	import flash.net.URLRequest;
 	import flash.system.LoaderContext;
 	import flash.utils.ByteArray;
@@ -133,6 +134,28 @@ package temple.core
 			
 			// preloader support
 			this._preloadableBehavior = new PreloadableBehavior(this);
+		}
+		
+		/**
+		 * @inheritDoc
+		 * 
+		 * If the object does not have a width and is not scaled to 0 the object is empty, 
+		 * setting the width is useless and can only cause weird errors, so we don't.
+		 */
+		override public function set width(value:Number):void
+		{
+			if(super.width || !this.scaleX) super.width = value;
+		}
+
+		/**
+		 * @inheritDoc
+		 * 
+		 * If the object does not have a height and is not scaled to 0 the object is empty, 
+		 * setting the height is useless and can only cause weird errors, so we don't. 
+		 */
+		override public function set height(value:Number):void
+		{
+			if(super.height || !this.scaleY) super.height = value;
 		}
 		
 		/**
@@ -246,6 +269,23 @@ package temple.core
 		{
 			this.alpha = value;
 			this.visible = this.alpha > 0;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get position():Point
+		{
+			return new Point(this.x, this.y);
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set position(value:Point):void
+		{
+			this.x = value.x;
+			this.y = value.y;
 		}
 
 		/**
@@ -460,6 +500,8 @@ package temple.core
 			this._preloadableBehavior.onLoadComplete(event);
 			
 			if (this._logErrors) this.logError(event.type + ': ' + event.text);
+			
+			this.dispatchEvent(event.clone());
 		}
 		
 		/**
@@ -472,6 +514,8 @@ package temple.core
 			this._preloadableBehavior.onLoadComplete(event);
 			
 			if (this._logErrors) this.logError(event.type + ': ' + event.text);
+			
+			this.dispatchEvent(event.clone());
 		}
 		
 		/**
@@ -502,7 +546,11 @@ package temple.core
 			
 			if (this._isLoading)
 			{
-				this.close();
+				try
+				{
+					this.close();
+				}
+				catch (e:Error){}
 			}
 			
 			// TODO:

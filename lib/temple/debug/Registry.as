@@ -39,6 +39,7 @@
 
 package temple.debug 
 {
+	import temple.destruction.Destructor;
 	import temple.Temple;
 	import temple.debug.log.Log;
 
@@ -59,7 +60,7 @@ package temple.debug
 	 */
 	public class Registry 
 	{
-		private static var _pool:Dictionary;
+		private static var _objectList:Dictionary;
 		private static var _object_id:uint = 0;
 		
 		/**
@@ -84,24 +85,28 @@ package temple.debug
 		 */
 		public static function add(object:*):uint
 		{
-			if (!Registry._pool)
+			if (!Registry._objectList)
 			{
-				Registry._pool = new Dictionary(true);
+				Registry._objectList = new Dictionary(true);
 			}
 			
-			if (Registry._pool[object])
+			if (Registry._objectList[object])
 			{
 				Log.warn("add: object '" + object + "' is already registered in Registry", "temple.debug.Registry");
 				
-				return Registry._pool[object];
+				return Registry._objectList[object];
 			}
 			else
 			{
-				Registry._pool[object] = ++Registry._object_id;
+				Registry._objectList[object] = ++Registry._object_id;
 				
 				if (Temple.REGISTER_OBJECTS && object)
 				{
 					Memory.registerObject(object);
+				}
+				if(Registry._object_id == uint.MAX_VALUE)
+				{
+					Log.warn("Max value reached in Registry", Registry);
 				}
 				
 				return Registry._object_id;
@@ -119,16 +124,17 @@ package temple.debug
 		 */
 		public static function getObject(id:uint):*
 		{
-			if (Registry._pool)
+			if (Registry._objectList)
 			{
-				for (var object:* in Registry._pool)
+				for (var object:* in Registry._objectList)
 				{
-					if (Registry._pool[object] == id) return object;
+					if (Registry._objectList[object] == id) return object;
 				}
 			}
 			
 			return null;
 		}
+		
 		/**
 		 * Gets the id of an object
 		 * @param object The object added in the registry before
@@ -140,7 +146,15 @@ package temple.debug
 		 */
 		public static function getId(object:*):uint
 		{
-			return Registry._pool[object];
+			return Registry._objectList[object];
+		}
+
+		/**
+		 * Destruct all objects in Registry
+		 */
+		public static function destructAll():void
+		{
+			for (var object:Object in Registry._objectList) Destructor.destruct(object);
 		}
 	}
 }

@@ -110,9 +110,9 @@ package temple.data.loader
 		{
 			if (this._preloader)
 			{
-				if (PreloadableBehavior._loadingList[this._preloader].indexOf(target) == -1) PreloadableBehavior._loadingList[this._preloader].push(target);
+				if ((PreloadableBehavior._loadingList[this._preloader] as Array).indexOf(target) == -1) (PreloadableBehavior._loadingList[this._preloader] as Array).push(target);
 				
-				if (PreloadableBehavior._loadingList[this._preloader].length == 1) this._preloader.onLoadStart(url == '' ? getUrlForTarget(target) : url);
+				if ((PreloadableBehavior._loadingList[this._preloader] as Array).length == 1) this._preloader.onLoadStart(url == '' ? getUrlForTarget(target) : url);
 			}
 		}
 		
@@ -165,19 +165,19 @@ package temple.data.loader
 		{
 			if (this._preloader)
 			{
-				if (PreloadableBehavior._loadingList[this._preloader].length == 1) this._preloader.onLoadComplete();
+				if ((PreloadableBehavior._loadingList[this._preloader] as Array).length == 1) this._preloader.onLoadComplete();
 				
-				var len:uint = PreloadableBehavior._loadingList[this._preloader].length;
+				var len:uint = (PreloadableBehavior._loadingList[this._preloader] as Array).length;
 				for(var i:Number = len;i > -1; i--)
 				{
 					if (PreloadableBehavior._loadingList[this._preloader][i] === target)
 					{
-						PreloadableBehavior._completedList[this._preloader].push(PreloadableBehavior._loadingList[this._preloader].splice(i, 1)[0]);
+						(PreloadableBehavior._completedList[this._preloader] as Array).push((PreloadableBehavior._loadingList[this._preloader] as Array).splice(i, 1)[0]);
 					}
 				}
 				
 				// all loading is done
-				if (PreloadableBehavior._loadingList[this._preloader].length == 0)
+				if ((PreloadableBehavior._loadingList[this._preloader] as Array).length == 0)
 				{
 					PreloadableBehavior._loadingList[this._preloader] = new Array();
 					PreloadableBehavior._completedList[this._preloader] = new Array();
@@ -291,8 +291,8 @@ package temple.data.loader
 		{
 			if (this._preloader)
 			{
-				if (PreloadableBehavior._loadingList[this._preloader].length == 0) PreloadableBehavior._loadingList[this._preloader] = null;
-				if (PreloadableBehavior._completedList[this._preloader].length == 0) PreloadableBehavior._completedList[this._preloader] = null;
+				if ((PreloadableBehavior._loadingList[this._preloader] as Array).length == 0) PreloadableBehavior._loadingList[this._preloader] = null;
+				if ((PreloadableBehavior._completedList[this._preloader] as Array).length == 0) PreloadableBehavior._completedList[this._preloader] = null;
 				
 				this._preloader = null;
 			}

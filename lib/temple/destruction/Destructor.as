@@ -39,6 +39,7 @@
 
 package temple.destruction 
 {
+	import flash.display.Bitmap;
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Loader;
@@ -63,7 +64,7 @@ package temple.destruction
 			
 			if (object is IDestructable)
 			{
-				IDestructable(object).destruct();
+				if (!IDestructable(object).isDestructed) IDestructable(object).destruct();
 			}
 			else if (object is DisplayObject)
 			{
@@ -79,6 +80,11 @@ package temple.destruction
 						MovieClip(object).stop();
 					}
 					Destructor.destructChildren(DisplayObjectContainer(object));
+				}
+				else if (object is Bitmap && (object as Bitmap).bitmapData)
+				{
+					(object as Bitmap).bitmapData.dispose();
+					(object as Bitmap).bitmapData = null;
 				}
 				
 				if (DisplayObject(object).parent)

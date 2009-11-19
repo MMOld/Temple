@@ -39,6 +39,7 @@
 
 package temple.core 
 {
+	import temple.Temple;
 	import temple.debug.Registry;
 	import temple.debug.getClassName;
 	import temple.debug.log.Log;
@@ -51,6 +52,7 @@ package temple.core
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.Event;
+	import flash.geom.Point;
 
 	/**
 	 * Dispatched just before the object is destructed
@@ -84,6 +86,7 @@ package temple.core
 		private var _onStage:Boolean;
 		private var _onParent:Boolean;
 		private var _registryId:uint;
+		private var _isApplicationDomainRoot:Boolean;
 
 		public function CoreSprite()
 		{
@@ -101,7 +104,29 @@ package temple.core
 			this.addEventListener(Event.REMOVED, temple::handleRemoved);
 			this.addEventListener(Event.REMOVED_FROM_STAGE, temple::handleRemovedFromStage);
 		}
-		
+
+		/**
+		 * @inheritDoc
+		 * 
+		 * If the object does not have a width and is not scaled to 0 the object is empty, 
+		 * setting the width is useless and can only cause weird errors, so we don't.
+		 */
+		override public function set width(value:Number):void
+		{
+			if(super.width || !this.scaleX) super.width = value;
+		}
+
+		/**
+		 * @inheritDoc
+		 * 
+		 * If the object does not have a height and is not scaled to 0 the object is empty, 
+		 * setting the height is useless and can only cause weird errors, so we don't. 
+		 */
+		override public function set height(value:Number):void
+		{
+			if(super.height || !this.scaleY) super.height = value;
+		}
+
 		/**
 		 * @inheritDoc
 		 */
@@ -153,6 +178,23 @@ package temple.core
 		{
 			this.alpha = value;
 			this.visible = this.alpha > 0;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get position():Point
+		{
+			return new Point(this.x, this.y);
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set position(value:Point):void
+		{
+			this.x = value.x;
+			this.y = value.y;
 		}
 
 		/**
@@ -287,6 +329,12 @@ package temple.core
 		temple function handleAddedToStage(event:Event):void
 		{
 			this._onStage = true;
+			
+			if(!StageProvider.stage)
+			{
+				StageProvider.stage = super.stage;
+				this._isApplicationDomainRoot = true;
+			}
 		}
 
 		temple function handleRemoved(event:Event):void
@@ -362,6 +410,7 @@ package temple.core
 				{
 					if (this._onParent)
 					{
+						if(this.name && this.parent.hasOwnProperty(this.name)) this.parent[this.name] = null;
 						this.parent.removeChild(this);
 					}
 					else
@@ -369,6 +418,7 @@ package temple.core
 						// something weird happened, since we have a parent but didn't receive an ADDED event. So do the try-catch thing
 						try
 						{
+							if(this.name && this.parent.hasOwnProperty(this.name)) this.parent[this.name] = null;
 							this.parent.removeChild(this);
 						}
 						catch (e:Error){}
@@ -376,6 +426,11 @@ package temple.core
 				}
 			}
 			this._isDestructed = true;
+			if(this._isApplicationDomainRoot)
+			{
+				this.logWarn("ApplicationDomainRoot is destructed");
+				Temple.destruct();
+			}
 		}
 
 		/**

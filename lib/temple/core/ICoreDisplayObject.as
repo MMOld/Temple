@@ -42,6 +42,8 @@ package temple.core
 	import temple.destruction.IDestructableEventDispatcher;
 	import temple.ui.IDisplayObject;
 
+	import flash.geom.Point;
+
 	/**
 	 * The ICoreDisplayObjects extends Flash native DisplayObject classes, like
 	 * Sprite, MovieClip and Loader. The ICoreDisplayObjects extends ICoreObject 
@@ -87,5 +89,15 @@ package temple.core
 		 * @private
 		 */
 		function set autoAlpha(value:Number):void;
+
+		/**
+		 * Get or set to position of the object as a Point. It is not possible to set x and/or y directy by point.
+		 */
+		function get position():Point;
+		
+		/**
+		 * @private
+		 */
+		function set position(value:Point):void;
 	}
 }

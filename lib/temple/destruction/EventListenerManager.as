@@ -71,12 +71,20 @@ package temple.destruction
 			return list;
 		}
 		/**		 * Creates a new instance of a EventListenerManager. Do not create more one EventListenerManager for each IDestructableEventDispatcher!
-		 * @param dispatcher the dispatcher of this EventListenerManager		 */		public function EventListenerManager(dispatcher:IDestructableEventDispatcher) 		{
-			this._eventDispatcher = dispatcher;			this._events = new Array();			
+		 * @param eventDispatcher the EventDispatcher of this EventListenerManager		 */		public function EventListenerManager(eventDispatcher:IDestructableEventDispatcher) 		{
+			this._eventDispatcher = eventDispatcher;			this._events = new Array();			
 			super();
 			
-			if(dispatcher == null) throwError(new TempleArgumentError(this, "dispatcher can not be null"));
-			if(dispatcher.eventListenerManager) throwError(new TempleError(this, "dispatcher already has an EventListenerManager"));
+			if(eventDispatcher == null) throwError(new TempleArgumentError(this, "dispatcher can not be null"));
+			if(eventDispatcher.eventListenerManager) throwError(new TempleError(this, "dispatcher already has an EventListenerManager"));
+		}
+		
+		/**
+		 * Returns a reference to the EventDispatcher
+		 */
+		public function get eventDispatcher():IEventDispatcher
+		{
+			return this._eventDispatcher;
 		}		/**		 * Notifies the ListenerManager instance that a listener has been added to the {@code IEventDispatcher}.		 * 			 * @param type The type of event.		 * @param listener The listener function that processes the event.		 * @param useCapture Determines whether the listener works in the capture phase or the target and bubbling phases.		 * @param priority The priority level of the event listener.		 * @param useWeakReference Determines whether the reference to the listener is strong or weak.		 */		public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void 		{			var l:int = this._events.length;			while (l--)
 			{				if ((this._events[l] as EventData).equals(type, listener, useCapture)) return;
 			}			this._events.push(new EventData(type, listener, useCapture));		}		/**

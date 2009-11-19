@@ -39,6 +39,7 @@
 
 package temple.core 
 {
+	import temple.destruction.Destructor;
 	import temple.debug.Registry;
 	import temple.debug.getClassName;
 	import temple.debug.log.Log;
@@ -66,7 +67,7 @@ package temple.core
 			// Register object for destruction testing
 			this._registryId = Registry.add(this);
 		}
-		
+
 		/**
 		 * @inheritDoc
 		 */
@@ -83,7 +84,7 @@ package temple.core
 		{
 			Log.debug(data, this, this._registryId);
 		}
-		
+
 		/**
 		 * Does a Log.error, but has already filled in some known data
 		 * @param data the data to be logged
@@ -92,7 +93,7 @@ package temple.core
 		{
 			Log.error(data, this, this._registryId);
 		}
-		
+
 		/**
 		 * Does a Log.fatal, but has already filled in some known data
 		 * @param data the data to be logged
@@ -101,7 +102,7 @@ package temple.core
 		{
 			Log.fatal(data, this, this._registryId);
 		}
-		
+
 		/**
 		 * Does a Log.info, but has already filled in some known data
 		 * @param data the data to be logged
@@ -110,7 +111,7 @@ package temple.core
 		{
 			Log.info(data, this, this._registryId);
 		}
-		
+
 		/**
 		 * Does a Log.status, but has already filled in some known data
 		 * @param data the data to be logged
@@ -119,7 +120,7 @@ package temple.core
 		{
 			Log.status(data, this, this._registryId);
 		}
-		
+
 		/**
 		 * Does a Log.warn, but has already filled in some known data
 		 * @param data the data to be logged
@@ -136,15 +137,21 @@ package temple.core
 		{
 			return this._isDestructed;
 		}
-		
+
 		/**
 		 * @inheritDoc
 		 */
 		public function destruct():void
 		{
+			for (var key:String in this)
+			{
+				Destructor.destruct(this[key]);
+				delete this[key];
+			}
+			
 			this._isDestructed = true;
 		}
-		
+
 		/**
 		 * @inheritDoc
 		 */

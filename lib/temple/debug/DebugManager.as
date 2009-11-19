@@ -349,7 +349,7 @@ package temple.debug
 				xml.appendChild(node);
 			}
 			
-			return xml.node;
+			return xml.child('node');
 		}
 			
 		/**
@@ -436,6 +436,16 @@ package temple.debug
 			return this._debug;
 		}
 
+		override public function destruct():void
+		{
+			DebugManager._instance = null;
+			this._debuggables = null;
+			this._debuggableChilds = null;
+			this._debuggableChildList = null;
+			this._debuggableChildQueue = null;
+			
+			super.destruct();
+		}
 	}
 }
 

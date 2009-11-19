@@ -140,7 +140,7 @@ package temple.debug
 						}
 						
 						// store info about the object
-						Memory._registry[object] = new RegisteryInfo(object.toString(), stacktrace ? stackList.join("\n") : '', Registry.getId(object));
+						Memory._registry[object] = new RegisteryInfo(String(object), stacktrace ? stackList.join("\n") : '', Registry.getId(object));
 					}
 				}
 			}
@@ -157,7 +157,7 @@ package temple.debug
 		{
 			trace("Current objects are registered and not cleaned by the Garbage Collector:");
 			
-			var arrMemoryObjects:Array = getRegistryObjects(traceTimestamp, traceStack, excludeFirstStacktraceLines);
+			var arrMemoryObjects:Array = Memory.getRegistryObjects(traceTimestamp, traceStack, excludeFirstStacktraceLines);
 			
 			for (var i:int = 0; i < arrMemoryObjects.length; ++i)
 			{
@@ -326,6 +326,6 @@ class RegisteryInfo
 	
 	public function get objectId():uint
 	{
-		return _objectId;
+		return this._objectId;
 	}
 }

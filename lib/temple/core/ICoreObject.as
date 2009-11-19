@@ -40,7 +40,7 @@
 package temple.core 
 {
 	import temple.destruction.IDestructable;
-	
+
 	/**
 	 * Interface for all core classes of the Temple. The Temple’s core classes are 
 	 * extensions on the native (base) classes of Flash enhanced with the basic features 

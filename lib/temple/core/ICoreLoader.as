@@ -39,11 +39,10 @@
  
 package temple.core 
 {
-
-	import temple.destruction.IDestructableEventDispatcher;
 	import temple.data.loader.ILoader;
 	import temple.data.loader.IPreloadable;
-	
+	import temple.destruction.IDestructableEventDispatcher;
+
 	/**
 	 * Implemented by all core-loader objects like CoreNetStream, CoreURLLoader, CoreURLStream and CoreLoader.
 	 * <p>ICoreLoader add some basic properies to the loader like the url. ICoreLoader objects listens to error-events and can log error when those occur. Since ICoreLoaders listen to there own ErrorEvent "unhandle ErrorEvents"-errors won't occur.</p>

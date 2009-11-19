@@ -221,7 +221,7 @@ package temple.debug.log
 		{
 			if (this._showTrace) 
 			{
-				trace(getTimer() + "\t" + level + ": " + data.toString() + " -- " + (sender ? sender.toString() : 'null') + (objectId == 0 ? '' : " #" + objectId + "#"));
+				trace(getTimer() + "\t" + level + ": " + String(data) + " -- " + (sender ? sender.toString() : 'null') + (objectId == 0 ? '' : " #" + objectId + "#"));
 			}
 			this.dispatchEvent(new LogEvent(level, data, sender ? sender.toString() : 'null', objectId));
 		}

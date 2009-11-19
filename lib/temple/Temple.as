@@ -40,6 +40,8 @@
 package temple 
 {
 
+	import temple.debug.Registry;
+	import temple.debug.log.Log;
 	import temple.debug.getClassName;
 	import temple.debug.DebugMode;
 	/**
@@ -118,6 +120,16 @@ package temple
 		 * @see temple.debug.getClassName
 		 */
 		public static var DISPLAY_FULL_PACKAGE_IN_TOSTRING:Boolean = false;
+		
+		/**
+		 * Destructs all objects of the Temple. Usefull when unloading an ApplicationDomainRoot object.
+		 * Called automaticly by CoreMovieClip or CoreSprite if they are the ApplicationDomainRoot.
+		 */
+		public static function destruct():void
+		{
+			Log.warn(Temple, "All objects of the Temple are being destructed");
+			Registry.destructAll();
+		}
 		
 		/**
 		 * Creates a readable string of the class
