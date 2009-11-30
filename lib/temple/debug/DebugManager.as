@@ -135,7 +135,7 @@ package temple.debug
 			// if no debugsetting in url, set to custom
 			if (DebugManager._debugMode == 0)
 			{
-				DebugManager.debugMode = Temple.DEFAULT_DEBUG_MODE;
+				DebugManager.debugMode = Temple.defaultDebugMode;
 			}
 			
 			var objectId:uint = Registry.getId(object);
@@ -436,6 +436,9 @@ package temple.debug
 			return this._debug;
 		}
 
+		/**
+		 * @inheritDoc
+		 */
 		override public function destruct():void
 		{
 			DebugManager._instance = null;

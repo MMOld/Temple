@@ -146,6 +146,23 @@ package temple.core
 		
 		/**
 		 * @inheritDoc
+		 */
+		public function get scale():Number
+		{
+			if(this.scaleX == this.scaleY) return this.scaleX;
+			return NaN;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set scale(value:Number):void
+		{
+			this.scaleX = this.scaleY = value;
+		}
+		
+		/**
+		 * @inheritDoc
 		 * 
 		 * Check implemented if object hasEventListener, must speed up the application
 		 * http://www.gskinner.com/blog/archives/2008/12/making_dispatch.html

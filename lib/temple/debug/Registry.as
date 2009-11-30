@@ -100,7 +100,7 @@ package temple.debug
 			{
 				Registry._objectList[object] = ++Registry._object_id;
 				
-				if (Temple.REGISTER_OBJECTS && object)
+				if (Temple.registerObjects && object)
 				{
 					Memory.registerObject(object);
 				}

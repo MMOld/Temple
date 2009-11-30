@@ -71,12 +71,12 @@ package temple
 		 * Usefull for debugging to track all existing objects.
 		 * After destructing an object (and force a Garbage Collection) the object should no longer exist.
 		 * 
-		 * NOTE: Changing this value must be done here
+		 * NOTE: Changing this value must be done here or before the super() inside the constructor of your application root
 		 * 
 		 * @see temple.debug.Registry
 		 * @see temple.debug.Memory
 		 */
-		public static const REGISTER_OBJECTS:Boolean = true;
+		public static var registerObjects:Boolean = true;
 		
 		/**
 		 * When debug is not set in the url, this debugmode is used for the DebugManager.
@@ -102,14 +102,14 @@ package temple
 		 * 
 		 * @see temple.debug.DebugManager
 		 */
-		public static const DEFAULT_DEBUG_MODE:int = DebugMode.CUSTOM;
+		public static var defaultDebugMode:int = DebugMode.CUSTOM;
 
 		/**
 		 * Indicates if Temple errors should be ignored. If set to true, Temple errors are still logged, but not throwed
 		 * 
 		 * @see temple.debug.errors.throwError
 		 */
-		public static const IGNORE_ERRORS:Boolean = false;
+		public static var ignoreErrors:Boolean = false;
 		
 		/**
 		 * Indicates if the package will be displayed when calling a toString() method on an object or class
@@ -119,7 +119,7 @@ package temple
 		 * 
 		 * @see temple.debug.getClassName
 		 */
-		public static var DISPLAY_FULL_PACKAGE_IN_TOSTRING:Boolean = false;
+		public static var displayFullPackageInToString:Boolean = false;
 		
 		/**
 		 * Destructs all objects of the Temple. Usefull when unloading an ApplicationDomainRoot object.

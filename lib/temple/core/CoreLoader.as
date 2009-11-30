@@ -287,6 +287,23 @@ package temple.core
 			this.x = value.x;
 			this.y = value.y;
 		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get scale():Number
+		{
+			if(this.scaleX == this.scaleY) return this.scaleX;
+			return NaN;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set scale(value:Number):void
+		{
+			this.scaleX = this.scaleY = value;
+		}
 
 		/**
 		 * @inheritDoc

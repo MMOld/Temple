@@ -99,7 +99,7 @@ package temple.debug
 		 */
 		public static function registerObject(object:Object, forceRegister:Boolean = false):void
 		{
-			if ((Temple.REGISTER_OBJECTS || forceRegister) && object)
+			if ((Temple.registerObjects || forceRegister) && object)
 			{
 				if (!Memory._registry)
 				{
@@ -117,7 +117,7 @@ package temple.debug
 					
 					// If not in Registry, add it there
 					// Registry will add it to the memory again
-					if (Temple.REGISTER_OBJECTS == true && registryId == 0)
+					if (Temple.registerObjects == true && registryId == 0)
 					{
 						Registry.add(object);
 					}
@@ -125,7 +125,7 @@ package temple.debug
 					{
 						// If not in Registry, and 'Temple.REGISTER_OBJECTS' is set to false
 						// add it here, because the Registry will not add it to the Memory again
-						if (Temple.REGISTER_OBJECTS == false && registryId == 0) Registry.add(object);
+						if (Temple.registerObjects == false && registryId == 0) Registry.add(object);
 						
 						// get stack trace info
 						var stacktrace:String = new Error("Get stack").getStackTrace();

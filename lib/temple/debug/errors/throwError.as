@@ -55,7 +55,7 @@ package temple.debug.errors
 	{
 		if(!(error is ITempleError)) Log.error(error.message, 'temple.debug.errors.throwError');
 		
-		if(!Temple.IGNORE_ERRORS)
+		if(!Temple.ignoreErrors)
 		{
 			throw error;
 		}

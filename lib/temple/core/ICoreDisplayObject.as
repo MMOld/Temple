@@ -99,5 +99,17 @@ package temple.core
 		 * @private
 		 */
 		function set position(value:Point):void;
+
+		/**
+		 * Get and set scaleX and scaleY in one property. If scaleX is not the same as scaleY NaN is returned
+		 */
+		function get scale():Number;
+		
+		/**
+		 * @private
+		 */
+		function set scale(value:Number):void;
+		
+		
 	}
 }
