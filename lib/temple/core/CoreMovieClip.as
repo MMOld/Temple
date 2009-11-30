@@ -86,7 +86,6 @@ package temple.core
 		private var _onStage:Boolean;
 		private var _onParent:Boolean;
 		private var _registryId:uint;
-		private var _isApplicationDomainRoot:Boolean;
 
 		public function CoreMovieClip()
 		{
@@ -350,7 +349,6 @@ package temple.core
 			if(!StageProvider.stage)
 			{
 				StageProvider.stage = super.stage;
-				this._isApplicationDomainRoot = true;
 			}
 		}
 
@@ -443,11 +441,6 @@ package temple.core
 				}
 			}
 			this._isDestructed = true;
-			if(this._isApplicationDomainRoot)
-			{
-				this.logWarn("ApplicationDomainRoot is destructed");
-				Temple.destruct();
-			}
 		}
 
 		/**
