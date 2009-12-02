@@ -40,13 +40,6 @@
 package temple.ui 
 {
 
-	/**
-	 * Interface that contains all the properties of a DisplayObject. This interface is implemented by all
-	 * DisplayObjects of the Temple, but not by Flash native DisplayObects. This interface is extended by
-	 * other interface to force they can only be implemented by DisplayObjects. 
-	 * 
-	 * @author Arjan van Wijk
-	 */
 	import flash.accessibility.AccessibilityProperties;
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
@@ -58,6 +51,13 @@ package temple.ui
 	import flash.geom.Rectangle;
 	import flash.geom.Transform;
 
+	/**
+	 * Interface that contains all the properties of a DisplayObject. This interface is implemented by all
+	 * DisplayObjects of the Temple, but not by Flash native DisplayObects. This interface is extended by
+	 * other interface to force they can only be implemented by DisplayObjects. 
+	 * 
+	 * @author Arjan van Wijk
+	 */
 	public interface IDisplayObject extends IEventDispatcher, IBitmapDrawable
 	{
 		function get accessibilityProperties():AccessibilityProperties;
