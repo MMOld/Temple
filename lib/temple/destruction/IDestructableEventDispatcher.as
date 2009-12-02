@@ -48,7 +48,7 @@ package temple.destruction
 	[Event(name = "DestructEvent.destruct", type = "temple.destruction.DestructEvent")]
 
 	/**
-	 * TODO: Missing documentation
+	 * IDestructableEventDispatcher will automatic removed all listeners on the object when it is destructed.
 	 */
 	public interface IDestructableEventDispatcher extends IEventDispatcher, IDestructable 
 	{
@@ -61,7 +61,7 @@ package temple.destruction
 		function removeAllEventsForType(type:String):void;
 
 		/**
-		 * Removes all events that report to the specified listener.
+		 * Removes all events that are handled by a specified listener.
 		 * 	
 		 * @param listener The listener function that processes the event.
 		 */
@@ -73,7 +73,7 @@ package temple.destruction
 		function removeAllEventListeners():void;
 
 		/**
-		 * Returns a reference to the EventListenerManager of the object
+		 * Returns a reference to the EventListenerManager of the IDestructableEventDispatcher
 		 */
 		function get eventListenerManager():EventListenerManager;
 	}

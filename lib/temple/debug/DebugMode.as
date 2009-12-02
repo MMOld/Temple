@@ -43,6 +43,8 @@ package temple.debug
 	/**
 	 * This class contains possible values for debugMode. DebugMode is used by the DebugManager.
 	 * 
+	 * @see temple.debug.DebugManager
+	 * 
 	 * @date 28 aug 2009 22:15:49
 	 * @author Arjan van Wijk (arjan at mediamonks dot com)
 	 */

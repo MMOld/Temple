@@ -66,7 +66,10 @@ package temple.core
 	 * 	<li>Can be tracked in Memory (of this feature is enabled)</li>
 	 * </ul>
 	 * 
-	 * You should always use and/or extend the CoreTimer instead of Timer if you want to make use of the Temple features.
+	 * <p>Note: since the CoreTimer is not a DisplayObject, the CoreTimer will not be automatic destructed. So you should
+	 * always destruct the CoreTimer manually.</p>
+	 * 
+	 * <p>You should always use and/or extend the CoreTimer instead of Timer if you want to make use of the Temple features.</p>
 	 * 
 	 * @author Thijs Broerse
 	 */

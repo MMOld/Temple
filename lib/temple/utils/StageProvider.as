@@ -60,11 +60,17 @@ package temple.utils
 	{
 		private static var _STAGE:Stage;
 		
+		/**
+		 * Returns a reference of the stage
+		 */
 		public static function get stage():Stage
 		{
 			return StageProvider._STAGE;
 		}
 		
+		/**
+		 * Set the stage. The stage is automaticly set by the CoreMovieClip and CoreSprite
+		 */
 		public static function set stage(value:Stage):void
 		{
 			if(value == null)

@@ -41,7 +41,7 @@ package temple.data.loader
 {
 
 	/**
-	 * TODO: Missing documentation
+	 * Interface for all objects that can load something.
 	 * 
 	 * @author Thijs Broerse
 	 */

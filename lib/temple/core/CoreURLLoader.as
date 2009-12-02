@@ -73,7 +73,7 @@ package temple.core
 	 * 	<li>Logs IOErrorEvents and SecurityErrorEvents</li>
 	 * </ul>
 	 * 
-	 * You should always use and/or extend the CoreURLLoader instead of URLLoader if you want to make use of the Temple features.
+	 * <p>You should always use and/or extend the CoreURLLoader instead of URLLoader if you want to make use of the Temple features.</p>
 	 * 
 	 * @author Thijs Broerse
 	 */
@@ -310,7 +310,7 @@ package temple.core
 		
 		/**
 		 * Default IOError handler
-		 * If logErrors is set to true, a error log message is traced
+		 * If logErrors is set to true, an error message is logged
 		 */
 		temple function handleIOError(event:IOErrorEvent):void
 		{
@@ -322,7 +322,7 @@ package temple.core
 		
 		/**
 		 * Default SecurityError handler
-		 * If logErrors is set to true, a error log message is traced
+		 * If logErrors is set to true, an error message is logged
 		 */
 		temple function handleSecurityError(event:SecurityErrorEvent):void
 		{

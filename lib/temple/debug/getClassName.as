@@ -47,7 +47,7 @@ package temple.debug
 	/**
 	 * Creates a nice readable string of a object or class. Uses getQualifiedClassName internally but you can disable full package display in the Temple.as file
 	 * 
-	 * @see temple.Temple
+	 * @see temple.Temple#displayFullPackageInToString()
 	 * 
 	 * @author Thijs Broerse
 	 */

@@ -21,6 +21,23 @@ package temple.core
 	[Event(name = "DestructEvent.destruct", type = "temple.destruction.DestructEvent")]
 
 	/**
+	 * Base class for all Bitmaps in the Temple. The CoreBitmap handles some core features of the Temple:
+	 * <ul>
+	 * 	<li>Registration to the Registry class</li>
+	 * 	<li>Global reference to the stage trough the StageProvider</li>
+	 * 	<li>Event dispatch optimization</li>
+	 * 	<li>Easy remove of all EventListeners</li>
+	 * 	<li>Wrapper for Log class for easy logging</li>
+	 * 	<li>Completely destructable</li>
+	 * 	<li>Can be tracked in Memory (of this feature is enabled)</li>
+	 * 	<li>Automatic disposes BitmapData on destruction</li>
+	 * 	<li>Some usefull extra properties like autoAlpha, position and scale</li>
+	 * </ul>
+	 * 
+	 * <p>Note: The CoreBitmap will automatic dispose the BitmapData on destruction. If you do not want that you should set disposeBitmapDataOnDestruct to false.</p>
+	 * 
+	 * <p>You should always use and/or extend the CoreBitmap instead of MovieClip if you want to make use of the Temple features.</p>
+	 *
 	 * @author Thijs Broerse
 	 */
 	public class CoreBitmap extends Bitmap implements ICoreDisplayObject
@@ -32,13 +49,14 @@ package temple.core
 		private var _onStage:Boolean;
 		private var _onParent:Boolean;
 		private var _registryId:uint;
+		private var _disposeBitmapDataOnDestruct:Boolean;
 
-		public function CoreBitmap(bitmapData:BitmapData = null, pixelSnapping:String = "auto", smoothing:Boolean = false)
+		public function CoreBitmap(bitmapData:BitmapData = null, pixelSnapping:String = "auto", smoothing:Boolean = false, disposeBitmapDataOnDestruct:Boolean = true)
 		{
 			super(bitmapData, pixelSnapping, smoothing);
 
 			this._eventListenerManager = new EventListenerManager(this);
-			
+			this._disposeBitmapDataOnDestruct = disposeBitmapDataOnDestruct;
 
 			if (this.loaderInfo) this.loaderInfo.addEventListener(Event.UNLOAD, temple::handleUnload, false, 0, true);
 			
@@ -159,6 +177,22 @@ package temple.core
 		public function set scale(value:Number):void
 		{
 			this.scaleX = this.scaleY = value;
+		}
+		
+		/**
+		 * Indicates of the BitmapData should be disposed when the CoreBitmap is destructed. Default: true
+		 */
+		public function get disposeBitmapDataOnDestruct():Boolean
+		{
+			return this._disposeBitmapDataOnDestruct;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set disposeBitmapDataOnDestruct(value:Boolean):void
+		{
+			this._disposeBitmapDataOnDestruct = value;
 		}
 		
 		/**
@@ -341,11 +375,11 @@ package temple.core
 			
 			this.dispatchEvent(new DestructEvent(DestructEvent.DESTRUCT));
 			
-			if(this.bitmapData)
+			if(this.bitmapData && this._disposeBitmapDataOnDestruct)
 			{
 				this.bitmapData.dispose();
-				this.bitmapData = null;
 			}
+			this.bitmapData = null;
 			
 			// clear mask, so it won't keep a reference to an other object
 			this.mask = null;

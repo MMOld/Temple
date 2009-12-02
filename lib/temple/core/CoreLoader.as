@@ -76,9 +76,30 @@ package temple.core
 	 * 	<li>Wrapper for Log class for easy logging</li>
 	 * 	<li>Completely destructable</li>
 	 * 	<li>Can be tracked in Memory (of this feature is enabled)</li>
+	 * 	<li>Handles and logs error events</li>
+	 * 	<li>Passes all contentLoaderInfo events</li>
+	 * 	<li>Some usefull extra properties like autoAlpha, position and scale</li>
 	 * </ul>
 	 * 
-	 * You should always use and/or extend the CoreLoader instead of Loader if you want to make use of the Temple features.
+	 * <p>The CoreLoaded passes all events of the contentLoaderInfo. You should always set the EventListeners on the 
+	 * CoreLoader since these will automatic be removed on destruction.</p>
+	 * 
+	 * <p>You should always use and/or extend the CoreLoader instead of Loader if you want to make use of the Temple features.</p>
+	 * 
+	 * Usage:
+	 * @example
+	 * <listing version="3.0">
+	 * var loader:CoreLoader = new CoreLoader();
+	 * loader.addEventListener(Event.COMPLETE, this.handleLoaderComplete);
+	 * this.addChild(loader);
+	 * loader.load(new URLRequest('http://code.google.com/p/templelibrary/logo?logo_id=1259568715'));
+	 * 
+	 * function handleLoaderComplete(event:Event):void
+	 * {
+	 * 	trace("image loaded");
+	 * 
+	 * }
+	 * </listing>
 	 * 
 	 * @author Thijs Broerse
 	 */
@@ -523,7 +544,7 @@ package temple.core
 		
 		/**
 		 * Default SecurityError handler
-		 * If logErrors is set to true, a error log message is traced
+		 * If logErrors is set to true, an error message is logged
 		 */
 		temple function handleSecurityError(event:SecurityErrorEvent):void
 		{

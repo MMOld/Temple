@@ -42,7 +42,9 @@ package temple.behaviors
 	import flash.display.DisplayObject;
 
 	/**
-	 * TODO: Missing documentation
+	 * Interface for all Events dispachted by a Behavior
+	 * 
+	 * @see temple.behaviors.IBehavior
 	 * 
 	 * @author Thijs Broerse
 	 */

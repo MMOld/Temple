@@ -41,6 +41,10 @@ package temple.ui
 {
 
 	/**
+	 * Interface that contains all the properties of a DisplayObject. This interface is implemented by all
+	 * DisplayObjects of the Temple, but not by Flash native DisplayObects. This interface is extended by
+	 * other interface to force they can only be implemented by DisplayObjects. 
+	 * 
 	 * @author Arjan van Wijk
 	 */
 	import flash.accessibility.AccessibilityProperties;

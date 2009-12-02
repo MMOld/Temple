@@ -147,24 +147,29 @@ package temple.debug
 		}
 
 		/**
-		 * Traces all objects that are currently registered by the memory and are not deleted by the Garbage Collector
+		 * Logs all objects that are currently registered by the memory and are not deleted by the Garbage Collector
 		 * This function uses getRegistryObjects to get this objects
 		 * @param traceTimestamp if set to true, the time when the object was registered is traced as wel
 		 * @param traceStack if set to true, the stack when the object was registered is traced as wel, this comes in handy to check which object created the current object
 		 * @param excludeFirstStacktraceLines Used mostly by tools; the array with stack-roots are excluded from the trace
+		 * @return the log message
 		 */
-		public static function traceRegistry(traceTimestamp:Boolean = false, traceStack:Boolean = false, excludeFirstStacktraceLines:Array = null):void
+		public static function logRegistry(traceTimestamp:Boolean = false, traceStack:Boolean = false, excludeFirstStacktraceLines:Array = null):String
 		{
-			trace("Current objects are registered and not cleaned by the Garbage Collector:");
+			var message:String = "Current objects are registered and not cleaned by the Garbage Collector:\n";
 			
 			var arrMemoryObjects:Array = Memory.getRegistryObjects(traceTimestamp, traceStack, excludeFirstStacktraceLines);
 			
 			for (var i:int = 0; i < arrMemoryObjects.length; ++i)
 			{
-				trace(arrMemoryObjects[i].value);
+				message += arrMemoryObjects[i].value + "\n";
 			}
 			
-			trace("Total objects: " + arrMemoryObjects.length);
+			message += "Total objects: " + arrMemoryObjects.length;
+			
+			Log.info(message, Memory);
+			
+			return message;
 		}
 		
 		/**
@@ -283,6 +288,11 @@ package temple.debug
 			}
 			return total;
 		}
+		
+		public static function toString():String
+		{
+			return getClassName(Memory);
+		}
 	}
 }
 
@@ -295,6 +305,9 @@ class RegisteryInfo
 	private var _timestamp:int;
 	private var _objectId:uint;
 
+	/**
+	 * Internal class to store information about an object registration
+	 */
 	public function RegisteryInfo(object:String, stack:String, objectId:uint) 
 	{
 		this._timestamp = objectId;

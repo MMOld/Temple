@@ -42,7 +42,8 @@ package temple.debug.errors
 	import temple.debug.log.Log;
 
 	/**
-	 * TODO: Missing documentation
+	 * Error thrown when an index is out of range.
+	 * The TempleRangeError will automatic Log the error message.
 	 * 
 	 * @author Thijs Broerse
 	 */

@@ -42,7 +42,8 @@ package temple.debug.errors
 	import temple.debug.log.Log;
 
 	/**
-	 * TODO: Missing documentation
+	 * Error thrown when a error in the Temple occurs.
+	 * The TempleError will automatic Log the error message.
 	 * 
 	 * @author Thijs Broerse
 	 */

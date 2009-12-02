@@ -69,10 +69,12 @@ package temple.core
 	 * 	<li>Easy remove of all EventListeners</li>
 	 * 	<li>Wrapper for Log class for easy logging</li>
 	 * 	<li>Completely destructable</li>
+	 * 	<li>Automatic removes and destruct children, grant-children etc. on destruction</li>
 	 * 	<li>Can be tracked in Memory (of this feature is enabled)</li>
+	 * 	<li>Some usefull extra properties like autoAlpha, position and scale</li>
 	 * </ul>
 	 * 
-	 * You should always use and/or extend the CoreSprite instead of Sprite if you want to make use of the Temple features.
+	 * <p>You should always use and/or extend the CoreSprite instead of Sprite if you want to make use of the Temple features.</p>
 	 * 
 	 * @author Thijs Broerse
 	 */

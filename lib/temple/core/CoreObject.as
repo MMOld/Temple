@@ -53,7 +53,7 @@ package temple.core
 	 * 	<li>Can be tracked in Memory (of this feature is enabled)</li>
 	 * </ul>
 	 * 
-	 * You should always use and/or extend the CoreSprite instead of Sprite if you want to make use of the Temple features.
+	 * <p>You should always use and/or extend the CoreSprite instead of Sprite if you want to make use of the Temple features.</p>
 	 * 
 	 * @author Thijs Broerse
 	 */

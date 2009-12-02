@@ -41,7 +41,7 @@ package temple.destruction
 {
 
 	/**
-	 * TODO: Missing documentation
+	 * Interface for object that can automatic be destructed if an Error occurs.
 	 * 
 	 * @author Thijs Broerse
 	 */
