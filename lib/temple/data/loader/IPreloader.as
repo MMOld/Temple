@@ -43,15 +43,31 @@ package temple.data.loader
 	import temple.ui.IDisplayObject;
 
 	/**
-	 * TODO: Missing documentation
+	 * An interface used by visual preloaders. All classes that implement IPreloadable
+	 * can use IPreloader object as their preloader.
+	 * 
+	 * @see temple.data.loader.IPreloadable
 	 * 
 	 * @date 26 jan 2009 16:06:23
 	 * @author Arjan van Wijk (arjan at mediamonks dot com)
 	 */
 	public interface IPreloader extends IDisplayObject, IDestructable
 	{
+		/**
+		 * Called when the loading starts, make the preloader visible here
+		 * @param url The url of the request
+		 */
 		function onLoadStart(url:String = ''):void
+		
+		/**
+		 * Called when loading is progressing, show the progress here
+		 * @param progress The loading progress (between 0 and 1)
+		 */
 		function onLoadProgress(progress:Number):void
+		
+		/**
+		 * Called when the loading is (un)succesfully completed, hide the preloader here
+		 */
 		function onLoadComplete():void
 	}
 }

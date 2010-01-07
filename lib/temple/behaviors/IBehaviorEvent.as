@@ -39,7 +39,6 @@
 
 package temple.behaviors 
 {
-	import flash.display.DisplayObject;
 
 	/**
 	 * Interface for all Events dispachted by a Behavior
@@ -54,7 +53,7 @@ package temple.behaviors
 		 * Get the target of the behavior.
 		 * The behaviorTarget is the object that is influenced by the behavior
 		 */
-		function get behaviorTarget():DisplayObject;
+		function get behaviorTarget():Object;
 
 		/**
 		 * The event target. This property contains the target node. This property contains the behavior, not the behaviors target. To get the behaviors target use behaviorTarget

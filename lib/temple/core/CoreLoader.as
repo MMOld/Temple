@@ -362,17 +362,17 @@ package temple.core
 		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForType(type:String):void 
+		public function removeAllStrongEventListenersForType(type:String):void 
 		{
-			this._eventListenerManager.removeAllEventsForType(type);
+			this._eventListenerManager.removeAllStrongEventListenersForType(type);
 		}
 
 		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForListener(listener:Function):void 
+		public function removeAllStrongEventListenersForListener(listener:Function):void 
 		{
-			this._eventListenerManager.removeAllEventsForListener(listener);
+			this._eventListenerManager.removeAllStrongEventListenersForListener(listener);
 		}
 
 		/**
@@ -405,6 +405,22 @@ package temple.core
 		public function set preloader(value:IPreloader):void
 		{
 			this._preloadableBehavior.preloader = value;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get bytesLoaded():uint
+		{
+			return this.contentLoaderInfo ? this.contentLoaderInfo.bytesLoaded : 0;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get bytesTotal():uint
+		{
+			return this.contentLoaderInfo ? this.contentLoaderInfo.bytesTotal : 0;
 		}
 		
 		/**
@@ -505,13 +521,13 @@ package temple.core
 
 		temple function handleLoadStart(event:Event):void
 		{
-			this._preloadableBehavior.onLoadStart(event, this._url);
+			this._preloadableBehavior.onLoadStart(this, this._url);
 			this.dispatchEvent(event.clone());
 		}
 
 		temple function handleLoadProgress(event:ProgressEvent):void
 		{
-			this._preloadableBehavior.onLoadProgress(event);
+			this._preloadableBehavior.onLoadProgress();
 			this.dispatchEvent(event.clone());
 		}
 		
@@ -524,7 +540,7 @@ package temple.core
 		{
 			this._isLoading = false;
 			this._isLoaded = true;
-			this._preloadableBehavior.onLoadComplete(event);
+			this._preloadableBehavior.onLoadComplete(this);
 			
 			this.dispatchEvent(event.clone());
 		}
@@ -535,7 +551,7 @@ package temple.core
 		temple function handleIOError(event:IOErrorEvent):void
 		{
 			this._isLoading = false;
-			this._preloadableBehavior.onLoadComplete(event);
+			this._preloadableBehavior.onLoadComplete(this);
 			
 			if (this._logErrors) this.logError(event.type + ': ' + event.text);
 			
@@ -549,7 +565,7 @@ package temple.core
 		temple function handleSecurityError(event:SecurityErrorEvent):void
 		{
 			this._isLoading = false;
-			this._preloadableBehavior.onLoadComplete(event);
+			this._preloadableBehavior.onLoadComplete(this);
 			
 			if (this._logErrors) this.logError(event.type + ': ' + event.text);
 			
@@ -649,7 +665,7 @@ package temple.core
 		 */
 		override public function toString():String
 		{
-			return getClassName(this);
+			return getClassName(this) + ": \"" + this.name + "\"";
 		}
 	}
 }

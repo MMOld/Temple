@@ -48,27 +48,27 @@ package temple.destruction
 	[Event(name = "DestructEvent.destruct", type = "temple.destruction.DestructEvent")]
 
 	/**
-	 * IDestructableEventDispatcher will automatic removed all listeners on the object when it is destructed.
+	 * IDestructableEventDispatcher will automatic removed all strong (non weak) listeners on the object when it is destructed.
 	 */
 	public interface IDestructableEventDispatcher extends IEventDispatcher, IDestructable 
 	{
 
 		/**
-		 * Removes all events of a specific type.
+		 * Removes all strong (non-weak) EventListeners of a specific type.
 		 * 	
 		 * @param type The type of event.
 		 */
-		function removeAllEventsForType(type:String):void;
+		function removeAllStrongEventListenersForType(type:String):void;
 
 		/**
-		 * Removes all events that are handled by a specified listener.
+		 * Removes all strong (non weak) EventListeners that are handled by a specified listener.
 		 * 	
-		 * @param listener The listener function that processes the event.
+		 * @param listener The listener function that handles the event.
 		 */
-		function removeAllEventsForListener(listener:Function):void;
+		function removeAllStrongEventListenersForListener(listener:Function):void;
 
 		/**
-		 * Removes all event listeners.
+		 * Removes all strong (non weak) EventListeners.
 		 */
 		function removeAllEventListeners():void;
 

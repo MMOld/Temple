@@ -140,7 +140,7 @@ package temple.debug
 						}
 						
 						// store info about the object
-						Memory._registry[object] = new RegisteryInfo(String(object), stacktrace ? stackList.join("\n") : '', Registry.getId(object));
+						Memory._registry[object] = new RegisteryInfo(stacktrace ? stackList.join("\n") : '', Registry.getId(object));
 					}
 				}
 			}
@@ -189,7 +189,7 @@ package temple.debug
 			{
 				var value:RegisteryInfo = Memory._registry[object];
 				var str:String = '';
-				str += " " + value.object + (traceTimestamp ? " --- created:" + value.timestamp : "");
+				str += " " + String(object) + (traceTimestamp ? " --- created:" + value.timestamp : "");
 				if (traceStack)
 				{
 					str += "\n" + "  " + value.stack + "\n";
@@ -262,7 +262,7 @@ package temple.debug
 				
 				var arrListeners:Array = arrTmp[i].object is IDestructableEventDispatcher ? EventListenerManager.getDispatcherInfo(arrTmp[i].object as IDestructableEventDispatcher) : new Array();
 				
-				xml += '<memoryobject id="' + info.objectId + '" timestamp="'+ info.timestamp + '" object="' + info.object + '" stackroot="' + (stackroot) + '" numlisteners="' + arrListeners.length + '" isdestructed="' + (arrTmp[i].object is IDestructable ? IDestructable(arrTmp[i].object).isDestructed : false) + '">' +
+				xml += '<memoryobject id="' + info.objectId + '" timestamp="'+ info.timestamp + '" object="' + String(arrTmp[i].object) + '" stackroot="' + (stackroot) + '" numlisteners="' + arrListeners.length + '" isdestructed="' + (arrTmp[i].object is IDestructable ? IDestructable(arrTmp[i].object).isDestructed : false) + '">' +
 					'<listeners>' + (arrListeners.join("\n")) + '</listeners>' +   
 					'<stack>' + (fullstacktrace ? info.stack : "enable 'fullstacktrace' to see this\n" + stackroot) + '</stack>' +   
 				'</memoryobject>'; 
@@ -300,7 +300,6 @@ import flash.utils.getTimer;
 
 class RegisteryInfo
 {
-	private var _object:String;
 	private var _stack:String;
 	private var _timestamp:int;
 	private var _objectId:uint;
@@ -308,20 +307,13 @@ class RegisteryInfo
 	/**
 	 * Internal class to store information about an object registration
 	 */
-	public function RegisteryInfo(object:String, stack:String, objectId:uint) 
+	public function RegisteryInfo(stack:String, objectId:uint) 
 	{
-		this._timestamp = objectId;
-		this._object = object;
-		this._stack = stack;
 		this._timestamp = getTimer();
+		this._stack = stack;
 		this._objectId = objectId;
 	}
 
-	public function get object():String
-	{
-		return this._object;
-	}
-	
 	public function get stack():String
 	{
 		return this._stack;
@@ -330,11 +322,6 @@ class RegisteryInfo
 	public function get timestamp():int
 	{
 		return this._timestamp;
-	}
-	
-	public function toString():String
-	{
-		return this._object;
 	}
 	
 	public function get objectId():uint

@@ -39,15 +39,8 @@
 
 package temple.data.loader 
 {
-	import temple.core.CoreURLLoader;
-	import temple.core.CoreURLStream;
 	import temple.behaviors.AbstractBehavior;
 
-	import flash.display.LoaderInfo;
-	import flash.events.ProgressEvent;
-	import flash.net.NetStream;
-	import flash.net.URLLoader;
-	import flash.net.URLStream;
 	import flash.utils.Dictionary;
 
 	/**
@@ -106,7 +99,7 @@ package temple.data.loader
 		 * @param event The Event.OPEN event
 		 * @param url The url of the loaded media, only nessasery when the target is a Loader
 		 */
-		public function onLoadStart(target:Object, url:String = ''):void
+		public function onLoadStart(target:IPreloadable, url:String = ''):void
 		{
 			if (this._preloader)
 			{
@@ -122,7 +115,7 @@ package temple.data.loader
 		 * 
 		 * @param event The ProgressEvent.PROGRESS event
 		 */
-		public function onLoadProgress(event:ProgressEvent):void
+		public function onLoadProgress():void
 		{
 			if (this._preloader)
 			{
@@ -152,7 +145,7 @@ package temple.data.loader
 		 * 
 		 * @param event The Event.COMPLETE, IOErrorEvent.IO_ERROR or SecurityErrorEvent.SECURITY_ERROR event
 		 */
-		public function onLoadComplete(target:Object):void
+		public function onLoadComplete(target:IPreloadable):void
 		{
 			this.onComplete(target);
 		}
@@ -188,32 +181,13 @@ package temple.data.loader
 		/**
 		 * Gets the bytes total of the target based on the targets type
 		 */
-		private function getBytesTotalForTarget(target:*):Number
+		private function getBytesTotalForTarget(target:IPreloadable):Number
 		{
-			var total:Number;
+			var total:Number = 0;
 			
-			switch (true)
+			if (Object(target).hasOwnProperty('bytesTotal'))
 			{
-				case target is URLLoader:
-				{
-					total = (target as URLLoader).bytesTotal;
-					break;
-				}
-				case target is LoaderInfo:
-				{
-					total = (target as LoaderInfo).bytesTotal;
-					break;
-				}
-				case target is URLStream:
-				{
-					total = 1; 
-					break;
-				}
-				case target is NetStream:
-				{
-					total = (target as NetStream).bytesTotal;
-					break;
-				}
+				total = Object(target)['bytesTotal'];
 			}
 			
 			return total;
@@ -222,32 +196,13 @@ package temple.data.loader
 		/**
 		 * Gets the bytes loaded of the target based on the targets type
 		 */
-		private function getBytesLoadedForTarget(target:*):Number
+		private function getBytesLoadedForTarget(target:IPreloadable):Number
 		{
-			var total:Number;
+			var total:Number = 0;
 			
-			switch (true)
+			if (Object(target).hasOwnProperty('bytesLoaded'))
 			{
-				case target is URLLoader:
-				{
-					total = (target as URLLoader).bytesLoaded;
-					break;
-				}
-				case target is LoaderInfo:
-				{
-					total = (target as LoaderInfo).bytesLoaded;
-					break;
-				}
-				case target is URLStream:
-				{
-					total = 0;
-					break;
-				}
-				case target is NetStream:
-				{
-					total = (target as NetStream).bytesLoaded;
-					break;
-				}
+				total = Object(target)['bytesLoaded'];
 			}
 			
 			return total;
@@ -256,37 +211,21 @@ package temple.data.loader
 		/**
 		 * Gets the url of the target based on the targets type
 		 */
-		private function getUrlForTarget(target:*):String
+		private function getUrlForTarget(target:IPreloadable):String
 		{
 			var url:String = '';
 			
-			switch (true)
+			if (Object(target).hasOwnProperty('url'))
 			{
-				case target is CoreURLLoader:
-				{
-					url = (target as CoreURLLoader).url;
-					break;
-				}
-				case target is LoaderInfo:
-				{
-					url = (target as LoaderInfo).url;
-					break;
-				}
-				case target is CoreURLStream:
-				{
-					url = (target as CoreURLStream).url; 
-					break;
-				}
-				
-				default:
-				{
-					// unknown target
-				}
+				url = Object(target)['url'];
 			}
 			
-			return url ? url : '';
+			return url;
 		}
 
+		/**
+		 * @inheritDoc
+		 */
 		override public function destruct():void
 		{
 			if (this._preloader)

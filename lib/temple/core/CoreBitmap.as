@@ -231,17 +231,17 @@ package temple.core
 		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForType(type:String):void 
+		public function removeAllStrongEventListenersForType(type:String):void 
 		{
-			if (this._eventListenerManager) this._eventListenerManager.removeAllEventsForType(type);
+			if (this._eventListenerManager) this._eventListenerManager.removeAllStrongEventListenersForType(type);
 		}
 
 		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForListener(listener:Function):void 
+		public function removeAllStrongEventListenersForListener(listener:Function):void 
 		{
-			if (this._eventListenerManager) this._eventListenerManager.removeAllEventsForListener(listener);
+			if (this._eventListenerManager) this._eventListenerManager.removeAllStrongEventListenersForListener(listener);
 		}
 
 		/**
@@ -426,7 +426,7 @@ package temple.core
 		 */
 		override public function toString():String
 		{
-			return getClassName(this) + ":" + this.name;
+			return getClassName(this) + ": " + this.name;
 		}
 	}
 }

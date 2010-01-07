@@ -41,7 +41,11 @@ package temple.data.loader
 {
 
 	/**
-	 * TODO: Missing documentation
+	 * Interface for classes that load external data, and want to use
+	 * a preloader to visiualize the waiting time.
+	 * 
+	 * @see temple.data.loader.IPreloader
+	 * @see temple.data.loader.IPreloadable
 	 * 
 	 * @date 1 sep 2009 12:47:59
 	 * @author Arjan van Wijk (arjan at mediamonks dot com)
@@ -49,7 +53,7 @@ package temple.data.loader
 	public interface IPreloadable 
 	{
 		/**
-		 * Get or set the IPreloader
+		 * Get or set the IPreloader, used to visualize the loading
 		 */
 		function get preloader():IPreloader;
 

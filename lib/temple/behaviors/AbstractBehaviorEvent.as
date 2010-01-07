@@ -40,7 +40,7 @@
 package temple.behaviors 
 {
 	import temple.debug.getClassName;
-	import flash.display.DisplayObject;
+
 	import flash.events.Event;
 
 	/**
@@ -51,14 +51,14 @@ package temple.behaviors
 	 */
 	public class AbstractBehaviorEvent extends Event implements IBehaviorEvent
 	{
-		private var _target:DisplayObject;
+		private var _target:Object;
 
 		/**
 		 * Creates a new AbstractBehaviorEvent
 		 * @param type The type of event.
 		 * @param target The target of the behavior (not of the event). This value will be the behaviorTarget
 		 */
-		public function AbstractBehaviorEvent(type:String, target:DisplayObject)
+		public function AbstractBehaviorEvent(type:String, target:Object)
 		{
 			super(type);
 			
@@ -68,7 +68,7 @@ package temple.behaviors
 		/**
 		 * @inheritDoc
 		 */
-		public function get behaviorTarget():DisplayObject
+		public function get behaviorTarget():Object
 		{
 			return this._target;
 		}
@@ -78,7 +78,7 @@ package temple.behaviors
 		 */
 		override public function toString():String
 		{
-			return getClassName(this) + " type:" + this.type + " target:" + this._target;
+			return getClassName(this) + " (type:'" + this.type + "', target:" + this._target + ")";
 		}
 	}
 }

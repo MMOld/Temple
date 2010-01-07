@@ -246,17 +246,17 @@ package temple.core
 		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForType(type:String):void 
+		public function removeAllStrongEventListenersForType(type:String):void 
 		{
-			this._eventListenerManager.removeAllEventsForType(type);
+			this._eventListenerManager.removeAllStrongEventListenersForType(type);
 		}
 
 		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForListener(listener:Function):void 
+		public function removeAllStrongEventListenersForListener(listener:Function):void 
 		{
-			this._eventListenerManager.removeAllEventsForListener(listener);
+			this._eventListenerManager.removeAllStrongEventListenersForListener(listener);
 		}
 
 		/**
@@ -290,20 +290,20 @@ package temple.core
 		{
 			this._preloadableBehavior.preloader = value;
 		}
-		
+				
 		temple function handleLoadStart(event:Event):void
 		{
-			this._preloadableBehavior.onLoadStart(event);
+			this._preloadableBehavior.onLoadStart(this);
 		}
 
 		temple function handleLoadProgress(event:ProgressEvent):void
 		{
-			this._preloadableBehavior.onLoadProgress(event);
+			this._preloadableBehavior.onLoadProgress();
 		}
 		
 		temple function handleLoadComplete(event:Event):void
 		{
-			this._preloadableBehavior.onLoadComplete(event);
+			this._preloadableBehavior.onLoadComplete(this);
 			this._isLoading = false;
 			this._isLoaded = true;
 		}
@@ -315,7 +315,7 @@ package temple.core
 		temple function handleIOError(event:IOErrorEvent):void
 		{
 			this._isLoading = false;
-			this._preloadableBehavior.onLoadComplete(event);
+			this._preloadableBehavior.onLoadComplete(this);
 			if (this._logErrors) this.logError(event.type + ': ' + event.text);
 			if (this._destructOnError) this.destruct();
 		}
@@ -327,7 +327,7 @@ package temple.core
 		temple function handleSecurityError(event:SecurityErrorEvent):void
 		{
 			this._isLoading = false;
-			this._preloadableBehavior.onLoadComplete(event);
+			this._preloadableBehavior.onLoadComplete(this);
 			if (this._logErrors) this.logError(event.type + ': ' + event.text);
 			if (this._destructOnError) this.destruct();
 		}

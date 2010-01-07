@@ -53,16 +53,18 @@ package temple.debug.errors
 		
 		/**
 		 * Creates a new TempleRangeError
+		 * @param index the index that is out of range
+		 * @param size the size of the range
 		 * @param sender The object that gererated the error. If the Error is gererated in a static function, use the toString function of the class
 		 * @param message The error message
 		 * @param id The id of the error
 		 */
-		public function TempleRangeError(sender:Object, message:*, id:* = 0)
+		public function TempleRangeError(index:int, size: uint, sender:Object, message:*, id:* = 0)
 		{
 			this._sender = sender;
-			super(message, id);
+			super(message + ' (index=' + index + ', size=' + size + ')', id);
 			
-			Log.error("TempleError: '" + message + "' id:" + id + "\n" + this.getStackTrace(), String(sender));
+			Log.error("TempleError: '" + this.message + "' id:" + id + "\n" + this.getStackTrace(), String(sender));
 		}
 		
 		/**

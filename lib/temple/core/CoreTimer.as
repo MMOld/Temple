@@ -133,17 +133,17 @@ package temple.core
 		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForType(type:String):void 
+		public function removeAllStrongEventListenersForType(type:String):void 
 		{
-			this._eventListenerManager.removeAllEventsForType(type);
+			this._eventListenerManager.removeAllStrongEventListenersForType(type);
 		}
 
 		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForListener(listener:Function):void 
+		public function removeAllStrongEventListenersForListener(listener:Function):void 
 		{
-			this._eventListenerManager.removeAllEventsForListener(listener);
+			this._eventListenerManager.removeAllStrongEventListenersForListener(listener);
 		}
 
 		/**

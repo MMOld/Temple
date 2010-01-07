@@ -48,6 +48,7 @@ package temple.destruction
 	
 	/**
 	 * The EventListenerManager store information about event listeners on an object. Since all listeners are stored they can easely be removed, by type, listener or all.
+	 * The EventListenerManager only stores information about strong (non weak) listeners. Since storing a reference to listener will make the listener strong.
 	 */
 	public class EventListenerManager extends CoreObject implements IEventDispatcher, IDestructableEventDispatcher 	{		private var _eventDispatcher:IEventDispatcher;		private var _events:Array;		private var _blockRequest:Boolean;
 
@@ -85,7 +86,11 @@ package temple.destruction
 		public function get eventDispatcher():IEventDispatcher
 		{
 			return this._eventDispatcher;
-		}		/**		 * Notifies the ListenerManager instance that a listener has been added to the {@code IEventDispatcher}.		 * 			 * @param type The type of event.		 * @param listener The listener function that processes the event.		 * @param useCapture Determines whether the listener works in the capture phase or the target and bubbling phases.		 * @param priority The priority level of the event listener.		 * @param useWeakReference Determines whether the reference to the listener is strong or weak.		 */		public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void 		{			var l:int = this._events.length;			while (l--)
+		}		/**		 * Notifies the ListenerManager instance that a listener has been added to the {@code IEventDispatcher}.
+		 * 			 * @param type The type of event.		 * @param listener The listener function that processes the event.		 * @param useCapture Determines whether the listener works in the capture phase or the target and bubbling phases.		 * @param priority The priority level of the event listener.		 * @param useWeakReference Determines whether the reference to the listener is strong or weak.		 */		public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void 		{
+			// Don't store weak reference info, since storing the listener will make it strong
+			if(useWeakReference) return;
+						var l:int = this._events.length;			while (l--)
 			{				if ((this._events[l] as EventData).equals(type, listener, useCapture)) return;
 			}			this._events.push(new EventData(type, listener, useCapture));		}		/**
 		 * @inheritDoc
@@ -103,12 +108,12 @@ package temple.destruction
 			}		}		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForType(type:String):void 		{			this._blockRequest = true;						var l:int = this._events.length;			var eventData:EventData;			while (l--) 			{				eventData = this._events[l];								if (eventData.type == type) 				{					eventData = this._events.splice(l, 1)[0];										if (this._eventDispatcher) this._eventDispatcher.removeEventListener(eventData.type, eventData.listener, eventData.useCapture);
+		public function removeAllStrongEventListenersForType(type:String):void 		{			this._blockRequest = true;						var l:int = this._events.length;			var eventData:EventData;			while (l--) 			{				eventData = this._events[l];								if (eventData.type == type) 				{					eventData = this._events.splice(l, 1)[0];										if (this._eventDispatcher) this._eventDispatcher.removeEventListener(eventData.type, eventData.listener, eventData.useCapture);
 					
 					eventData.destruct();				}			}						this._blockRequest = false;		}		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForListener(listener:Function):void 		{			this._blockRequest = true;						var l:int = this._events.length;			var eventData:EventData;			while (l--) 			{				eventData = this._events[l];								if (eventData.listener == listener) 				{					eventData = this._events.splice(l, 1)[0];										if (this._eventDispatcher) this._eventDispatcher.removeEventListener(eventData.type, eventData.listener, eventData.useCapture);
+		public function removeAllStrongEventListenersForListener(listener:Function):void 		{			this._blockRequest = true;						var l:int = this._events.length;			var eventData:EventData;			while (l--) 			{				eventData = this._events[l];								if (eventData.listener == listener) 				{					eventData = this._events.splice(l, 1)[0];										if (this._eventDispatcher) this._eventDispatcher.removeEventListener(eventData.type, eventData.listener, eventData.useCapture);
 					
 					eventData.destruct();				}			}						this._blockRequest = false;		}		/**
 		 * @inheritDoc
@@ -144,7 +149,7 @@ package temple.destruction
 		 */
 		override public function toString():String
 		{
-			return super.toString() + " : " + this._eventDispatcher;		}
+			return super.toString() + ": " + this._eventDispatcher;		}
 	}}
 
 import temple.debug.getClassName;
@@ -165,5 +170,5 @@ class EventData{	public var type:String;	public var listener:Function;	publi
 	
 	public function toString():String
 	{
-		return getClassName(this) + ":" + this.type;
+		return getClassName(this) + ": " + this.type;
 	}}

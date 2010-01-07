@@ -49,7 +49,6 @@ package temple.core
 
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.events.ProgressEvent;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
 
@@ -124,7 +123,7 @@ package temple.core
 			}
 			else
 			{
-				this._preloaderBehavior.onLoadProgress(new ProgressEvent(ProgressEvent.PROGRESS, false, false, this.bytesLoaded, this.bytesTotal));
+				this._preloaderBehavior.onLoadProgress();
 			}
 		}
 		
@@ -205,17 +204,17 @@ package temple.core
 		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForType(type:String):void 
+		public function removeAllStrongEventListenersForType(type:String):void 
 		{
-			this._eventListenerManager.removeAllEventsForType(type);
+			this._eventListenerManager.removeAllStrongEventListenersForType(type);
 		}
 
 		/**
 		 * @inheritDoc
 		 */
-		public function removeAllEventsForListener(listener:Function):void 
+		public function removeAllStrongEventListenersForListener(listener:Function):void 
 		{
-			this._eventListenerManager.removeAllEventsForListener(listener);
+			this._eventListenerManager.removeAllStrongEventListenersForListener(listener);
 		}
 
 		/**

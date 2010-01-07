@@ -63,7 +63,7 @@ package temple.behaviors
 	{
 		private namespace temple;
 		
-		protected var _target:Object;
+		private var _target:Object;
 		
 		/**
 		 * Creates a new AbstractBehavior
@@ -103,7 +103,7 @@ package temple.behaviors
 		 */
 		override public function toString():String 
 		{
-			return super.toString() + " : " + this._target;
+			return super.toString() + ": " + this._target;
 		}
 
 		/**

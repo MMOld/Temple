@@ -210,7 +210,24 @@
 		 
 		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
 		 
-		 </td></tr><tr><td class="idxrow" colspan="2"><a href="temple/data/loader/PreloadableBehavior.html#destruct()" onclick="javascript:loadClassListFrame('temple/data/loader/class-list.html');">destruct</a>() &mdash; method,  class temple.data.loader.<a href="temple/data/loader/PreloadableBehavior.html" onclick="javascript:loadClassListFrame('temple/data/loader/class-list.html');">PreloadableBehavior</a></td></tr><tr><td width="20"></td><td></td></tr><tr><td class="idxrow" colspan="2"><a href="temple/debug/DebugManager.html#destruct()" onclick="javascript:loadClassListFrame('temple/debug/class-list.html');">destruct</a>() &mdash; method,  class temple.debug.<a href="temple/debug/DebugManager.html" onclick="javascript:loadClassListFrame('temple/debug/class-list.html');">DebugManager</a></td></tr><tr><td width="20"></td><td>
+		 </td></tr><tr><td class="idxrow" colspan="2"><a href="temple/data/loader/PreloadableBehavior.html#destruct()" onclick="javascript:loadClassListFrame('temple/data/loader/class-list.html');">destruct</a>() &mdash; method,  class temple.data.loader.<a href="temple/data/loader/PreloadableBehavior.html" onclick="javascript:loadClassListFrame('temple/data/loader/class-list.html');">PreloadableBehavior</a></td></tr><tr><td width="20"></td><td>
+		 
+		 
+		 Destroys the objects, all intern listeners will be removed
+		 
+		 When overriding this method, always call super.destruct() at last!
+		 
+		 If you want the object be available for garbage collection make sure you:
+		 
+		 	Remove all event listeners on this object (use removeAllEventListeners on Temple objects)
+		 	Remove all event listeners from this object
+		 	Set all non-primitive variables to null
+		 	Set all references to this object to null in other objects
+		 
+		 
+		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
+		 
+		 </td></tr><tr><td class="idxrow" colspan="2"><a href="temple/debug/DebugManager.html#destruct()" onclick="javascript:loadClassListFrame('temple/debug/class-list.html');">destruct</a>() &mdash; method,  class temple.debug.<a href="temple/debug/DebugManager.html" onclick="javascript:loadClassListFrame('temple/debug/class-list.html');">DebugManager</a></td></tr><tr><td width="20"></td><td>
 		 
 		 
 		 Destroys the objects, all intern listeners will be removed
