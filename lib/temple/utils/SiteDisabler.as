@@ -51,7 +51,7 @@ package temple.utils
 	import flash.events.Event;
 
 	/**
-	 * The SiteDisabler can prefend all DisplayObject to receive MouseEvents
+	 * The SiteDisabler can prefend all DisplayObject to receive MouseEvents.
 	 * 
 	 * <p><strong>What does it do</strong></p>
 	 * <p>After calling SiteDisabler.disableSite() all MouseEvents are blocked.</p>
