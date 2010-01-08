@@ -41,6 +41,8 @@ package temple.utils
 	import flash.ui.Keyboard;
 
 	/**
+	 * Class contains the keycodes for keys.
+	 * 
 	 * @author Bas
 	 */
 	public final class KeyCode 

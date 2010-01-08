@@ -60,7 +60,7 @@ package temple.debug
 	 * 
 	 * // add IDebuggable objects:
 	 * DebugManager.add(this);
-	 * // add IDebugable childs:
+	 * // add IDebugable children:
 	 * if (button is IDebuggable) DebugManager.addAsChild(button as IDebuggable, this);
 	 * // debugging for this added objects are set to the value in the URL
 	 * 
@@ -81,13 +81,13 @@ package temple.debug
 		// pool of debuggables with there Registry-id
 		private var _debuggables:Dictionary;
 		
-		// pool of debuggable childs with there parent Registry-id for quick lookup
-		private var _debuggableChilds:Dictionary;
+		// pool of debuggable children with there parent Registry-id for quick lookup
+		private var _debuggableChildren:Dictionary;
 		
 		// array of parentId's with there childId's
 		private var _debuggableChildList:Array;
 		
-		// pool of debuggable childs with there parent Registry-id for quick lookup
+		// pool of debuggable children with there parent Registry-id for quick lookup
 		private var _debuggableChildQueue:Dictionary;
 		
 		private var _debug:Boolean = false;
@@ -97,7 +97,7 @@ package temple.debug
 			if (DebugManager._instance) throwError(new TempleError(this, "Singleton, use DebugManager.getInstance()"));
 			
 			this._debuggables = new Dictionary(true);
-			this._debuggableChilds = new Dictionary(true);
+			this._debuggableChildren = new Dictionary(true);
 			this._debuggableChildList = new Array();
 			this._debuggableChildQueue = new Dictionary(true);
 		}
@@ -158,7 +158,7 @@ package temple.debug
 		 * <p>This function is only called in objects added with DebugManager.add(this);</p>
 		 * <p>Using this construction a tree of Debuggables is created</p>
 		 * <p>When the 'debug'-property of the parent is set via the DebugManager,
-		 * the debugging for all childs is also set to the same value</p>
+		 * the debugging for all children is also set to the same value</p>
 		 * @param object The IDebuggable object to add
 		 * @param parent The parent of the object (like a Form of an InputField)
 		 * @example
@@ -177,10 +177,10 @@ package temple.debug
 			if (!DebugManager.getInstance()._debuggables[parent])
 			{
 				// check if parent is a child itself
-				if (DebugManager.getInstance()._debuggableChilds[parent])
+				if (DebugManager.getInstance()._debuggableChildren[parent])
 				{
 					// find parent recursively
-					DebugManager.addAsChild(object, Registry.getObject(DebugManager.getInstance()._debuggableChilds[parent]));
+					DebugManager.addAsChild(object, Registry.getObject(DebugManager.getInstance()._debuggableChildren[parent]));
 				}
 				else
 				{
@@ -208,12 +208,12 @@ package temple.debug
 				
 				// add child with its parentid
 				// for quick lookup
-				DebugManager.getInstance()._debuggableChilds[object] = parentId;
+				DebugManager.getInstance()._debuggableChildren[object] = parentId;
 				
 				object.debug = parent.debug;	
 				
 				
-				// check for childs in the queue
+				// check for children in the queue
 				for (var i:* in DebugManager.getInstance()._debuggableChildQueue)
 				{
 					// if parentid in list is equal to this objectid
@@ -224,7 +224,7 @@ package temple.debug
 						
 						// add child with its parentid
 						// for quick lookup
-						DebugManager.getInstance()._debuggableChilds[i as IDebuggable] = DebugManager.getInstance()._debuggableChildQueue[i];
+						DebugManager.getInstance()._debuggableChildren[i as IDebuggable] = DebugManager.getInstance()._debuggableChildQueue[i];
 						
 						object.debug = parent.debug;	
 						
@@ -236,7 +236,7 @@ package temple.debug
 
 		/**
 		 * Get a list of IDebuggable objects
-		 * @return A list of IDebuggable objects as {object as String, childs as Array, debug as Boolean, id as uint}
+		 * @return A list of IDebuggable objects as {object as String, children as Array, debug as Boolean, id as uint}
 		 */
 		public static function getDebuggables():Array
 		{
@@ -246,7 +246,7 @@ package temple.debug
 			
 			for (var object:* in DebugManager.getInstance()._debuggables)
 			{
-				list.push(new DebuggableData(String(String(object).split('::').pop()).split(',').shift(), getDebuggableChilds(DebugManager.getInstance()._debuggables[object]), IDebuggable(object).debug, DebugManager.getInstance()._debuggables[object]));
+				list.push(new DebuggableData(String(String(object).split('::').pop()).split(',').shift(), getDebuggableChildren(DebugManager.getInstance()._debuggables[object]), IDebuggable(object).debug, DebugManager.getInstance()._debuggables[object]));
 				
 			}
 			
@@ -255,21 +255,21 @@ package temple.debug
 		
 		/**
 		 * Get a list of IDebuggable children from the IDebuggable objectsId
-		 * @return A list of IDebuggable children as {object as String, childs as Array, debug as Boolean, id as uint}
+		 * @return A list of IDebuggable children as {object as String, children as Array, debug as Boolean, id as uint}
 		 */
-		private static function getDebuggableChilds(objectId:int):Array
+		private static function getDebuggableChildren(objectId:int):Array
 		{
-			var childs:Array = getChildsOf(objectId);
+			var children:Array = getChildsOf(objectId);
 			
-			if (!childs) return new Array();
+			if (!children) return new Array();
 			
-			for (var i:int = 0; i < childs.length; ++i)
+			for (var i:int = 0; i < children.length; ++i)
 			{
-				var object:IDebuggable = Registry.getObject(childs[i]);
-				childs[i] = {object: String(String(object).split('::').pop()).split(',').shift(), childs:getDebuggableChilds(childs[i]), debug:IDebuggable(object).debug, id: childs[i]};
+				var object:IDebuggable = Registry.getObject(children[i]);
+				children[i] = {object: String(String(object).split('::').pop()).split(',').shift(), children:getDebuggableChildren(children[i]), debug:IDebuggable(object).debug, id: children[i]};
 			}
 			
-			return childs;
+			return children;
 		}
 		
 		/**
@@ -284,7 +284,7 @@ package temple.debug
 			
 			var debuggableData:DebuggableData;
 			var object:String;
-			var childs:String;
+			var children:String;
 			var debug:String;
 			var id:String;
 			var label:String;
@@ -294,12 +294,12 @@ package temple.debug
 				debuggableData = debuggables[i] as DebuggableData;
 				
 				object = debuggableData.object;
-				childs = debuggableData.childs.join(',');
+				children = debuggableData.children.join(',');
 				debug = debuggableData.debug ? 'true' : 'false';
 				id = String(debuggableData.id);
 				label =  id + ' | ' + object;
 				
-				var node:XML = <node object={object} childs={childs} debug={debug} id={id} label={label} usedebug="true" icon="iconFolder" />;
+				var node:XML = <node object={object} children={children} debug={debug} id={id} label={label} usedebug="true" icon="iconFolder" />;
 				
 				var childNodes:XMLList = getDebuggableChildsAsXml(debuggableData.id);
 				
@@ -315,7 +315,7 @@ package temple.debug
 		}
 		
 		/**
-		 * Gets a list of IDebuggable childs as XML. 
+		 * Gets a list of IDebuggable children as XML. 
 		 * This function uses getDebuggableChilds for its data
 		 */
 		private static function getDebuggableChildsAsXml(objectId:int):XMLList
@@ -324,21 +324,21 @@ package temple.debug
 			
 			var debuggableData:DebuggableData;
 			var object:String;
-			var childs:String;
+			var children:String;
 			var id:String;
 			var label:String;
 			
-			var debuggableChilds:Array = getDebuggableChilds(objectId);
+			var debuggableChilds:Array = DebugManager.getDebuggableChildren(objectId);
 			
 			for (var i:int = 0; i < debuggableChilds.length; ++i)
 			{
 				debuggableData = debuggableChilds[i] as DebuggableData;
 				object = debuggableData.object;
-				childs = debuggableData.childs.join(',');
+				children = debuggableData.children.join(',');
 				id = String(debuggableData.id);
 				label =  id + ' | ' + object;
 				
-				var node:XML = <node object={object} childs={childs} id={id} usedebug="false" label={label} />;
+				var node:XML = <node object={object} children={children} id={id} usedebug="false" label={label} />;
 				
 				var childNodes:XMLList = getDebuggableChildsAsXml(debuggableData.id);
 				
@@ -375,20 +375,20 @@ package temple.debug
 		}
 		
 		/**
-		 * Set the debug flag for the childs of an object.
+		 * Set the debug flag for the children of an object.
 		 * <p>This function will be called from an IDebuggable 'parent' in the 'set debug' most of the time, to updated it's children.</p>
 		 * @param parentObjectId The id of the Debuggable parent object
 		 * @param value The debug value
 		 */
 		public static function setDebugForChilds(parentObject:IDebuggable, value:Boolean):void
 		{
-			var childs:Array = getChildsOf(Registry.getId(parentObject));
+			var children:Array = getChildsOf(Registry.getId(parentObject));
 			
-			if (!childs) return;
+			if (!children) return;
 			
-			for (var i:int = 0; i < childs.length; ++i)
+			for (var i:int = 0; i < children.length; ++i)
 			{
-				var child:IDebuggable = Registry.getObject(childs[i]) as IDebuggable;
+				var child:IDebuggable = Registry.getObject(children[i]) as IDebuggable;
 				if (child) child.debug = value;
 			}
 		}
@@ -444,7 +444,7 @@ package temple.debug
 		{
 			DebugManager._instance = null;
 			this._debuggables = null;
-			this._debuggableChilds = null;
+			this._debuggableChildren = null;
 			this._debuggableChildList = null;
 			this._debuggableChildQueue = null;
 			
@@ -456,14 +456,14 @@ package temple.debug
 class DebuggableData
 {
 	public var object:String;
-	public var childs:Array;
+	public var children:Array;
 	public var debug:Boolean;
 	public var id:uint;
 	
-	public function DebuggableData(object:String, childs:Array, debug:Boolean, id:uint)
+	public function DebuggableData(object:String, children:Array, debug:Boolean, id:uint)
 	{
 		this.object = object;
-		this.childs = childs;
+		this.children = children;
 		this.debug = debug;
 		this.id = id;
 	}

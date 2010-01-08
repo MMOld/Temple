@@ -13,7 +13,7 @@
 			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">temple.data.xml</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  XMLParser</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">XMLParser  <img src="../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr></table><p></p><p></p>
 	 Class for parsing XML data into DataValueObject classes.
 	 
-	 <p>The class provides static functions for calling IParsable.parseXML() on newly created objects of a
+	 <p>The class provides static functions for calling IXMLParsable.parseXML() on newly created objects of a
 	 specified type, either for single data blocks or for an array of similar data.
 	 The Parser removes the tedious for-loop from the location where the XML data is loaded, and moves the 
 	 parsing of the XML data to the location where it's used for the first time: the DataValueObject class.
@@ -33,15 +33,15 @@
 										--></script><div class="MainContent"><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="parseList()"></a><a name="parseList(XMLList,Class,Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">parseList</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public static function parseList(list:XMLList, objectClass:Class, ignoreError:Boolean = false):Array</code><p></p><p>
 		 Parse an XMLList into an array of the specified class instance by calling its parseXML function
 		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">list</span>:XMLList</code> &mdash; XMLList to parse
-		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">objectClass</span>:Class</code> &mdash; classname to be instanced; class must implement IParsable
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">objectClass</span>:Class</code> &mdash; classname to be instanced; class must implement IXMLParsable
 		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">ignoreError</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; if true, the return value of parseXML is always added to the array, and the array itself is
 		 returned. Otherwise, an error in parsing will return null.
-		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Array</code> &mdash; Array of new objects of the specified type, cast to IParsable, or null if parsing returned false.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Array</code> &mdash; Array of new objects of the specified type, cast to IXMLParsable, or null if parsing returned false.
 		 
 		 </td></tr></table><p><span class="label">See also</span></p><div class="seeAlso"><a href="IXMLParsable.html#parseXML(xml);" target="">temple.data.xml.IXMLParsable.parseXML(xml);</a></div></div><a name="parseXML()"></a><a name="parseXML(XML,Class,Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">parseXML</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function parseXML(xml:XML, objectClass:Class, ignoreError:Boolean = false):<a href="../../../temple/data/xml/IXMLParsable.html">IXMLParsable</a></code><p></p><p>
 		 Parse XML into the specified class instance by calling its parseXML function
 		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">xml</span>:XML</code> &mdash; XML document or node
-		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">objectClass</span>:Class</code> &mdash; classname to be instanced; class must implement IParsable
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">objectClass</span>:Class</code> &mdash; classname to be instanced; class must implement IXMLParsable
 		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">ignoreError</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; if true, the return value of IXMLParsable is ignored, and the newly created object is always returned
 		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../temple/data/xml/IXMLParsable.html">IXMLParsable</a></code> &mdash; a new object of the specified type, cast to IXMLParsable, or null if parsing returned false.
 		 

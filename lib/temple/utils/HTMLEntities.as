@@ -40,7 +40,7 @@ package temple.utils
 {
 
 	/**
-	 * This class is used to decode HTMLEntities to 
+	 * This class is used to decode HTMLEntities
 	 * 
 	 * @author Thijs Broerse
 	 */

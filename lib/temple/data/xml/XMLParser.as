@@ -45,7 +45,7 @@ package temple.data.xml
 	/**
 	 * Class for parsing XML data into DataValueObject classes.
 	 * 
-	 * <p>The class provides static functions for calling IParsable.parseXML() on newly created objects of a
+	 * <p>The class provides static functions for calling IXMLParsable.parseXML() on newly created objects of a
 	 * specified type, either for single data blocks or for an array of similar data.
 	 * The Parser removes the tedious for-loop from the location where the XML data is loaded, and moves the 
 	 * parsing of the XML data to the location where it's used for the first time: the DataValueObject class.
@@ -90,14 +90,14 @@ package temple.data.xml
 	{
 
 		/**
-		 *	Parse an XMLList into an array of the specified class instance by calling its parseXML function
-		 *	@param list XMLList to parse
-		 *	@param objectClass classname to be instanced; class must implement IParsable
-		 *	@param ignoreError if true, the return value of parseXML is always added to the array, and the array itself is
-		 *	returned. Otherwise, an error in parsing will return null.
-		 *	@return Array of new objects of the specified type, cast to IParsable, or null if parsing returned false.
+		 * Parse an XMLList into an array of the specified class instance by calling its parseXML function
+		 * @param list XMLList to parse
+		 * @param objectClass classname to be instanced; class must implement IXMLParsable
+		 * @param ignoreError if true, the return value of parseXML is always added to the array, and the array itself is
+		 * returned. Otherwise, an error in parsing will return null.
+		 * @return Array of new objects of the specified type, cast to IXMLParsable, or null if parsing returned false.
 		 *	
-		 *	@see temple.data.xml.IXMLParsable#parseXML(xml);
+		 * @see temple.data.xml.IXMLParsable#parseXML(xml);
 		 */
 		public static function parseList(list:XMLList, objectClass:Class, ignoreError:Boolean = false):Array 
 		{
@@ -121,13 +121,13 @@ package temple.data.xml
 		}
 
 		/**
-		 *	Parse XML into the specified class instance by calling its parseXML function
-		 *	@param xml XML document or node
-		 *	@param objectClass classname to be instanced; class must implement IParsable
-		 *	@param ignoreError if true, the return value of IXMLParsable is ignored, and the newly created object is always returned
-		 *	@return a new object of the specified type, cast to IXMLParsable, or null if parsing returned false.
+		 * Parse XML into the specified class instance by calling its parseXML function
+		 * @param xml XML document or node
+		 * @param objectClass classname to be instanced; class must implement IXMLParsable
+		 * @param ignoreError if true, the return value of IXMLParsable is ignored, and the newly created object is always returned
+		 * @return a new object of the specified type, cast to IXMLParsable, or null if parsing returned false.
 		 *	
-		 *	@see temple.data.xml.IXMLParsable#parseXML(xml);
+		 * @see temple.data.xml.IXMLParsable#parseXML(xml);
 		 */
 		public static function parseXML(xml:XML, objectClass:Class, ignoreError:Boolean = false):IXMLParsable 
 		{

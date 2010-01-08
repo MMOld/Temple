@@ -41,7 +41,7 @@ package temple.data.object
 	import temple.data.object.IObjectParsable;
 
 	/**
-	 * The ObjectParser parses an Object (ig JSON) to an other object (ig a type DataValueObject).
+	 * The ObjectParser parses an Object (ig JSON) to an other object (ig a typed DataValueObject).
 	 * The objects to parse to must be of type IObjectParsable. The ObjectParser calles the 'parseObject'
 	 * method on the IObjectParsable and passes the Object that needs to be parsed.
 	 * 
@@ -54,8 +54,17 @@ package temple.data.object
 	{
 		/**
 		 * Parses a list (Array) of Objects to a listed of IObjectParsable objects
+		 * 
+		 * @param list to parse
+		 * @param objectClass classname to be instanced; class must implement IObjectParsable
+		 * @param ignoreError if true, the return value of parseObject is always added to the array, and the array itself is
+		 * returned. Otherwise, an error in parsing will return null.
+		 * @return Array of new objects of the specified type, cast to IObjectParsable, or null if parsing returned false.
+		 *	
+		 * @see temple.data.object.IObjectParsable#parseObject(object);
+		 *	
 		 */
-		public static function parseList(list:Array, classRef:Class, ignoreError:Boolean = false):Array 
+		public static function parseList(list:Array, objectClass:Class, ignoreError:Boolean = false):Array 
 		{
 			var a:Array = new Array();
 			
@@ -64,7 +73,7 @@ package temple.data.object
 			var len:int = list.length;
 			for (var i:int = 0;i < len; i++) 
 			{
-				var ipa:IObjectParsable = parseObject(list[i], classRef, ignoreError);
+				var ipa:IObjectParsable = parseObject(list[i], objectClass, ignoreError);
 				
 				if ((ipa == null) && !ignoreError)
 				{
@@ -81,10 +90,17 @@ package temple.data.object
 
 		/**
 		 * Parses a single Object to an IObjectParsable
+		 * 
+		 * @param object the object to parse
+		 * @param objectClass classname to be instanced; class must implement IObjectParsable
+		 * @param ignoreError if true, the return value of IObjectParsable is ignored, and the newly created object is always returned
+		 * @return a new object of the specified type, cast to IObjectParsable, or null if parsing returned false.
+		 *	
+		 * @see temple.data.object.IObjectParsable#parseObject(object);
 		 */
-		public static function parseObject(object:Object, classRef:Class, ignoreError:Boolean = false):IObjectParsable 
+		public static function parseObject(object:Object, objectClass:Class, ignoreError:Boolean = false):IObjectParsable 
 		{
-			var ipa:IObjectParsable = new classRef();
+			var ipa:IObjectParsable = new objectClass();
 			
 			if (ipa.parseObject(object) || ignoreError) 
 			{

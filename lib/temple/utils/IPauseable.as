@@ -40,6 +40,8 @@ package temple.utils
 {
 
 	/**
+	 * Interface for Objects that can be paused 
+	 * 
 	 * @author Bart
 	 */
 	public interface IPauseable 

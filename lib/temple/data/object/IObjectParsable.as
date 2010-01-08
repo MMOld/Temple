@@ -40,7 +40,9 @@ package temple.data.object
 {
 
 	/**
-	 * Interface to implement in DataValueObject classes that get their data through the {@link ObjectParser} class.
+	 * Interface to implement in DataValueObject classes that get their data through the ObjectParser class.
+	 * 
+	 * @see temple.data.object.ObjectParser
 	 * 
 	 * @date 12 nov 2008 16:14:57
 	 * @author Arjan van Wijk (arjan[at]mediamonks.com)
@@ -49,7 +51,7 @@ package temple.data.object
 	{
 		/**
 		 *	Parse an object from Object into typed variables.
-		 *	@param object: Object containing data
+		 *	@param object Object containing data
 		 *	@return true if parsing went ok, otherwise false
 		 */
 		function parseObject(object:Object):Boolean;
