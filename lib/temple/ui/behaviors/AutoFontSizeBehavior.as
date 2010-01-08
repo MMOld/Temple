@@ -51,18 +51,18 @@ package temple.ui.behaviors
 	/**
 	 * Autosize the font to fit in a TextField. 
 	 * 
-	 * @example
-	 * <listing version="3.0">
-	 * new AutoFontSizeBehavior(textField);
-	 * </listing>
-	 * 
 	 * <p>The AutoFontSizeBehavior is automaticly triggered if an Event.CHANGE event dispatched by the TextField.
 	 * You can also update the AutoFontSizeBehavior manually by calling update().</p>
 	 * 
 	 * <p>If the TextField is destructed the AutoFontSizeBehavior will automatic be destructed.</p>
 	 * 
-	 * Orginial class by Jankees van Woezik
-	 * http://blog.base42.nl/2009/08/13/automatic-font-size-adjuster/
+	 * Original class by Jankees van Woezik
+	 * <a href="http://blog.base42.nl/2009/08/13/automatic-font-size-adjuster/" target="_blank">http://blog.base42.nl/2009/08/13/automatic-font-size-adjuster/</a>
+	 * 
+	 * @example
+	 * <listing version="3.0">
+	 * new AutoFontSizeBehavior(textField);
+	 * </listing>
 	 * 
 	 * @author Jankees van Woezik, Thijs Broerse
 	 */
