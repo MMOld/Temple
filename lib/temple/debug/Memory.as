@@ -1,11 +1,10 @@
 /*
  *	 
  *	Temple Library for ActionScript 3.0
- *	Copyright © 2009 MediaMonks B.V.
+ *	Copyright © 2010 MediaMonks B.V.
  *	All rights reserved.
  *	
- *	THIS LIBRARY IS IN PRIVATE BETA, THEREFORE THE SOURCES MAY NOT BE
- *	REDISTRIBUTED IN ANY WAY.
+ *	http://code.google.com/p/templelibrary/
  *	
  *	Redistribution and use in source and binary forms, with or without
  *	modification, are permitted provided that the following conditions are met:
@@ -84,10 +83,10 @@ package temple.debug
 
 		/**
 		 * Registers an object with a weak reference to track the object
-		 * This only works when 'Temple.REGISTER_OBJECTS' is set to true or
+		 * This only works when 'Temple.registerObjectsInMemory' is set to true or
 		 * the forceRegister is set to true
 		 * @param object The object to register in the memory
-		 * @param object Force the registration of an object if 'Temple.REGISTER_OBJECTS' is set to false
+		 * @param object Force the registration of an object if 'Temple.registerObjectsInMemory' is set to false
 		 * @example
 		 * <listing version="3.0">
 		 * // in the constructor of a class
@@ -99,7 +98,7 @@ package temple.debug
 		 */
 		public static function registerObject(object:Object, forceRegister:Boolean = false):void
 		{
-			if ((Temple.registerObjects || forceRegister) && object)
+			if ((Temple.registerObjectsInMemory || forceRegister) && object)
 			{
 				if (!Memory._registry)
 				{
@@ -117,15 +116,15 @@ package temple.debug
 					
 					// If not in Registry, add it there
 					// Registry will add it to the memory again
-					if (Temple.registerObjects == true && registryId == 0)
+					if (Temple.registerObjectsInMemory == true && registryId == 0)
 					{
 						Registry.add(object);
 					}
 					else
 					{
-						// If not in Registry, and 'Temple.REGISTER_OBJECTS' is set to false
+						// If not in Registry, and 'Temple.registerObjectsInMemory' is set to false
 						// add it here, because the Registry will not add it to the Memory again
-						if (Temple.registerObjects == false && registryId == 0) Registry.add(object);
+						if (Temple.registerObjectsInMemory == false && registryId == 0) Registry.add(object);
 						
 						// get stack trace info
 						var stacktrace:String = new Error("Get stack").getStackTrace();

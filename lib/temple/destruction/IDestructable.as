@@ -1,11 +1,10 @@
 /*
  *	 
  *	Temple Library for ActionScript 3.0
- *	Copyright © 2009 MediaMonks B.V.
+ *	Copyright © 2010 MediaMonks B.V.
  *	All rights reserved.
  *	
- *	THIS LIBRARY IS IN PRIVATE BETA, THEREFORE THE SOURCES MAY NOT BE
- *	REDISTRIBUTED IN ANY WAY.
+ *	http://code.google.com/p/templelibrary/
  *	
  *	Redistribution and use in source and binary forms, with or without
  *	modification, are permitted provided that the following conditions are met:
@@ -75,7 +74,7 @@ package temple.destruction
 		/**
 		 * If an object is destructed, this property is set to true.
 		 * 
-		 * <p>After a garbage collection the object should be disappeared from Memory (if Temple.REGISTER_OBJECTS is set to true).
+		 * <p>After a garbage collection the object should be disappeared from Memory (if Temple.registerObjectsInMemory is set to true).
 		 * If the object still exists, you should check your code.</p>
 		 * 
 		 * @see temple.Temple

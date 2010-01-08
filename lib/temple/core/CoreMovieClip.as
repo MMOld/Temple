@@ -1,11 +1,10 @@
 /*
  *	 
  *	Temple Library for ActionScript 3.0
- *	Copyright © 2009 MediaMonks B.V.
+ *	Copyright © 2010 MediaMonks B.V.
  *	All rights reserved.
  *	
- *	THIS LIBRARY IS IN PRIVATE BETA, THEREFORE THE SOURCES MAY NOT BE
- *	REDISTRIBUTED IN ANY WAY.
+ *	http://code.google.com/p/templelibrary/
  *	
  *	Redistribution and use in source and binary forms, with or without
  *	modification, are permitted provided that the following conditions are met:
@@ -64,7 +63,7 @@ package temple.core
 	 * <ul>
 	 * 	<li>Registration to the Registry class</li>
 	 * 	<li>Global reference to the stage trough the StageProvider</li>
-	 * 	<li>Corrects a timeline bug in Flash (see http://www.tyz.nl/2009/06/23/weird-parent-thing-bug-in-flash/)</li>
+	 * 	<li>Corrects a timeline bug in Flash (see <a href="http://www.tyz.nl/2009/06/23/weird-parent-thing-bug-in-flash/" target="_blank">http://www.tyz.nl/2009/06/23/weird-parent-thing-bug-in-flash/</a>)</li>
 	 * 	<li>Event dispatch optimization</li>
 	 * 	<li>Easy remove of all EventListeners</li>
 	 * 	<li>Wrapper for Log class for easy logging</li>

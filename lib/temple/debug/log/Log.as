@@ -1,11 +1,10 @@
 /*
  *	 
  *	Temple Library for ActionScript 3.0
- *	Copyright © 2009 MediaMonks B.V.
+ *	Copyright © 2010 MediaMonks B.V.
  *	All rights reserved.
  *	
- *	THIS LIBRARY IS IN PRIVATE BETA, THEREFORE THE SOURCES MAY NOT BE
- *	REDISTRIBUTED IN ANY WAY.
+ *	http://code.google.com/p/templelibrary/
  *	
  *	Redistribution and use in source and binary forms, with or without
  *	modification, are permitted provided that the following conditions are met:
@@ -59,7 +58,11 @@ package temple.debug.log
 	import flash.events.EventDispatcher;
 	import flash.utils.getTimer;
 
-	[Event(name="onEvent", type="temple.debug.log.LogEvent")]
+	/**
+	 * Dispatched when a new Log message is received
+	 * @eventType temple.debug.log.LogEvent.EVENT
+	 */
+	[Event(name="LogEvent.Event", type="temple.debug.log.LogEvent")]
 	
 	/**
 	 * This class implements a simple logging functionality that dispatches an event whenever a log message is received.

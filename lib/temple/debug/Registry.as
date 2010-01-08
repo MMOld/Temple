@@ -1,11 +1,10 @@
 /*
  *	 
  *	Temple Library for ActionScript 3.0
- *	Copyright © 2009 MediaMonks B.V.
+ *	Copyright © 2010 MediaMonks B.V.
  *	All rights reserved.
  *	
- *	THIS LIBRARY IS IN PRIVATE BETA, THEREFORE THE SOURCES MAY NOT BE
- *	REDISTRIBUTED IN ANY WAY.
+ *	http://code.google.com/p/templelibrary/
  *	
  *	Redistribution and use in source and binary forms, with or without
  *	modification, are permitted provided that the following conditions are met:
@@ -46,14 +45,22 @@ package temple.debug
 	import flash.utils.Dictionary;
 
 	/**
-	 * This class holds objects with their unique id to identify them when needed<br />
-	 * All objects added are stored in a weak-referenced-Dictionary with an
-	 * autoincrementing id as value;<br />
-	 * When 'Temple.REGISTER_OBECTS' is set to true, all objects added to the Registry
-	 * are also added to the Memory, to track their memory usage<br />
-	 * <br />
-	 * At the moment, the Registry is used for storing objects in the Memory class,
-	 * using their unique id for Logging (tracing) and in the DebugManager
+	 * This class holds objects with their unique id to identify them when needed.
+	 * 
+	 * <p><strong>What does it do</strong></p>
+	 * <p>The Registry class stores objects in a weak-referenced Dictionary with an auto-incrementing id as value.  
+	 * This class is used internally by the Temple for logging (where the unique id identifies the logging object),
+	 * in the DebugManager and for storing objects in the Memory class (when 'Temple.registerObjectsInMemory' is set to true, all objects added to the Registry
+	 * are also added to the Memory class to track their memory usage)</p>
+	 * 
+	 * <p><strong>Why should you use it</strong></p>
+	 * <p>Having the Registry track all objects makes debugging of your code easier, since all logging and debugging functions specify which object traces a certain message.</p>
+	 * 
+ 	 * <p><strong>How should you use it</strong></p>
+	 * <p>If you make use of the Temple's CoreObjects (or their descendants) your objects will automatically be added to the Registry, so no extra action is needed to use the Registry.
+	 * If you want to manually add your own objects to the Registry, you can do so by using the add function.</p>
+	 *
+	 * @see temple.Temple#registerObjectsInMemory
 	 * 
 	 * @date 9 jun 2009 15:05:27
 	 * @author Arjan van Wijk (arjan at mediamonks dot com)
@@ -65,7 +72,7 @@ package temple.debug
 		
 		/**
 		 * Adding an object the the registry<br />
-		 * When 'Temple.REGISTER_OBJECTS' is set to true, the object is also added to the Memory<br />
+		 * When 'Temple.registerObjectsInMemory' is set to true, the object is also added to the Memory<br />
 		 * Throws a warning when the object is added before
 		 * @param object The object to add
 		 * @return uint An unique id for the object added
@@ -100,7 +107,7 @@ package temple.debug
 			{
 				Registry._objectList[object] = ++Registry._object_id;
 				
-				if (Temple.registerObjects && object)
+				if (Temple.registerObjectsInMemory && object)
 				{
 					Memory.registerObject(object);
 				}
@@ -114,13 +121,15 @@ package temple.debug
 		}
 		
 		/**
-		 * Gets the object by id
+		 * Gets the object by id.
 		 * @param id the unique id of the object
 		 * @return the object
 		 * @example
 		 * <listing version="3.0">
 		 * var object:* = Registry.getObject(id);
 		 * </listing>
+		 * 
+		 * Note: this function is slow, use only for debugging.
 		 */
 		public static function getObject(id:uint):*
 		{
