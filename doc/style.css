@@ -444,23 +444,23 @@ table.withBorder {
 
 /* Links */
 a:link {
-	color: #000000;
+	color: #B33030;
 	text-decoration: none;
 }
 
 a:visited {
-    color: #000000;
+    color: #B33030;
 	text-decoration: none;
 }
 
 a:hover {
 	text-decoration: underline;
-	color: #000000;
+	color: #B33030;
 }
 
 a:active {
 	text-decoration: none;
-	color: #CC0000;
+	color: #B33030;
 }
 
 /* Headings */

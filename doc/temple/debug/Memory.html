@@ -29,7 +29,7 @@
 		 This function uses getRegistryObjects to get this objects
 		 </div></td><td class="summaryTableOwnerCol">Memory</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#registerObject()" class="signatureLink">registerObject</a>(object:Object, forceRegister:Boolean = false):void</div><div class="summaryTableDescription">[static] 
 		 Registers an object with a weak reference to track the object
-		 This only works when 'Temple.REGISTER_OBJECTS' is set to true or
+		 This only works when 'Temple.registerObjectsInMemory' is set to true or
 		 the forceRegister is set to true
 		 </div></td><td class="summaryTableOwnerCol">Memory</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#toString()" class="signatureLink">toString</a>():String</div><div class="summaryTableDescription">[static] </div></td><td class="summaryTableOwnerCol">Memory</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#totalRegisteredObject()" class="signatureLink">totalRegisteredObject</a>():Number</div><div class="summaryTableDescription">[static] 
 		 Get the total of registered objects in Memory
@@ -61,10 +61,10 @@
 		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>String</code> &mdash; the log message
 		 </td></tr></table></div><a name="registerObject()"></a><a name="registerObject(Object,Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">registerObject</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function registerObject(object:Object, forceRegister:Boolean = false):void</code><p></p><p>
 		 Registers an object with a weak reference to track the object
-		 This only works when 'Temple.REGISTER_OBJECTS' is set to true or
+		 This only works when 'Temple.registerObjectsInMemory' is set to true or
 		 the forceRegister is set to true
 		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">object</span>:Object</code> &mdash; The object to register in the memory
-		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">forceRegister</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Force the registration of an object if 'Temple.REGISTER_OBJECTS' is set to false
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">forceRegister</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Force the registration of an object if 'Temple.registerObjectsInMemory' is set to false
 		 </td></tr></table></p><br/><span class="label"> Example </span><br/><div class="detailBody">
 		 <div class="listing" version="3.0"><pre>
          // in the constructor of a class

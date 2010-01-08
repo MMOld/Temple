@@ -11,30 +11,41 @@
 					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Registry"); titleBar_setSubNav(false,false,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
 				-->
 			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">temple.debug</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  Registry</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Registry  <img src="../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr></table><p></p><p></p>
-	 This class holds objects with their unique id to identify them when needed
-	 All objects added are stored in a weak-referenced-Dictionary with an
-	 autoincrementing id as value;
-	 When 'Temple.REGISTER_OBECTS' is set to true, all objects added to the Registry
-	 are also added to the Memory, to track their memory usage
+	 This class holds objects with their unique id to identify them when needed.
 	 
-	 At the moment, the Registry is used for storing objects in the Memory class,
-	 using their unique id for Logging (tracing) and in the DebugManager
+	 <p>
+                  <b>What does it do</b>
+               </p>
+	              <p>The Registry class stores objects in a weak-referenced Dictionary with an auto-incrementing id as value.  
+	 This class is used internally by the Temple for logging (where the unique id identifies the logging object),
+	 in the DebugManager and for storing objects in the Memory class (when 'Temple.registerObjectsInMemory' is set to true, all objects added to the Registry
+	 are also added to the Memory class to track their memory usage)</p>
 	 
-	 <p></p><br/><hr></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#add()" class="signatureLink">add</a>(object:*):uint</div><div class="summaryTableDescription">[static] 
+	              <p>
+                  <b>Why should you use it</b>
+               </p>
+	              <p>Having the Registry track all objects makes debugging of your code easier, since all logging and debugging functions specify which object traces a certain message.</p>
+	 
+ 	             <p>
+                  <b>How should you use it</b>
+               </p>
+	              <p>If you make use of the Temple's CoreObjects (or their descendants) your objects will automatically be added to the Registry, so no extra action is needed to use the Registry.
+	 If you want to manually add your own objects to the Registry, you can do so by using the add function.</p>
+	 
+	           <p></p><p><span class="classHeaderTableLabel">See also</span></p><div class="seeAlso"><a href="../../temple/Temple.html#registerObjectsInMemory" target="">temple.Temple.registerObjectsInMemory</a></div><br/><hr></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#add()" class="signatureLink">add</a>(object:*):uint</div><div class="summaryTableDescription">[static] 
 		 Adding an object the the registry
-		 When 'Temple.REGISTER_OBJECTS' is set to true, the object is also added to the Memory
+		 When 'Temple.registerObjectsInMemory' is set to true, the object is also added to the Memory
 		 Throws a warning when the object is added before
 		 </div></td><td class="summaryTableOwnerCol">Registry</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#destructAll()" class="signatureLink">destructAll</a>():void</div><div class="summaryTableDescription">[static] 
 		 Destruct all objects in Registry
 		 </div></td><td class="summaryTableOwnerCol">Registry</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getId()" class="signatureLink">getId</a>(object:*):uint</div><div class="summaryTableDescription">[static] 
 		 Gets the id of an object
 		 </div></td><td class="summaryTableOwnerCol">Registry</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getObject()" class="signatureLink">getObject</a>(id:uint):*</div><div class="summaryTableDescription">[static] 
-		 Gets the object by id
-		 </div></td><td class="summaryTableOwnerCol">Registry</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+		 Gets the object by id.</div></td><td class="summaryTableOwnerCol">Registry</td></tr></table></div><script language="javascript" type="text/javascript"><!--
 										showHideInherited();
 										--></script><div class="MainContent"><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="add()"></a><a name="add()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">add</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public static function add(object:*):uint</code><p></p><p>
 		 Adding an object the the registry
-		 When 'Temple.REGISTER_OBJECTS' is set to true, the object is also added to the Memory
+		 When 'Temple.registerObjectsInMemory' is set to true, the object is also added to the Memory
 		 Throws a warning when the object is added before
 		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">object</span>:*</code> &mdash; The object to add
 		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>uint</code> &mdash; uint An unique id for the object added
@@ -61,11 +72,13 @@
          var objectId:uint = Registry.getId(object);
          </pre></div>
 		 </div></div><a name="getObject()"></a><a name="getObject(uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getObject</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getObject(id:uint):*</code><p></p><p>
-		 Gets the object by id
+		 Gets the object by id.
 		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">id</span>:uint</code> &mdash; the unique id of the object
 		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>*</code> &mdash; the object
 		 </td></tr></table><br/><span class="label"> Example </span><br/><div class="detailBody">
 		 <div class="listing" version="3.0"><pre>
          var object:= Registry.getObject(id);
          </pre></div>
+		 
+		 Note: this function is slow, use only for debugging.
 		 </div></div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->

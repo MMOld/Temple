@@ -34,7 +34,7 @@
 		 Log a message with status level
 		 </div></td><td class="summaryTableOwnerCol">Log</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#warn()" class="signatureLink">warn</a>(data:*, sender:uint, objectId:* = 0):void</div><div class="summaryTableDescription">[static] 
 		 Log a message with warning level
-		 </div></td><td class="summaryTableOwnerCol">Log</td></tr></table></div><a name="eventSummary"></a><div class="summarySection"><div class="summaryTableTitle">Events</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableEvent"><tr><th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#event:onEvent" class="signatureLink">onEvent</a></div></td><td class="summaryTableDescription summaryTableCol"></td><td class="summaryTableOwnerCol">Log</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+		 </div></td><td class="summaryTableOwnerCol">Log</td></tr></table></div><a name="eventSummary"></a><div class="summarySection"><div class="summaryTableTitle">Events</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableEvent"><tr><th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#event:LogEvent.Event" class="signatureLink">LogEvent.Event</a></div></td><td class="summaryTableDescription summaryTableCol">Dispatched when a new Log message is received</td><td class="summaryTableOwnerCol">Log</td></tr></table></div><script language="javascript" type="text/javascript"><!--
 										showHideInherited();
 										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="showTrace"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">showTrace</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>showTrace:Boolean</code><p></p><p>
 		 Set whether log messages should be output as a trace
@@ -122,7 +122,11 @@
 		 <div class="listing" version="3.0"><pre>
          Log.warn("This is a warning message", this);
          </pre></div>
-		 </div></div><div class="detailSectionHeader"> Event Detail </div><a name="event:onEvent"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">onEvent</td><td class="detailHeaderType"> Event </td></tr></table><div class="detailBody"><span class="label">Event Object Type: </span><a href="../../../temple/debug/log/LogEvent.html"><code>temple.debug.log.LogEvent</code></a><br/><p></p><p></p></div><a name="includeExamplesSummary"></a><div class="detailSectionHeader">Examples</div><div class="detailBody">
+		 </div></div><div class="detailSectionHeader"> Event Detail </div><a name="event:LogEvent.Event"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">LogEvent.Event</td><td class="detailHeaderType"> Event </td></tr></table><div class="detailBody"><span class="label">Event Object Type: </span><a href="../../../temple/debug/log/LogEvent.html"><code>temple.debug.log.LogEvent</code></a><br/><span class="label">LogEvent.type property = </span><a href="../../../temple/debug/log/LogEvent.html#EVENT"><code>temple.debug.log.LogEvent.EVENT</code></a><br/><p></p><p>
+	 Dispatched when a new Log message is received
+	 </p>
+		 Event type
+		 </div><a name="includeExamplesSummary"></a><div class="detailSectionHeader">Examples</div><div class="detailBody">
 	 <div class="listing" version="3.0"><pre>
      Log.addEventListener(handleLogEvent);    // handle events locally
      Log.showTrace(false);    // don't output log messages as traces
