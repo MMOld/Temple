@@ -58,4 +58,19 @@
 	 
 	 <p>Once the XML has been loaded, it can be converted into an Array of URLData objects with the following code:</p>
 	 
+	 </div><div class="detailBody">
+	 <div class="listing" version="3.0"><pre>
+     var urls:Array = Parser.parseList(xml.urls.url, URLData, false);
+     </pre></div>
+	 <p>After calling this function, the variable urls contains a list of objects of type URLData, filled 
+	 with the content of the XML file.</p>
+	 
+	 <p>Notes to this code:</p>
+	 
+	 <p>The first parameter to parseList is a (can be a) repeating node where each node contains similar data to be 
+	 parsed into. Conversion of nodes to an Array is not necessary. If the &lt;urls>-node in the aforementioned XML 
+	 file would contain only one &lt;url>-node, the parser still returns an Array, with one object of type URLData.
+	 Since the last parameter to the call to parseList is false, an error in the xml data will result in urls being null. 
+	 The parsing class determines if the data is valid or not, by returning true or false from parseObject().</p>
+	 
 	 </div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->

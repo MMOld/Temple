@@ -39,21 +39,7 @@
 		 </div></td><td class="summaryTableOwnerCol">DebugManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#destruct()" class="signatureLink">destruct</a>():void</div><div class="summaryTableDescription">[override] 
 		 
 		 
-		 Destroys the objects, all intern listeners will be removed
-		 
-		 When overriding this method, always call super.destruct() at last!
-		 
-		 If you want the object be available for garbage collection make sure you:
-		 
-		 	Remove all event listeners on this object (use removeAllEventListeners on Temple objects)
-		 	Remove all event listeners from this object
-		 	Set all non-primitive variables to null
-		 	Set all references to this object to null in other objects
-		 
-		 
-		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
-		 
-		 </div></td><td class="summaryTableOwnerCol">DebugManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getDebuggables()" class="signatureLink">getDebuggables</a>():Array</div><div class="summaryTableDescription">[static] 
+		 Destroys the objects, all intern listeners will be removed.</div></td><td class="summaryTableOwnerCol">DebugManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getDebuggables()" class="signatureLink">getDebuggables</a>():Array</div><div class="summaryTableDescription">[static] 
 		 Get a list of IDebuggable objects
 		 </div></td><td class="summaryTableOwnerCol">DebugManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getDebuggablesAsXml()" class="signatureLink">getDebuggablesAsXml</a>():XML</div><div class="summaryTableDescription">[static] 
 		 Gets a list of IDebuggable objects as XML
@@ -103,21 +89,23 @@
 		 </div></div><a name="destruct()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">destruct</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override public function destruct():void</code><p></p><p>
 		 
 		 
-		 Destroys the objects, all intern listeners will be removed
+		 Destroys the objects, all intern listeners will be removed.
 		 
-		 <p>When overriding this method, always call super.destruct() at last!</p>
+		 <p>When overriding this method, always call super.destruct() at the end!</p>
 		 
-		 If you want the object be available for garbage collection make sure you:
+		 If you want the object to be available for garbage collection make sure you:
 		 <ul>
-		 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects)</li>
-		 	<li>Remove all event listeners from this object</li>
-		 	<li>Set all non-primitive variables to null</li>
-		 	<li>Set all references to this object to null in other objects</li>
+		 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects).</li>
+		 	<li>Remove all event listeners from this object.</li>
+		 	<li>Set all non-primitive variables to null.</li>
+		 	<li>Set all references to this object to null in other objects.</li>
 		 </ul>
 		 
-		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
+		 When a Temple object is destructed a DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher).
 		 
-		 </p></div><a name="getDebuggables()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getDebuggables</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getDebuggables():Array</code><p></p><p>
+		 <p>Note: Bear in mind that it is possible an object can be destructed more than once.</p>
+		 
+		  </p></div><a name="getDebuggables()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getDebuggables</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getDebuggables():Array</code><p></p><p>
 		 Get a list of IDebuggable objects
 		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Array</code> &mdash; A list of IDebuggable objects as {object as String, children as Array, debug as Boolean, id as uint}
 		 </td></tr></table></div><a name="getDebuggablesAsXml()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getDebuggablesAsXml</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getDebuggablesAsXml():XML</code><p></p><p>
@@ -149,6 +137,4 @@
      // set debugging globally ON
      DebugManager.debugMode = DebugManager.ALL;
      </pre></div>
-	 
-	 TODO: Add removeAsChild method
 	 </div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->

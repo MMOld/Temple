@@ -34,21 +34,7 @@
 		 When a notification of the type is posted, method is called with a Notification as the argument.</div></td><td class="summaryTableOwnerCol">NotificationCenter</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#destruct()" class="signatureLink">destruct</a>():void</div><div class="summaryTableDescription">[override] 
 		 
 		 
-		 Destroys the objects, all intern listeners will be removed
-		 
-		 When overriding this method, always call super.destruct() at last!
-		 
-		 If you want the object be available for garbage collection make sure you:
-		 
-		 	Remove all event listeners on this object (use removeAllEventListeners on Temple objects)
-		 	Remove all event listeners from this object
-		 	Set all non-primitive variables to null
-		 	Set all references to this object to null in other objects
-		 
-		 
-		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
-		 
-		 </div></td><td class="summaryTableOwnerCol">NotificationCenter</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getInstance()" class="signatureLink">getInstance</a>(name:String = default, createIfNull:Boolean = true):<a href="../../../temple/data/notificationcenter/NotificationCenter.html">NotificationCenter</a></div><div class="summaryTableDescription">[static] 
+		 Destroys the objects, all intern listeners will be removed.</div></td><td class="summaryTableOwnerCol">NotificationCenter</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getInstance()" class="signatureLink">getInstance</a>(name:String = default, createIfNull:Boolean = true):<a href="../../../temple/data/notificationcenter/NotificationCenter.html">NotificationCenter</a></div><div class="summaryTableDescription">[static] 
 		 Static function to get instances by name.</div></td><td class="summaryTableOwnerCol">NotificationCenter</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#post()" class="signatureLink">post</a>(type:String, data:* = null):void</div><div class="summaryTableDescription">
 		 Creates a Notification instance and passes this to the observers associated through the type
 		 </div></td><td class="summaryTableOwnerCol">NotificationCenter</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeObserver()" class="signatureLink">removeObserver</a>(type:String, listener:Function):void</div><div class="summaryTableDescription">
@@ -85,21 +71,23 @@
 		 </td></tr></table></p></div><a name="destruct()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">destruct</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override public function destruct():void</code><p></p><p>
 		 
 		 
-		 Destroys the objects, all intern listeners will be removed
+		 Destroys the objects, all intern listeners will be removed.
 		 
-		 <p>When overriding this method, always call super.destruct() at last!</p>
+		 <p>When overriding this method, always call super.destruct() at the end!</p>
 		 
-		 If you want the object be available for garbage collection make sure you:
+		 If you want the object to be available for garbage collection make sure you:
 		 <ul>
-		 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects)</li>
-		 	<li>Remove all event listeners from this object</li>
-		 	<li>Set all non-primitive variables to null</li>
-		 	<li>Set all references to this object to null in other objects</li>
+		 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects).</li>
+		 	<li>Remove all event listeners from this object.</li>
+		 	<li>Set all non-primitive variables to null.</li>
+		 	<li>Set all references to this object to null in other objects.</li>
 		 </ul>
 		 
-		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
+		 When a Temple object is destructed a DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher).
 		 
-		 </p></div><a name="getInstance()"></a><a name="getInstance(String,Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getInstance(name:String = default, createIfNull:Boolean = true):<a href="../../../temple/data/notificationcenter/NotificationCenter.html">NotificationCenter</a></code><p></p><p>
+		 <p>Note: Bear in mind that it is possible an object can be destructed more than once.</p>
+		 
+		  </p></div><a name="getInstance()"></a><a name="getInstance(String,Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getInstance(name:String = default, createIfNull:Boolean = true):<a href="../../../temple/data/notificationcenter/NotificationCenter.html">NotificationCenter</a></code><p></p><p>
 		 Static function to get instances by name. Multiton implementation
 		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">name</span>:String</code> (default = <code>default</code>)<code></code> &mdash; the name of the NotificationCenter
 		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">createIfNull</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; if set to true automaticly creates a new NotificationCenter if no NotificationCenter is found
@@ -126,5 +114,37 @@
      </pre></div>
 	 
 	 <p>To post a Notification to the NotificationCenter use 'post'.</p>
+	 
+	 </div><div class="detailBody">
+	 <div class="listing" version="3.0"><pre>
+     NotificationCenter.getInstance().post("myNotification");
+     </pre></div>
+	 
+	 <p>It's possible to send a data object with a Notification. The Observer receives this data object in the Notification: notification.data.
+	 This data object is untyped, so you can send all types of objects.</p>
+	 
+	 </div><div class="detailBody">
+	 <div class="listing" version="3.0"><pre>
+     NotificationCenter.getInstance().addObserver("myNotification", handleNotification);
+     
+     function handleNotification(notification:Notification):void
+     {
+             trace("Notification received: " + notification.type + ", data:" + notification.data);
+     }
+     
+     NotificationCenter.getInstance().post("myNotification", "some data as String");
+     </pre></div>
+	 
+	 <p>All Observers are by default registered using weakReference. Therefor the objects can be removed by the Garbage Collector if there is no more
+	 (strong) reference to the object</p>
+	 
+	 <p>The NotificationCenter is a multiton, so there can be multiple instances each with there own name:</p>
+	 
+	 </div><div class="detailBody">
+	 <div class="listing" version="3.0"><pre>
+     NotificationCenter.getInstance(); // returns the default NotificationCenter
+     
+     NotificationCenter.getInstance("myNotificationCenter"); // returns a NotificationCenter with name "myNotificationCenter"
+     </pre></div>
 	 
 	 </div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->

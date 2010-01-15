@@ -37,21 +37,7 @@
 		 
 		 The unique identifier of the object.</div></td><td class="summaryTableOwnerCol"><a href="../../temple/core/CoreObject.html">CoreObject</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#stage" class="signatureLink">stage</a> : Stage<div class="summaryTableDescription">[static] [write-only] </div></td><td class="summaryTableOwnerCol">SiteDisabler</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><div class="showHideLinks"><div id="hideInheritedMethod" class="hideInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(false,'Method');"><img class="showHideLinkImage" src="../../images/expanded.gif"> Hide Inherited Public Methods</a></div><div id="showInheritedMethod" class="showInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(true,'Method');"><img class="showHideLinkImage" src="../../images/collapsed.gif"> Show Inherited Public Methods</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#SiteDisabler()" class="signatureLink">SiteDisabler</a>()</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">SiteDisabler</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../temple/core/CoreObject.html#destruct()" class="signatureLink">destruct</a>():void</div><div class="summaryTableDescription">
 		 
-		 Destroys the objects, all intern listeners will be removed
-		 
-		 When overriding this method, always call super.destruct() at last!
-		 
-		 If you want the object be available for garbage collection make sure you:
-		 
-		 	Remove all event listeners on this object (use removeAllEventListeners on Temple objects)
-		 	Remove all event listeners from this object
-		 	Set all non-primitive variables to null
-		 	Set all references to this object to null in other objects
-		 
-		 
-		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
-		 
-		 </div></td><td class="summaryTableOwnerCol"><a href="../../temple/core/CoreObject.html">CoreObject</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#disableSite()" class="signatureLink">disableSite</a>():void</div><div class="summaryTableDescription">[static] 
+		 Destroys the objects, all intern listeners will be removed.</div></td><td class="summaryTableOwnerCol"><a href="../../temple/core/CoreObject.html">CoreObject</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#disableSite()" class="signatureLink">disableSite</a>():void</div><div class="summaryTableDescription">[static] 
 		 Disables the site (not the SiteDisabler)
 		 </div></td><td class="summaryTableOwnerCol">SiteDisabler</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#enableSite()" class="signatureLink">enableSite</a>():void</div><div class="summaryTableDescription">[static] 
 		 Enables the site (not the SiteDisabler)

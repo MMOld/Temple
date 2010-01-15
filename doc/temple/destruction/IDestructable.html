@@ -19,43 +19,59 @@
 	 Temple class. You can track your objects in Memory. If you destruct the objects they should disappear after a garbage
 	 collection.</p>
 	 
-	           <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isDestructed" class="signatureLink">isDestructed</a> : Boolean<div class="summaryTableDescription">[read-only] 
+	           <p></p><p><span class="classHeaderTableLabel">See also</span></p><div class="seeAlso"><a href="../../temple/debug/Memory.html" target="">temple.debug.Memory</a></div><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isDestructed" class="signatureLink">isDestructed</a> : Boolean<div class="summaryTableDescription">[read-only] 
 		 If an object is destructed, this property is set to true.</div></td><td class="summaryTableOwnerCol">IDestructable</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#destruct()" class="signatureLink">destruct</a>():void</div><div class="summaryTableDescription">
-		 Destroys the objects, all intern listeners will be removed
-		 
-		 When overriding this method, always call super.destruct() at last!
-		 
-		 If you want the object be available for garbage collection make sure you:
-		 
-		 	Remove all event listeners on this object (use removeAllEventListeners on Temple objects)
-		 	Remove all event listeners from this object
-		 	Set all non-primitive variables to null
-		 	Set all references to this object to null in other objects
-		 
-		 
-		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
-		 
-		 </div></td><td class="summaryTableOwnerCol">IDestructable</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+		 Destroys the objects, all intern listeners will be removed.</div></td><td class="summaryTableOwnerCol">IDestructable</td></tr></table></div><script language="javascript" type="text/javascript"><!--
 										showHideInherited();
 										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="isDestructed"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">isDestructed</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>isDestructed:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p>
 		 If an object is destructed, this property is set to true.
 		 
 		 <p>After a garbage collection the object should be disappeared from Memory (if Temple.registerObjectsInMemory is set to true).
+		 
 		 If the object still exists, you should check your code.</p>
 		 
 		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isDestructed():Boolean</code><br/><p><span class="label">See also</span></p><div class="seeAlso"><a href="../../temple/Temple.html" target="">temple.Temple</a><br/><a href="../../temple/debug/Registry.html" target="">temple.debug.Registry</a><br/><a href="../../temple/debug/Memory.html" target="">temple.debug.Memory</a></div></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="destruct()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">destruct</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function destruct():void</code><p></p><p>
-		 Destroys the objects, all intern listeners will be removed
+		 Destroys the objects, all intern listeners will be removed.
 		 
-		 <p>When overriding this method, always call super.destruct() at last!</p>
+		 <p>When overriding this method, always call super.destruct() at the end!</p>
 		 
-		 If you want the object be available for garbage collection make sure you:
+		 If you want the object to be available for garbage collection make sure you:
 		 <ul>
-		 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects)</li>
-		 	<li>Remove all event listeners from this object</li>
-		 	<li>Set all non-primitive variables to null</li>
-		 	<li>Set all references to this object to null in other objects</li>
+		 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects).</li>
+		 	<li>Remove all event listeners from this object.</li>
+		 	<li>Set all non-primitive variables to null.</li>
+		 	<li>Set all references to this object to null in other objects.</li>
 		 </ul>
 		 
-		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
+		 When a Temple object is destructed a DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher).
 		 
-		 </p><p><span class="label">See also</span></p><div class="seeAlso"><a href="DestructEvent.html" target="">temple.destruction.DestructEvent</a></div></div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->
+		 <p>Note: Bear in mind that it is possible an object can be destructed more than once.</p>
+		 
+		  </p><p><span class="label">See also</span></p><div class="seeAlso"><a href="DestructEvent.html" target="">temple.destruction.DestructEvent</a></div><br/><span class="label"> Example </span><br/><div class="detailBody">
+		 <div class="listing" version="3.0"><pre>
+         override public function destruct()
+         {
+             // first destruct your own objects and set variables to null.
+             
+             // always check if variable is not null, since it could cause a "null object reference"-error the next time this object is destructed
+             if (this._myCoreTimer)
+             {
+                 this._myCoreTimer.destruct();
+                 this._myCoreTimer = null;
+             }
+             
+             // if you used any Tweens in your class, kill them here
+             // TweenLite.killTweensOf(this);
+             
+             // also remove event listeners to other object
+             // if (this.stage) this.stage.removeEventListener(KeyboardEvent.KEY_UP, this.handleKeyUp);
+             
+             // It is not necessary to destruct DisplayObject, they get destructed automaticly. Only set the reference to null
+             this.mcMovieClip = null; 
+         
+             // always calls super.destruct() in the end!
+             super.destruct();
+         }
+         </pre></div> 
+		 
+		 </div></div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->

@@ -11,37 +11,23 @@
 					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CoreObject"); titleBar_setSubNav(false,true,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
 				-->
 			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">temple.core</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public dynamic   class  CoreObject</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">CoreObject  <img src="../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr><tr><td class="classHeaderTableLabel">Implements</td><td> <a href="../../temple/core/ICoreObject.html">ICoreObject</a></td></tr><tr><td class="classHeaderTableLabel">Subclasses</td><td> <a href="../../temple/debug/DebugManager.html">DebugManager</a>,  <a href="../../temple/destruction/DestructController.html">DestructController</a>,  <a href="../../temple/destruction/EventListenerManager.html">EventListenerManager</a>,  <a href="../../temple/utils/FrameDelay.html">FrameDelay</a>,  <a href="../../temple/data/collections/HashMap.html">HashMap</a>,  <a href="../../temple/utils/KeyMapper.html">KeyMapper</a>,  <a href="../../temple/data/notificationcenter/NotificationCenter.html">NotificationCenter</a>,  <a href="../../temple/utils/SiteDisabler.html">SiteDisabler</a>,  <a href="../../temple/utils/TimeOut.html">TimeOut</a></td></tr></table><p></p><p></p>
-	 Base class for all EventDispatchers in the Temple. The CoreEventDispatcher handles some core features of the Temple:
+	 Base class for all Objects in the Temple. The CoreObject handles some core features of the Temple:
 	 <ul>
-	 	               <li>Registration to the Registry class</li>
-	 	               <li>Wrapper for Log class for easy logging</li>
-	 	               <li>Completely destructable</li>
-	 	               <li>Can be tracked in Memory (of this feature is enabled)</li>
+	 	               <li>Registration to the Registry class.</li>
+	 	               <li>Wrapper for Log class for easy logging.</li>
+	 	               <li>Completely destructable.</li>
+	 	               <li>Tracked in Memory (of this feature is enabled).</li>
 	              </ul>
 	 
-	              <p>You should always use and/or extend the CoreSprite instead of Sprite if you want to make use of the Temple features.</p>
+	              <p>You should always use and/or extend the CoreObject instead of Object if you want to make use of the Temple features.</p>
 	 
-	           <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isDestructed" class="signatureLink">isDestructed</a> : Boolean<div class="summaryTableDescription">[read-only] 
+	           <p></p><p><span class="classHeaderTableLabel">See also</span></p><div class="seeAlso"><a href="../../temple/Temple.html#registerObjectsInMemory()" target="">temple.Temple.registerObjectsInMemory()</a></div><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isDestructed" class="signatureLink">isDestructed</a> : Boolean<div class="summaryTableDescription">[read-only] 
 		 
 		 If an object is destructed, this property is set to true.</div></td><td class="summaryTableOwnerCol">CoreObject</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#registryId" class="signatureLink">registryId</a> : uint<div class="summaryTableDescription">[read-only] 
 		 
 		 The unique identifier of the object.</div></td><td class="summaryTableOwnerCol">CoreObject</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#CoreObject()" class="signatureLink">CoreObject</a>()</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">CoreObject</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#destruct()" class="signatureLink">destruct</a>():void</div><div class="summaryTableDescription">
 		 
-		 Destroys the objects, all intern listeners will be removed
-		 
-		 When overriding this method, always call super.destruct() at last!
-		 
-		 If you want the object be available for garbage collection make sure you:
-		 
-		 	Remove all event listeners on this object (use removeAllEventListeners on Temple objects)
-		 	Remove all event listeners from this object
-		 	Set all non-primitive variables to null
-		 	Set all references to this object to null in other objects
-		 
-		 
-		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
-		 
-		 </div></td><td class="summaryTableOwnerCol">CoreObject</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#toString()" class="signatureLink">toString</a>():String</div><div class="summaryTableDescription">
+		 Destroys the objects, all intern listeners will be removed.</div></td><td class="summaryTableOwnerCol">CoreObject</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#toString()" class="signatureLink">toString</a>():String</div><div class="summaryTableDescription">
 		 </div></td><td class="summaryTableOwnerCol">CoreObject</td></tr></table></div><a name="protectedMethodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProtectedMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#logDebug()" class="signatureLink">logDebug</a>(data:*):void</div><div class="summaryTableDescription">
 		 Does a Log.debug, but has already filled in some known data
 		 </div></td><td class="summaryTableOwnerCol">CoreObject</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#logError()" class="signatureLink">logError</a>(data:*):void</div><div class="summaryTableDescription">
@@ -61,6 +47,7 @@
 		 If an object is destructed, this property is set to true.
 		 
 		 <p>After a garbage collection the object should be disappeared from Memory (if Temple.registerObjectsInMemory is set to true).
+		 
 		 If the object still exists, you should check your code.</p>
 		 
 		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isDestructed():Boolean</code><br/></div><a name="propertyDetail"></a><a name="registryId"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">registryId</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>registryId:uint</code>&nbsp;&nbsp;[read-only] <p></p><p>
@@ -68,21 +55,23 @@
 		 The unique identifier of the object. The id is generated and registered by the Registry class
 		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get registryId():uint</code><br/></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="CoreObject()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">CoreObject</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function CoreObject()</code><br/><br/></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="destruct()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">destruct</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function destruct():void</code><p></p><p>
 		 
-		 Destroys the objects, all intern listeners will be removed
+		 Destroys the objects, all intern listeners will be removed.
 		 
-		 <p>When overriding this method, always call super.destruct() at last!</p>
+		 <p>When overriding this method, always call super.destruct() at the end!</p>
 		 
-		 If you want the object be available for garbage collection make sure you:
+		 If you want the object to be available for garbage collection make sure you:
 		 <ul>
-		 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects)</li>
-		 	<li>Remove all event listeners from this object</li>
-		 	<li>Set all non-primitive variables to null</li>
-		 	<li>Set all references to this object to null in other objects</li>
+		 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects).</li>
+		 	<li>Remove all event listeners from this object.</li>
+		 	<li>Set all non-primitive variables to null.</li>
+		 	<li>Set all references to this object to null in other objects.</li>
 		 </ul>
 		 
-		 When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
+		 When a Temple object is destructed a DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher).
 		 
-		 </p></div><a name="logDebug()"></a><a name="logDebug()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">logDebug</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> protected final function logDebug(data:*):void</code><p></p><p>
+		 <p>Note: Bear in mind that it is possible an object can be destructed more than once.</p>
+		 
+		  </p></div><a name="logDebug()"></a><a name="logDebug()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">logDebug</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> protected final function logDebug(data:*):void</code><p></p><p>
 		 Does a Log.debug, but has already filled in some known data
 		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">data</span>:*</code> &mdash; the data to be logged
 		 </td></tr></table></p></div><a name="logError()"></a><a name="logError()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">logError</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> protected final function logError(data:*):void</code><p></p><p>
