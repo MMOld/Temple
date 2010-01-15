@@ -48,24 +48,55 @@ package temple.destruction
 	 * Temple class. You can track your objects in Memory. If you destruct the objects they should disappear after a garbage
 	 * collection.</p>
 	 * 
+	 * @see temple.debug.Memory
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public interface IDestructable 
 	{
 		/**
-		 * Destroys the objects, all intern listeners will be removed
+		 * Destroys the objects, all intern listeners will be removed.
 		 * 
-		 * <p>When overriding this method, always call super.destruct() at last!</p>
+		 * <p>When overriding this method, always call super.destruct() at the end!</p>
 		 * 
-		 * If you want the object be available for garbage collection make sure you:
+		 * If you want the object to be available for garbage collection make sure you:
 		 * <ul>
-		 * 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects)</li>
-		 * 	<li>Remove all event listeners from this object</li>
-		 * 	<li>Set all non-primitive variables to null</li>
-		 * 	<li>Set all references to this object to null in other objects</li>
+		 * 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects).</li>
+		 * 	<li>Remove all event listeners from this object.</li>
+		 * 	<li>Set all non-primitive variables to null.</li>
+		 * 	<li>Set all references to this object to null in other objects.</li>
 		 * </ul>
 		 * 
-		 * When a Temple object is destructed an DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher)
+		 * When a Temple object is destructed a DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher).
+		 * 
+		 * <p>Note: Bear in mind that it is possible an object can be destructed more than once.</p>
+		 * 
+		 *  @example
+		 * <listing version="3.0">
+		 * override public function destruct()
+		 * {
+		 *		// first destruct your own objects and set variables to null.
+		 *		
+		 *		// always check if variable is not null, since it could cause a "null object reference"-error the next time this object is destructed
+		 *		if (this._myCoreTimer)
+		 *		{
+		 *			this._myCoreTimer.destruct();
+		 *			this._myCoreTimer = null;
+		 *		}
+		 *		
+		 *		// if you used any Tweens in your class, kill them here
+		 *		// TweenLite.killTweensOf(this);
+		 *		
+		 *		// also remove event listeners to other object
+		 *		// if (this.stage) this.stage.removeEventListener(KeyboardEvent.KEY_UP, this.handleKeyUp);
+		 *		
+		 *		// It is not necessary to destruct DisplayObject, they get destructed automaticly. Only set the reference to null
+		 *		this.mcMovieClip = null; 
+		 * 
+		 *		// always calls super.destruct() in the end!
+		 *		super.destruct();
+		 * }
+		 * </listing> 
 		 * 
 		 * @see temple.destruction.DestructEvent
 		 */
@@ -75,6 +106,7 @@ package temple.destruction
 		 * If an object is destructed, this property is set to true.
 		 * 
 		 * <p>After a garbage collection the object should be disappeared from Memory (if Temple.registerObjectsInMemory is set to true).
+		 * 
 		 * If the object still exists, you should check your code.</p>
 		 * 
 		 * @see temple.Temple

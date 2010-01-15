@@ -38,8 +38,13 @@
 
 package temple.utils.types 
 {
+	import temple.debug.errors.TempleError;
+	import temple.debug.errors.throwError;
 	import temple.debug.getClassName;
+	import temple.debug.log.Log;
 
+	import flash.display.DisplayObject;
+	import flash.display.DisplayObjectContainer;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 
@@ -101,6 +106,90 @@ package temple.utils.types
 			t.setTextFormat(textField.getTextFormat());
 			return t; 
 		}
+		
+		/**
+		 * Searches for TextField in a DisplayObject and set the TextFormat as Default. In this way the textformat won't changes, when you change the text
+		 * 
+		 * @param displayObject The displayObject that contains the TextFields
+		 * @param recursive if set to true all childrens TextFields (and grantchildrens etc) will also be formatted
+		 * @param debug if set to true, debug information of the formatted TextFields will be logged
+		 */
+		public static function formatTextFields(container:DisplayObjectContainer, recursive:Boolean = true, debug:Boolean = false):void
+		{
+			if(container == null) return;
+			
+			var child:DisplayObject;
+			
+			var leni:int = container.numChildren;
+			for (var i:int = 0;i < leni ;i++)
+			{
+				child = container.getChildAt(i);
+				
+				if(child is TextField)
+				{
+					TextField(child).defaultTextFormat = TextField(child).getTextFormat();
+					
+					if(debug) Log.debug("formatTextFields: found TextField '" + TextField(child).name + "', text: '" + TextField(child).text + "'", "temple.utils.types.DisplayObjectContainerUtils");
+				}
+				else if (recursive && child is DisplayObjectContainer)
+				{
+					TextFieldUtils.formatTextFields(DisplayObjectContainer(child), recursive, debug);
+				}
+			}
+		}
+
+		/**
+		 * Searches for TextField in a DisplayObject and set the text to ''.
+		 * 
+		 * @param displayObject The displayObject that contains the TextFields
+		 * @param recursive if set to true all childrens TextFields (and grantchildrens etc) will also be formatted
+		 * @param debug if set to true, debug information of the formatted TextFields will be logged
+		 */
+		public static function emptyTextFields(container:DisplayObjectContainer, recursive:Boolean = true, debug:Boolean = false):void
+		{
+			if(container == null) return;
+			
+			var child:DisplayObject;
+			
+			var leni:int = container.numChildren;
+			for (var i:int = 0;i < leni ;i++)
+			{
+				child = container.getChildAt(i);
+				
+				if(child is TextField)
+				{
+					if(debug) Log.debug("emptyTextFields: found TextField '" + TextField(child).name + "', text: '" + TextField(child).text + "'", "temple.utils.types.DisplayObjectContainerUtils");
+
+					TextField(child).text = '';
+				}
+				else if (recursive && child is DisplayObjectContainer)
+				{
+					TextFieldUtils.emptyTextFields(DisplayObjectContainer(child), recursive, debug);
+				}
+			}
+		}
+
+		/**
+		 * Searches for TextFields in the displaylist and set embedFonts to true.
+		 * 
+		 * From Seb Lee-Delisle http://www.sebleedelisle.com/2009/08/font-embedding-wtf-in-flash/
+		 */
+		public static function embedFontsInTextFields(container:DisplayObjectContainer):void
+		{
+			var child:DisplayObject;
+			for(var i:int = 0;i < container.numChildren;i++)
+			{
+				child = container.getChildAt(i); 
+				if(child is DisplayObjectContainer)
+				{
+					TextFieldUtils.embedFontsInTextFields(child as DisplayObjectContainer);
+				} 
+				else if (child is TextField)
+				{
+					(child as TextField).embedFonts = true;
+				} 
+			}
+		}
 
 		/**
 		 * Checks if a TextField uses a TextFormat
@@ -116,19 +205,19 @@ package temple.utils.types
 		}
 
 		/**
-		 * TODO: Refactor this
+		 * Get the font size of a TextField
 		 */
 		public static function getFontSize(textField:TextField):Number
 		{
-			if(textField.text == "") return 0;
+			if (textField.text == "") return 0;
 			var usesStyleSheet:Boolean = usesStyleSheet(textField);
 			var usesOneTextFormat:Boolean = usesTextFormat(textField);
 
-			if(!usesOneTextFormat && !usesStyleSheet)
+			if (!usesOneTextFormat && !usesStyleSheet)
 			{
-				throw new Error("Getting fontSize only works when you use one TextFormat or a StyleSheet");				
+				throwError(new TempleError(TextFieldUtils, "Getting fontSize only works when you use one TextFormat or a StyleSheet"));				
 			}
-			if(!usesStyleSheet)
+			if (!usesStyleSheet)
 			{
 				var textFormat:TextFormat = textField.getTextFormat();
 				return textFormat.size as Number;
@@ -138,7 +227,7 @@ package temple.utils.types
 				var avarageSize:Number = 0;
 				var styles:Array = textField.styleSheet.styleNames;
 				var i:int = styles.length;
-				while(i--)
+				while (i--)
 				{
 					var styleName:String = styles[i];
 
@@ -151,7 +240,7 @@ package temple.utils.types
 		}
 
 		/**
-		 * TODO: Refactor this
+		 * Set the fontsize on a TextField
 		 */
 		public static function setFontSize(fontSize:Number, textField:TextField):void
 		{
@@ -159,7 +248,7 @@ package temple.utils.types
 			var usesOneTextFormat:Boolean = usesTextFormat(textField);
 			if(!usesOneTextFormat && !usesStyleSheet)
 			{
-				throw new Error("setting fontSize only works when you use one TextFormat or a StyleSheet");				
+				throwError(new TempleError(TextField, "setting fontSize only works when you use one TextFormat or a StyleSheet"));				
 			}
 			if(!usesStyleSheet)
 			{

@@ -48,7 +48,7 @@ package temple.destruction
 	public class DestructEvent extends Event 
 	{
 		/**
-		 * Dispatched just before the object is destructed
+		 * Dispatched just before the object is destructed.
 		 */
 		public static const DESTRUCT:String = "DestructEvent.destruct";
 		

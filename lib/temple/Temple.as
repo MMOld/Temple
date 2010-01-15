@@ -46,7 +46,7 @@ package temple
 	/**
 	 * This class contains information about the Temple Library and some global properties and settings.
 	 * 
-	 * <p>Node: This class contains only static properties. Therefore this class cannot be instantiated.</p> 
+	 * <p>Note: This class contains only static properties. Therefore this class cannot be instantiated.</p> 
 	 */
 	public class Temple 
 	{
@@ -70,7 +70,7 @@ package temple
 		 * Usefull for debugging to track all existing objects.
 		 * After destructing an object (and force a Garbage Collection) the object should no longer exist.
 		 * 
-		 * NOTE: Changing this value must be done here or before the super() inside the constructor of your application root
+		 * Note: Changing this value must be done here or before the super() inside the constructor of your application root
 		 * 
 		 * @see temple.debug.Registry
 		 * @see temple.debug.Memory
@@ -87,7 +87,7 @@ package temple
 		 * 	</tr>
 		 * 	<tr>
 		 * 		<td>DebugMode.NONE</td>
-		 * 		<td>Debug will be set to false on all debuggable object. So no debug messages will be logged.</td>
+		 * 		<td>Debug will be set to false on all debuggable objects. So no debug messages will be logged.</td>
 		 * 	</tr>
 		 * 	<tr>
 		 * 		<td>DebugMode.CUSTOM</td>
@@ -95,7 +95,7 @@ package temple
 		 * 	</tr>
 		 * 	<tr>
 		 * 		<td>DebugMode.ALL</td>
-		 * 		<td>Debug will be set to true on all debuggable object. So debug messages will be logged</td>
+		 * 		<td>Debug will be set to true on all debuggable objects. So debug messages will be logged</td>
 		 * 	</tr>
 		 * </table>
 		 * 
@@ -116,13 +116,12 @@ package temple
 		 * If set to true trace(Temple) will output 'temple::Temple'
 		 * If set to false trace(Temple) will output 'Temple'
 		 * 
-		 * @see temple.debug.getClassName
+		 * @see temple.debug.getClassName#getClassName()
 		 */
 		public static var displayFullPackageInToString:Boolean = false;
 		
 		/**
 		 * Destructs all objects of the Temple. Usefull when unloading an ApplicationDomainRoot object.
-		 * Called automaticly by CoreMovieClip or CoreSprite if they are the ApplicationDomainRoot.
 		 */
 		public static function destruct():void
 		{

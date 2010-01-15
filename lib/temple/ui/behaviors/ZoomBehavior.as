@@ -44,19 +44,16 @@ package temple.ui.behaviors
 	import flash.geom.Rectangle;
 
 	/**
-	 * Dispatched while zooming
 	 * @eventType temple.ui.behaviors.ZoomBehaviorEvent.ZOOMING
 	 */
 	[Event(name = "ZoomBehaviorEvent.zooming", type = "temple.ui.behaviors.ZoomBehaviorEvent")]
 	
 	/**
-	 * Dispatched when zooming starts
 	 * @eventType temple.ui.behaviors.ZoomBehaviorEvent.ZOOM_START
 	 */
 	[Event(name = "ZoomBehaviorEvent.zoomStart", type = "temple.ui.behaviors.ZoomBehaviorEvent")]
 	
 	/**
-	 * Dispatched when zooming stops
 	 * @eventType temple.ui.behaviors.ZoomBehaviorEvent.ZOOM_STOP
 	 */
 	[Event(name = "ZoomBehaviorEvent.zoomStop", type = "temple.ui.behaviors.ZoomBehaviorEvent")]

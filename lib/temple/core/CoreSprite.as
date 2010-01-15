@@ -53,7 +53,6 @@ package temple.core
 	import flash.geom.Point;
 
 	/**
-	 * Dispatched just before the object is destructed
 	 * @eventType temple.destruction.DestructEvent.DESTRUCT
 	 */
 	[Event(name = "DestructEvent.destruct", type = "temple.destruction.DestructEvent")]
@@ -61,19 +60,21 @@ package temple.core
 	/**
 	 * Base class for all Sprites in the Temple. The CoreSprite handles some core features of the Temple:
 	 * <ul>
-	 * 	<li>Registration to the Registry class</li>
-	 * 	<li>Global reference to the stage trough the StageProvider</li>
-	 * 	<li>Corrects a timeline bug in Flash (see <a href="http://www.tyz.nl/2009/06/23/weird-parent-thing-bug-in-flash/" target="_blank">http://www.tyz.nl/2009/06/23/weird-parent-thing-bug-in-flash/</a>)</li>
-	 * 	<li>Event dispatch optimization</li>
-	 * 	<li>Easy remove of all EventListeners</li>
-	 * 	<li>Wrapper for Log class for easy logging</li>
-	 * 	<li>Completely destructable</li>
-	 * 	<li>Automatic removes and destruct children, grant-children etc. on destruction</li>
-	 * 	<li>Can be tracked in Memory (of this feature is enabled)</li>
-	 * 	<li>Some usefull extra properties like autoAlpha, position and scale</li>
+	 * 	<li>Registration to the Registry class.</li>
+	 * 	<li>Global reference to the stage trough the StageProvider.</li>
+	 * 	<li>Corrects a timeline bug in Flash (see <a href="http://www.tyz.nl/2009/06/23/weird-parent-thing-bug-in-flash/" target="_blank">http://www.tyz.nl/2009/06/23/weird-parent-thing-bug-in-flash/</a>).</li>
+	 * 	<li>Event dispatch optimization.</li>
+	 * 	<li>Easy remove of all EventListeners.</li>
+	 * 	<li>Wrapper for Log class for easy logging.</li>
+	 * 	<li>Completely destructable.</li>
+	 * 	<li>Automatic removes and destruct children, grant-children etc. on destruction.</li>
+	 * 	<li>Tracked in Memory (of this feature is enabled).</li>
+	 * 	<li>Some usefull extra properties like autoAlpha, position and scale.</li>
 	 * </ul>
 	 * 
 	 * <p>You should always use and/or extend the CoreSprite instead of Sprite if you want to make use of the Temple features.</p>
+	 * 
+	 * @see temple.Temple#registerObjectsInMemory()
 	 * 
 	 * @author Thijs Broerse
 	 */
@@ -103,6 +104,16 @@ package temple.core
 			this.addEventListener(Event.REMOVED, temple::handleRemoved);
 			this.addEventListener(Event.REMOVED_FROM_STAGE, temple::handleRemovedFromStage);
 		}
+		
+		/**
+		 * @inheritDoc
+		 * 
+		 * Checks for a scrollRect and returns the width of the scrollRect.
+		 */
+		override public function get width():Number
+		{
+			return this.scrollRect ? this.scrollRect.width : super.width;
+		}
 
 		/**
 		 * @inheritDoc
@@ -113,6 +124,16 @@ package temple.core
 		override public function set width(value:Number):void
 		{
 			if(super.width || !this.scaleX) super.width = value;
+		}
+		
+		/**
+		 * @inheritDoc
+		 * 
+		 * Checks for a scrollRect and returns the height of the scrollRect.
+		 */
+		override public function get height():Number
+		{
+			return this.scrollRect ? this.scrollRect.height : super.height;
 		}
 
 		/**

@@ -55,15 +55,6 @@ package temple.ui.behaviors
 		 */
 		public static const BOUNCED:String = "BoundsBehaviorEvent.bounced";
 
-		// Directions: NOTE, these are not events!
-		/**
-		 * TODO: move this to an other class (Direction class?)
-		 */
-		public static const TOP:String = "top"; 
-		public static const RIGHT:String = "right"; 
-		public static const BOTTOM:String = "bottom";
-		public static const LEFT:String = "left";
-
 		private var _direction:String;
 
 		/**

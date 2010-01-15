@@ -47,7 +47,7 @@ package temple.destruction
 	public interface IDestructableOnError extends IDestructable
 	{
 		/**
-		 * if set to true (default) this object wil automaticly be destructed on an Error (IOError or SecurityError)
+		 * if set to true (default) this object wil automaticly be destructed when an Error occurs (IOError or SecurityError)
 		 */
 		function get destructOnError():Boolean;
 		

@@ -49,7 +49,6 @@ package temple.core
 	import flash.utils.Timer;
 
 	/**
-	 * Dispatched just before the object is destructed
 	 * @eventType temple.destruction.DestructEvent.DESTRUCT
 	 */
 	[Event(name = "DestructEvent.destruct", type = "temple.destruction.DestructEvent")]
@@ -57,18 +56,20 @@ package temple.core
 	/**
 	 * Base class for all Timers in the Temple. The CoreTimer handles some core features of the Temple:
 	 * <ul>
-	 * 	<li>Registration to the Registry class</li>
-	 * 	<li>Event dispatch optimization</li>
-	 * 	<li>Easy remove of all EventListeners</li>
-	 * 	<li>Wrapper for Log class for easy logging</li>
-	 * 	<li>Completely destructable</li>
-	 * 	<li>Can be tracked in Memory (of this feature is enabled)</li>
+	 * 	<li>Registration to the Registry class.</li>
+	 * 	<li>Event dispatch optimization.</li>
+	 * 	<li>Easy remove of all EventListeners.</li>
+	 * 	<li>Wrapper for Log class for easy logging.</li>
+	 * 	<li>Completely destructable.</li>
+	 * 	<li>Tracked in Memory (of this feature is enabled).</li>
 	 * </ul>
 	 * 
 	 * <p>Note: since the CoreTimer is not a DisplayObject, the CoreTimer will not be automatic destructed. So you should
 	 * always destruct the CoreTimer manually.</p>
 	 * 
 	 * <p>You should always use and/or extend the CoreTimer instead of Timer if you want to make use of the Temple features.</p>
+	 * 
+	 * @see temple.Temple#registerObjectsInMemory()
 	 * 
 	 * @author Thijs Broerse
 	 */
@@ -248,7 +249,7 @@ package temple.core
 		 */
 		override public function toString():String
 		{
-			return getClassName(this) + "; delay: " + this.delay + ", repeatCount: " + this.repeatCount;
+			return getClassName(this) + ": (delay: " + this.delay + ", repeatCount: " + this.repeatCount + ")";
 		}
 	}
 }

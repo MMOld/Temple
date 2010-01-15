@@ -52,13 +52,20 @@ package temple.core
 	import flash.net.NetStream;
 
 	/**
-	 * Dispatched just before the object is destructed
 	 * @eventType temple.destruction.DestructEvent.DESTRUCT
 	 */
 	[Event(name = "DestructEvent.destruct", type = "temple.destruction.DestructEvent")]
 	
 	/**
 	 * Base class for all NetStreams in the Temple.
+	 * <ul>
+	 * 	<li>Registration to the Registry class.</li>
+	 * 	<li>Wrapper for Log class for easy logging.</li>
+	 * 	<li>Completely destructable.</li>
+	 * 	<li>Tracked in Memory (of this feature is enabled).</li>
+	 * </ul>
+	 * 
+	 * @see temple.Temple#registerObjectsInMemory()
 	 */
 	public class CoreNetStream extends NetStream implements ICoreLoader
 	{

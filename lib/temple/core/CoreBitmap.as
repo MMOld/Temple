@@ -53,7 +53,6 @@ package temple.core
 	import flash.geom.Point;
 
 	/**
-	 * Dispatched just before the object is destructed
 	 * @eventType temple.destruction.DestructEvent.DESTRUCT
 	 */
 	[Event(name = "DestructEvent.destruct", type = "temple.destruction.DestructEvent")]
@@ -61,20 +60,22 @@ package temple.core
 	/**
 	 * Base class for all Bitmaps in the Temple. The CoreBitmap handles some core features of the Temple:
 	 * <ul>
-	 * 	<li>Registration to the Registry class</li>
-	 * 	<li>Global reference to the stage trough the StageProvider</li>
-	 * 	<li>Event dispatch optimization</li>
-	 * 	<li>Easy remove of all EventListeners</li>
-	 * 	<li>Wrapper for Log class for easy logging</li>
-	 * 	<li>Completely destructable</li>
-	 * 	<li>Can be tracked in Memory (of this feature is enabled)</li>
-	 * 	<li>Automatic disposes BitmapData on destruction</li>
-	 * 	<li>Some usefull extra properties like autoAlpha, position and scale</li>
+	 * 	<li>Registration to the Registry class.</li>
+	 * 	<li>Global reference to the stage trough the StageProvider.</li>
+	 * 	<li>Event dispatch optimization.</li>
+	 * 	<li>Easy remove of all EventListeners.</li>
+	 * 	<li>Wrapper for Log class for easy logging.</li>
+	 * 	<li>Completely destructable.</li>
+	 * 	<li>Tracked in Memory (of this feature is enabled).</li>
+	 * 	<li>Automatic disposes BitmapData on destruction (can be disabled).</li>
+	 * 	<li>Some usefull extra properties like autoAlpha, position and scale.</li>
 	 * </ul>
 	 * 
 	 * <p>Note: The CoreBitmap will automatic dispose the BitmapData on destruction. If you do not want that you should set disposeBitmapDataOnDestruct to false.</p>
 	 * 
 	 * <p>You should always use and/or extend the CoreBitmap instead of MovieClip if you want to make use of the Temple features.</p>
+	 *
+	 * @see temple.Temple#registerObjectsInMemory()
 	 *
 	 * @author Thijs Broerse
 	 */
@@ -111,12 +112,32 @@ package temple.core
 		/**
 		 * @inheritDoc
 		 * 
+		 * Checks for a scrollRect and returns the width of the scrollRect.
+		 */
+		override public function get width():Number
+		{
+			return this.scrollRect ? this.scrollRect.width : super.width;
+		}
+		
+		/**
+		 * @inheritDoc
+		 * 
 		 * If the object does not have a width and is not scaled to 0 the object is empty, 
 		 * setting the width is useless and can only cause weird errors, so we don't.
 		 */
 		override public function set width(value:Number):void
 		{
 			if(super.width || !this.scaleX) super.width = value;
+		}
+		
+		/**
+		 * @inheritDoc
+		 * 
+		 * Checks for a scrollRect and returns the height of the scrollRect.
+		 */
+		override public function get height():Number
+		{
+			return this.scrollRect ? this.scrollRect.height : super.height;
 		}
 
 		/**
@@ -218,7 +239,7 @@ package temple.core
 		}
 		
 		/**
-		 * Indicates of the BitmapData should be disposed when the CoreBitmap is destructed. Default: true
+		 * Indicates if the BitmapData should be disposed when the CoreBitmap is destructed. Default: true
 		 */
 		public function get disposeBitmapDataOnDestruct():Boolean
 		{
@@ -299,7 +320,7 @@ package temple.core
 		}
 
 		/**
-		 * Does a Log.debug, but has already filled in some known data
+		 * Does a Log.debug, but has already filled in some known data.
 		 * @param data the data to be logged
 		 */
 		protected final function logDebug(data:*):void
@@ -308,7 +329,7 @@ package temple.core
 		}
 		
 		/**
-		 * Does a Log.error, but has already filled in some known data
+		 * Does a Log.error, but has already filled in some known data.
 		 * @param data the data to be logged
 		 */
 		protected final function logError(data:*):void
@@ -317,7 +338,7 @@ package temple.core
 		}
 		
 		/**
-		 * Does a Log.fatal, but has already filled in some known data
+		 * Does a Log.fatal, but has already filled in some known data.
 		 * @param data the data to be logged
 		 */
 		protected final function logFatal(data:*):void
@@ -326,7 +347,7 @@ package temple.core
 		}
 		
 		/**
-		 * Does a Log.info, but has already filled in some known data
+		 * Does a Log.info, but has already filled in some known data.
 		 * @param data the data to be logged
 		 */
 		protected final function logInfo(data:*):void
@@ -335,7 +356,7 @@ package temple.core
 		}
 		
 		/**
-		 * Does a Log.status, but has already filled in some known data
+		 * Does a Log.status, but has already filled in some known data.
 		 * @param data the data to be logged
 		 */
 		protected final function logStatus(data:*):void
@@ -344,7 +365,7 @@ package temple.core
 		}
 		
 		/**
-		 * Does a Log.warn, but has already filled in some known data
+		 * Does a Log.warn, but has already filled in some known data.
 		 * @param data the data to be logged
 		 */
 		protected final function logWarn(data:*):void

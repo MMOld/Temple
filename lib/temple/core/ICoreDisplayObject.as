@@ -53,8 +53,8 @@ package temple.core
 	 * Since he get his stage reference from the StageProvider who holds a global 
 	 * reference to the stage.</p>
 	 * 
-	 * <p>ICoreDisplayObject are ‘auto-destructed’ if the SWF is unloaded. When a 
-	 * ICoreDisplayObject is destructed we will call also destruct his children, 
+	 * <p>ICoreDisplayObject are automaticly destructed when the SWF is unloaded. When a 
+	 * ICoreDisplayObject is destructed we will call also destruct its children, 
 	 * grant-children etcetera.</p>
 	 * 
 	 * @see temple.utils.StageProvider
@@ -64,23 +64,25 @@ package temple.core
 	public interface ICoreDisplayObject extends IDisplayObject, ICoreObject, IDestructableEventDispatcher
 	{
 		/**
-		 * Returns true if this object is on the Stage, false if not
-		 * Needed since .stage can't be trusted for timeline objects.
+		 * Returns true if this object is on the Stage, false if not.
+		 * <p>Needed since .stage can't be trusted for timeline objects.
 		 * 
-		 * The stage property can be filled even when the ICoreDisplayObject is not on the stage. The ICoreDisplayObject gets the stage from the StageProvider
+		 * The stage property can be filled even when the ICoreDisplayObject is not on the stage. The ICoreDisplayObject gets the stage from the StageProvider</p>
 		 */
 		function get onStage():Boolean;
 
 		/**
-		 * Returns true if this object has a parent
+		 * Returns true if this object has a parent.
 		 * 
-		 * Needed since .parent can't be trusted for timeline objects
+		 * <p>Needed since .parent can't be trusted for timeline objects.</p>
 		 */
 		function get hasParent():Boolean;
 	
 		/**
-		 * Same as alpha, but the visible property will automaticly be set. When value is 0 visible will be false, else visible will be true.
-		 * If alpha > 0, but visible == false, then autoAlpha will return 0
+		 * Same as alpha, but the visible property will automaticly be set. 
+		 * 
+		 * <p>When value is 0 visible will be false, else visible will be true.
+		 * If alpha > 0, but visible == false, then autoAlpha will return 0</p>
 		 */
 		function get autoAlpha():Number;
 
@@ -90,7 +92,7 @@ package temple.core
 		function set autoAlpha(value:Number):void;
 
 		/**
-		 * Get or set to position of the object as a Point. It is not possible to set x and/or y directy by point.
+		 * Get or set to position of the object as a Point. It is not possible to set x and/or y directy on the Point. Use x and/or y of the DisplayObject instead.
 		 */
 		function get position():Point;
 		
@@ -100,7 +102,7 @@ package temple.core
 		function set position(value:Point):void;
 
 		/**
-		 * Get and set scaleX and scaleY in one property. If scaleX is not the same as scaleY NaN is returned
+		 * Get and set scaleX and scaleY in one property. If scaleX is not the same as scaleY NaN is returned.
 		 */
 		function get scale():Number;
 		

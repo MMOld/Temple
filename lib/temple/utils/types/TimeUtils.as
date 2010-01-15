@@ -63,17 +63,17 @@ package temple.utils.types
 			{
 				sec = Number(string.substr(0, string.length - 1)) * 60;
 			}
-			else if(string.substr(-1) == 'h') 
+			else if (string.substr(-1) == 'h') 
 			{
 				sec = Number(string.substr(0, string.length - 1)) * 3600;
 			}
-			else if(arr.length > 1) 
+			else if (arr.length > 1) 
 			{
-				if(arr[2] && String(arr[2]).indexOf(',') != -1) arr[2] = String(arr[2]).replace(/\,/,".");
+				if (arr[2] && String(arr[2]).indexOf(',') != -1) arr[2] = String(arr[2]).replace(/\,/,".");
 				
 				sec = Number(arr[arr.length - 1]);
 				sec += Number(arr[arr.length - 2]) * 60;
-				if(arr.length == 3) 
+				if (arr.length == 3) 
 				{
 					sec += Number(arr[arr.length - 3]) * 3600;
 				}
@@ -85,10 +85,6 @@ package temple.utils.types
 			return sec;
 		}
 
-		/**
-		 * TODO: refactor method in this class
-		 */
-
 		/** 
 		 * Convert number to MIN:SS string.
 		 */
@@ -99,55 +95,46 @@ package temple.utils.types
 			return StringUtils.padLeft(min.toString(), 2, "0") + ":" + StringUtils.padLeft(sec.toString(), 2, "0");
 		}
 
-		// returns mm:ss:mm
-		public static function formatTime(argTimeMili:Number):String
+		/**
+		 * Format miliseconds as mm:ss:mm 
+		 */
+		public static function formatTime(miliseconds:Number):String
 		{
-			var intMilliSeconds:Number = Math.floor(argTimeMili % 1000);
-			var strMilliSeconds:String = Math.round(intMilliSeconds / 10).toString();
-			strMilliSeconds = (strMilliSeconds.length == 1) ? '0' + strMilliSeconds : strMilliSeconds;
+			var mili:String = (Math.round(Math.floor(miliseconds % 1000) / 10)).toString();
+			mili = (mili.length == 1) ? '0' + mili : mili;
 			
-			var intSeconds:Number = Math.floor(argTimeMili / 1000) % 60;
-			var strSeconds:String = intSeconds.toString();
-			strSeconds = (strSeconds.length == 1) ? '0' + strSeconds : strSeconds;
+			var seconds:String = (Math.floor(miliseconds / 1000) % 60).toString();
+			seconds = (seconds.length == 1) ? '0' + seconds : seconds;
 			
-			var intMinutes:Number = Math.floor(argTimeMili / 60000);
-			var strMinutes:String = intMinutes.toString();
-			strMinutes = (strMinutes.length == 1) ? '0' + strMinutes : strMinutes;
+			var minutes:String = (Math.floor(miliseconds / 60000)).toString();
+			minutes = (minutes.length == 1) ? '0' + minutes : minutes;
 			
-			var strFormatted:String = strMinutes + ':' + strSeconds + ':' + strMilliSeconds;
-			
-			return strFormatted;
+			return minutes + ':' + seconds + ':' + mili;
 		}
 
-		// returns mm:ss
-		public static function formatMinutesSeconds(argTimeMili:Number):String
+		/**
+		 * Format miliseconds as mm:ss 
+		 */
+		public static function formatMinutesSeconds(miliseconds:Number):String
 		{
-			var intSeconds:Number = Math.floor(argTimeMili / 1000) % 60;
-			var strSeconds:String = intSeconds.toString();
-			strSeconds = (strSeconds.length == 1) ? '0' + strSeconds : strSeconds;
+			var seconds:String = (Math.floor(miliseconds / 1000) % 60).toString();
+			seconds = (seconds.length == 1) ? '0' + seconds : seconds;
 			
-			var intMinutes:Number = Math.floor(argTimeMili / 60000);
-			var strMinutes:String = intMinutes.toString();
-			strMinutes = (strMinutes.length == 1) ? '0' + strMinutes : strMinutes;
+			var minutes:String = (Math.floor(miliseconds / 60000)).toString();
+			minutes = (minutes.length == 1) ? '0' + minutes : minutes;
 			
-			var strFormatted:String = strMinutes + ':' + strSeconds;
-			
-			return strFormatted;
+			return minutes + ':' + seconds;
 		}
 
-		// returns m:ss
-		public static function formatMinutesSecondsAlt(argTimeMili:Number):String
+		/**
+		 * Format miliseconds as m:ss 
+		 */
+		public static function formatMinutesSecondsAlt(miliseconds:Number):String
 		{
-			var intSeconds:Number = Math.floor(argTimeMili / 1000) % 60;
-			var strSeconds:String = intSeconds.toString();
-			strSeconds = (strSeconds.length == 1) ? '0' + strSeconds : strSeconds;
+			var seconds:String = (Math.floor(miliseconds / 1000) % 60).toString();
+			seconds = (seconds.length == 1) ? '0' + seconds : seconds;
 			
-			var intMinutes:Number = Math.floor(argTimeMili / 60000);
-			var strMinutes:String = intMinutes.toString();
-			
-			var strFormatted:String = strMinutes + ':' + strSeconds;
-			
-			return strFormatted;
+			return (Math.floor(miliseconds / 60000)).toString() + ':' + seconds;
 		}
 		
 		public static function toString():String

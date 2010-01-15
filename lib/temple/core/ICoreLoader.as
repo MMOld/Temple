@@ -56,8 +56,8 @@ package temple.core
 		function get url():String
 		
 		/**
-		 * If set to true an error message wil be logged on an Error (IOError or SecurityError)
-		 * Error events are always handled by the loader so an "unhandle ErrorEvents"-errors won't occur.
+		 * If set to true an error message wil be logged on an Error (IOError or SecurityError).
+		 * <p>Error events are always handled by the loader so an "unhandle ErrorEvents"-errors won't occur.</p>
 		 */
 		function get logErrors():Boolean
 		

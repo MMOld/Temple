@@ -70,8 +70,6 @@ package temple.debug
 	 * // set debugging globally ON
 	 * DebugManager.debugMode = DebugManager.ALL;
 	 * </listing>
-	 * 
-	 * TODO: Add removeAsChild method
 	 */
 	public class DebugManager extends CoreObject implements IDebuggable
 	{

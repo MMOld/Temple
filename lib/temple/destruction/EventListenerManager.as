@@ -85,7 +85,7 @@ package temple.destruction
 		public function get eventDispatcher():IEventDispatcher
 		{
 			return this._eventDispatcher;
-		}		/**		 * Notifies the ListenerManager instance that a listener has been added to the {@code IEventDispatcher}.
+		}		/**		 * Registers an event listening to the EventListenerManager
 		 * 			 * @param type The type of event.		 * @param listener The listener function that processes the event.		 * @param useCapture Determines whether the listener works in the capture phase or the target and bubbling phases.		 * @param priority The priority level of the event listener.		 * @param useWeakReference Determines whether the reference to the listener is strong or weak.		 */		public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void 		{
 			// Don't store weak reference info, since storing the listener will make it strong
 			if(useWeakReference) return;

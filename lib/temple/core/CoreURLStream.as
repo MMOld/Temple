@@ -55,24 +55,25 @@ package temple.core
 	import flash.net.URLStream;
 
 	/**
-	 * Dispatched just before the object is destructed
 	 * @eventType temple.destruction.DestructEvent.DESTRUCT
 	 */
 	[Event(name = "DestructEvent.destruct", type = "temple.destruction.DestructEvent")]
 	
 	/**
-	 * Base class for all URLLoaders in the Temple. The CoreURLLoader handles some core features of the Temple:
+	 * Base class for all URLStreams in the Temple. The CoreURLStream handles some core features of the Temple:
 	 * <ul>
-	 * 	<li>Registration to the Registry class</li>
-	 * 	<li>Event dispatch optimization</li>
-	 * 	<li>Easy remove of all EventListeners</li>
-	 * 	<li>Wrapper for Log class for easy logging</li>
-	 * 	<li>Completely destructable</li>
-	 * 	<li>Can be tracked in Memory (of this feature is enabled)</li>
-	 * 	<li>Logs IOErrorEvents and SecurityErrorEvents</li>
+	 * 	<li>Registration to the Registry class.</li>
+	 * 	<li>Event dispatch optimization.</li>
+	 * 	<li>Easy remove of all EventListeners.</li>
+	 * 	<li>Wrapper for Log class for easy logging.</li>
+	 * 	<li>Completely destructable.</li>
+	 * 	<li>Tracked in Memory (of this feature is enabled).</li>
+	 * 	<li>Logs IOErrorEvents and SecurityErrorEvents.</li>
 	 * </ul>
 	 * 
-	 * <p>You should always use and/or extend the CoreURLLoader instead of URLLoader if you want to make use of the Temple features.</p>
+	 * <p>You should always use and/or extend the CoreURLStream instead of URLStream if you want to make use of the Temple features.</p>
+	 * 
+	 * @see temple.Temple#registerObjectsInMemory()
 	 * 
 	 * @author Thijs Broerse
 	 */
@@ -94,8 +95,7 @@ package temple.core
 		private var _url:String;
 
 		/**
-		 * Creates a DestructableURLLoader
-		 * @param request optional URLRequest to load
+		 * Creates a CoreURLStream
 		 * @param destructOnError if set to true (default) this object wil automaticly be destructed on an Error (IOError or SecurityError)
 		 * @param logErrors if set to true an error message wil be logged on an Error (IOError or SecurityError)
 		 */

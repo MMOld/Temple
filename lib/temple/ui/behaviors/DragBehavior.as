@@ -47,19 +47,16 @@ package temple.ui.behaviors
 	import flash.geom.Rectangle;
 
 	/**
-	 * Dispatched while dragging
 	 * @eventType temple.ui.behaviors.DragBehaviorEvent.DRAGGING
 	 */
 	[Event(name = "DragBehaviorEvent.dragging", type = "temple.ui.behaviors.DragBehaviorEvent")]
 	
 	/**
-	 * Dispatched when the dragging starts
 	 * @eventType temple.ui.behaviors.DragBehaviorEvent.DRAG_START
 	 */
 	[Event(name = "DragBehaviorEvent.dragStart", type = "temple.ui.behaviors.DragBehaviorEvent")]
 	
 	/**
-	 * Dispatched when the dragging stops
 	 * @eventType temple.ui.behaviors.DragBehaviorEvent.DRAG_STOP
 	 */
 	[Event(name = "DragBehaviorEvent.dragStop", type = "temple.ui.behaviors.DragBehaviorEvent")]
@@ -209,7 +206,7 @@ package temple.ui.behaviors
 			this.dispatchEvent(new DragBehaviorEvent(DragBehaviorEvent.DRAG_START, this.displayObject as DisplayObject));
 		}
 
-		protected function handleMouseMove(e:MouseEvent):void 
+		protected function handleMouseMove(event:MouseEvent):void 
 		{
 			if(this._dragHorizontal)
 			{

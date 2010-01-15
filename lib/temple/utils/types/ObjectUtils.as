@@ -270,13 +270,27 @@ package temple.utils.types
 		public static function toDynamic(object:Object):Object
 		{
 			var result:Object = new Object();
-			for each (var node : XML in describeType(object).accessor.(@access == 'readwrite' || @access == 'readonly')) {
+			for each (var node : XML in describeType(object).accessor.(@access == 'readwrite' || @access == 'readonly'))
+			{
 				result[node.@name] = object[node.@name];
 			};
 			
 			return result;
 		}
 		
+		/**
+		 * Creates a copy of an object. Works only for dynamic properties.
+		 */
+		public static function clone(object:Object):Object
+		{
+			var copy:Object = new Object();
+			for (var key : String in object)
+			{
+				copy[key] = object[key];
+			}
+			return copy;
+		}
+
 		/**
 		 * Converts an object to a readable String
 		 */

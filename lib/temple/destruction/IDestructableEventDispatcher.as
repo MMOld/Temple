@@ -41,7 +41,6 @@ package temple.destruction
 	import flash.events.IEventDispatcher;
 	
 	/**
-	 * Dispatched just before the object is destructed
 	 * @eventType temple.destruction.DestructEvent.DESTRUCT
 	 */
 	[Event(name = "DestructEvent.destruct", type = "temple.destruction.DestructEvent")]

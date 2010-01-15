@@ -45,7 +45,7 @@ package temple.utils.types
 	/**
 	 * This class contains some functions for Strings.
 	 * 
-	 * @author Arjan van Wijk
+	 * @author Arjan van Wijk, Thijs Broerse
 	 */
 	public class StringUtils 
 	{
@@ -110,7 +110,7 @@ package temple.utils.types
 
 		/**
 		 * replaces all tabs, newlines spaces to just one space
-		 * Should work the same as ignore whitespace for XML 
+		 * Works the same as ignore whitespace for XML 
 		 */
 		public static function ignoreWhiteSpace(string:String):String
 		{
@@ -118,15 +118,10 @@ package temple.utils.types
 		}
 
 		/**
-		 *	Does a case insensitive compare or two strings and returns true if
-		 *	they are equal.
-		 * 
-		 *	@param s1 The first string to compare.
-		 *
-		 *	@param s2 The second string to compare.
-		 *
-		 *	@returns A boolean value indicating whether the strings' values are 
-		 *	equal in a case sensitive compare.	
+		 * Does a case insensitive compare or two strings and returns true if they are equal.
+		 * @param s1 The first string to compare.
+		 * @param s2 The second string to compare.
+		 * @return A boolean value indicating whether the strings' values are equal in a case sensitive compare.	
 		 */			
 		public static function stringsAreEqual(s1:String, s2:String, 
 											caseSensitive:Boolean):Boolean
@@ -142,13 +137,9 @@ package temple.utils.types
 		}
 
 		/**
-		 *	Removes whitespace from the front and the end of the specified
-		 *	string.
-		 * 
-		 *	@param input The String whose beginning and ending whitespace will
-		 *	will be removed.
-		 *
-		 *	@returns A String with whitespace removed from the begining and end	
+		 * Removes whitespace from the front and the end of the specified string.
+		 * @param input The String whose beginning and ending whitespace will be removed.
+		 * @return A String with whitespace removed from the begining and end	
 		 */			
 		public static function trim(input:String):String
 		{
@@ -156,11 +147,9 @@ package temple.utils.types
 		}
 
 		/**
-		 *	Removes whitespace from the front of the specified string.
-		 * 
-		 *	@param input The String whose beginning whitespace will will be removed.
-		 *
-		 *	@returns A String with whitespace removed from the begining	
+		 * Removes whitespace from the front of the specified string.
+		 * @param input The String whose beginning whitespace will will be removed.
+		 * @return A String with whitespace removed from the begining	
 		 */	
 		public static function ltrim(input:String):String
 		{
@@ -176,11 +165,9 @@ package temple.utils.types
 		}
 
 		/**
-		 *	Removes whitespace from the end of the specified string.
-		 * 
-		 *	@param input The String whose ending whitespace will will be removed.
-		 *
-		 *	@returns A String with whitespace removed from the end	
+		 * Removes whitespace from the end of the specified string.
+		 * @param input The String whose ending whitespace will will be removed.
+		 * @return A String with whitespace removed from the end	
 		 */	
 		public static function rtrim(input:String):String
 		{
@@ -197,13 +184,10 @@ package temple.utils.types
 		}
 
 		/**
-		 *	Determines whether the specified string begins with the spcified prefix.
-		 * 
-		 *	@param input The string that the prefix will be checked against.
-		 *
-		 *	@param prefix The prefix that will be tested against the string.
-		 *
-		 *	@returns True if the string starts with the prefix, false if it does not.
+		 * Determines whether the specified string begins with the spcified prefix.
+		 * @param input The string that the prefix will be checked against.
+		 * @param prefix The prefix that will be tested against the string.
+		 * @return true if the string starts with the prefix, false if it does not.
 		 */	
 		public static function beginsWith(input:String, prefix:String):Boolean
 		{			
@@ -211,13 +195,10 @@ package temple.utils.types
 		}	
 
 		/**
-		 *	Determines whether the specified string ends with the spcified suffix.
-		 * 
-		 *	@param input The string that the suffic will be checked against.
-		 *
-		 *	@param prefix The suffic that will be tested against the string.
-		 *
-		 *	@returns True if the string ends with the suffix, false if it does not.
+		 * Determines whether the specified string ends with the spcified suffix.
+		 * @param input The string that the suffic will be checked against.
+		 * @param prefix The suffic that will be tested against the string.
+		 * @return true if the string ends with the suffix, false if it does not.
 		 */	
 		public static function endsWith(input:String, suffix:String):Boolean
 		{
@@ -225,14 +206,10 @@ package temple.utils.types
 		}	
 
 		/**
-		 *	Removes all instances of the remove string in the input string.
-		 * 
-		 *	@param input The string that will be checked for instances of remove
-		 *	string
-		 *
-		 *	@param remove The string that will be removed from the input string.
-		 *
-		 *	@returns A String with the remove string removed.
+		 * Removes all instances of the remove string in the input string.
+		 * @param input The string that will be checked for instances of remove
+		 * @param remove The string that will be removed from the input string.
+		 * @return A String with the remove string removed.
 		 */	
 		public static function remove(input:String, remove:String):String
 		{
@@ -244,42 +221,29 @@ package temple.utils.types
 		 * @param source The string that will be checked for instances of remove
 		 * @param remove The string that will be removed from the input string.
 		 * @param caseSensitive An optional boolean indicating if the replace is case sensitive. Default is true.
-		 * 
-		 * TODO: Merge with remove()
 		 */
 		public static function remove2(source:String, remove:String, caseSensitive:Boolean = true):String
 		{
 			if (source == null) return '';
-			var rem:String = escapePattern(remove);
+			var rem:String = StringUtils.escapePattern(remove);
 			var flags:String = (!caseSensitive) ? 'ig' : 'g';
 			return source.replace(new RegExp(rem, flags), '');
 		}
 
 		private static function escapePattern(pattern:String):String 
 		{
-			// RM: might expose this one, I've used it a few times already.
 			return pattern.replace(/(\]|\[|\{|\}|\(|\)|\*|\+|\?|\.|\\)/g, '\\$1');
 		}
 
 		/**
-		 *	Replaces all instances of the replace string in the input string
-		 *	with the replaceWith string.
-		 * 
-		 *	@param input The string that instances of replace string will be 
-		 *	replaces with removeWith string.
-		 *
-		 *	@param replace The string that will be replaced by instances of 
-		 *	the replaceWith string.
-		 *
-		 *	@param replaceWith The string that will replace instances of replace
-		 *	string.
-		 *
-		 *	@returns A new String with the replace string replaced with the 
-		 *	replaceWith string.
+		 * Replaces all instances of the replace string in the input string with the replaceWith string.
+		 * @param input The string that instances of replace string will be replaces with removeWith string.
+		 * @param replace The string that will be replaced by instances of the replaceWith string.
+		 * @param replaceWith The string that will replace instances of replace string.
+		 * @return A new String with the replace string replaced with the replaceWith string.
 		 */
 		public static function replace(input:String, replace:String, replaceWith:String):String
 		{
-			//change to StringBuilder
 			var sb:String = new String();
 			var found:Boolean = false;
 
@@ -312,15 +276,12 @@ package temple.utils.types
 			return sb;
 		}
 
-		/*
+		/**
 		 * Replace template fields in a String 
-		 * 
-		 *	@param input The string that instances of replace string will be 
-		 *	replaces with removeWith string.
-		 *
-		 *	@param templateHash Object which property-names will be replaced with those values
-		 *	{name:'Henk',age:'12'}
-		 *	
+		 * @param input The string that instances of replace string will be 
+		 * replaces with removeWith string.
+		 * @param templateHash Object which property-names will be replaced with those values
+		 * {name:'Henk',age:'12'}
 		 */
 		public static function replaceTemplateFields(input:String, templateHash:Object):String
 		{
@@ -338,11 +299,11 @@ package temple.utils.types
 		 * Searches for a value in de object with the same name as the var
 		 * 
 		 * @example
-		 * 
+		 * <listing version="3.0">
 		 * trace(StringUtils.replaceVars("hi, my name is {name}", {name:'Thijs'});
 		 * 
-		 * outputs: hi, my name is Thijs
-		 * 
+		 * // output: hi, my name is Thijs
+		 * </listing>
 		 */
 		public static function replaceVars(string:String, object:Object, debug:Boolean = false):String
 		{
@@ -453,10 +414,10 @@ package temple.utils.types
 		}
 
 		/**
-		 * Description, Utility method that intelligently breaks up your string,
+		 * Utility method that intelligently breaks up your string,
 		 * allowing you to create blocks of readable text.
-		 * This method returns you the closest possible match to the p_delim paramater,
-		 * while keeping the text length within the p_len paramter.
+		 * This method returns you the closest possible match to the delim paramater,
+		 * while keeping the text length within the len paramter.
 		 * If a match can't be found in your specified length an  '...' is added to that block,
 		 * and the blocking continues untill all the text is broken apart.
 		 * @param source The string to break up.
@@ -537,7 +498,6 @@ package temple.utils.types
 		/**
 		 * Counts the total amount of words in a text
 		 * NOTE: does only work correctly for English texts
-		 * TODO: fix for all languages (see capitalize for nice RegExp)
 		 */
 		public static function countWords(source:String):uint
 		{
@@ -751,7 +711,7 @@ package temple.utils.types
 		}
 
 		/**
-		 * Remove's all &lt; and &gt; based tags from a string
+		 * Removes all &lt; and &gt; based tags from a string
 		 */
 		public static function stripTags(source:String):String
 		{
@@ -765,10 +725,10 @@ package temple.utils.types
 		/**
 		 * Swaps the casing of a string.
 		 */
-		public static function swapCase(p_string:String):String
+		public static function swapCase(string:String):String
 		{
-			if (p_string == null) return '';
-			return p_string.replace(/(\w)/, _swapCase);
+			if (string == null) return '';
+			return string.replace(/(\w)/, _swapCase);
 		}
 
 		private static function _swapCase(char:String, ...args):String

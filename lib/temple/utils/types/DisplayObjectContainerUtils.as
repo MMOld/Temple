@@ -149,7 +149,7 @@ package temple.utils.types
 		 * @param container the DisplayObjectContainer which contains the MovieClip
 		 * @param name the name of the MovieClip to find
 		 * 
-		 *  @return the MovieClip with the name
+		 * @return the MovieClip with the name
 		 */
 		public static function getMovieClip(container:DisplayObjectContainer, name:String):MovieClip
 		{
@@ -159,96 +159,6 @@ package temple.utils.types
 				throwError(new TempleArgumentError(DisplayObjectContainerUtils, 'the child named \'' + name + '\' in container \'' + container + '\' is not a MovieClip'));
 			}
 			return child as MovieClip;
-		}
-
-		/**
-		 * Searches for TextField in a DisplayObject and set the TextFormat as Default. In this way the textformat won't changes, when you change the text
-		 * 
-		 * @param displayObject The displayObject that contains the TextFields
-		 * @param recursive if set to true all childrens TextFields (and grantchildrens etc) will also be formatted
-		 * @param debug if set to true, debug information of the formatted TextFields will be logged
-		 * 
-		 * TODO: Shouldn't we move this function to TextFieldUtils?
-		 */
-		public static function formatTextFields(container:DisplayObjectContainer, recursive:Boolean = true, debug:Boolean = false):void
-		{
-			if(container == null) return;
-			
-			var child:DisplayObject;
-			
-			var leni:int = container.numChildren;
-			for (var i:int = 0;i < leni ;i++)
-			{
-				child = container.getChildAt(i);
-				
-				if(child is TextField)
-				{
-					TextField(child).defaultTextFormat = TextField(child).getTextFormat();
-					
-					if(debug) Log.debug("formatTextFields: found TextField '" + TextField(child).name + "', text: '" + TextField(child).text + "'", "temple.utils.types.DisplayObjectContainerUtils");
-				}
-				else if (recursive && child is DisplayObjectContainer)
-				{
-					DisplayObjectContainerUtils.formatTextFields(DisplayObjectContainer(child), recursive, debug);
-				}
-			}
-		}
-
-		/**
-		 * Searches for TextField in a DisplayObject and set the text to ''.
-		 * 
-		 * @param displayObject The displayObject that contains the TextFields
-		 * @param recursive if set to true all childrens TextFields (and grantchildrens etc) will also be formatted
-		 * @param debug if set to true, debug information of the formatted TextFields will be logged
-		 * 
-		 * TODO: Shouldn't we move this function to TextFieldUtils?
-		 */
-		public static function emptyTextFields(container:DisplayObjectContainer, recursive:Boolean = true, debug:Boolean = false):void
-		{
-			if(container == null) return;
-			
-			var child:DisplayObject;
-			
-			var leni:int = container.numChildren;
-			for (var i:int = 0;i < leni ;i++)
-			{
-				child = container.getChildAt(i);
-				
-				if(child is TextField)
-				{
-					if(debug) Log.debug("emptyTextFields: found TextField '" + TextField(child).name + "', text: '" + TextField(child).text + "'", "temple.utils.types.DisplayObjectContainerUtils");
-
-					TextField(child).text = '';
-				}
-				else if (recursive && child is DisplayObjectContainer)
-				{
-					DisplayObjectContainerUtils.emptyTextFields(DisplayObjectContainer(child), recursive, debug);
-				}
-			}
-		}
-
-		/**
-		 * Searches for TextFields in the displaylist and set embedFonts to true.
-		 * 
-		 * From Seb Lee-Delisle http://www.sebleedelisle.com/2009/08/font-embedding-wtf-in-flash/
-		 * 
-		 * TODO: Shouldn't we move this function to TextFieldUtils?
-		 */
-		public static function embedFontsInTextFields(container:DisplayObjectContainer):void
-		{
-			var child:DisplayObject;
-			for(var i:int = 0;i < container.numChildren;i++)
-			{
-				child = container.getChildAt(i); 
-				if(child is DisplayObjectContainer)
-				{
-					DisplayObjectContainerUtils.embedFontsInTextFields(child as DisplayObjectContainer);
-				} 
-				else if (child is TextField)
-				{
-					(child as TextField).embedFonts = true;
-				} 
-			}
 		}
 
 		/**

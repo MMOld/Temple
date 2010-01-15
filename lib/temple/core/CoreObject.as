@@ -44,15 +44,17 @@ package temple.core
 	import temple.debug.log.Log;
 
 	/**
-	 * Base class for all EventDispatchers in the Temple. The CoreEventDispatcher handles some core features of the Temple:
+	 * Base class for all Objects in the Temple. The CoreObject handles some core features of the Temple:
 	 * <ul>
-	 * 	<li>Registration to the Registry class</li>
-	 * 	<li>Wrapper for Log class for easy logging</li>
-	 * 	<li>Completely destructable</li>
-	 * 	<li>Can be tracked in Memory (of this feature is enabled)</li>
+	 * 	<li>Registration to the Registry class.</li>
+	 * 	<li>Wrapper for Log class for easy logging.</li>
+	 * 	<li>Completely destructable.</li>
+	 * 	<li>Tracked in Memory (of this feature is enabled).</li>
 	 * </ul>
 	 * 
-	 * <p>You should always use and/or extend the CoreSprite instead of Sprite if you want to make use of the Temple features.</p>
+	 * <p>You should always use and/or extend the CoreObject instead of Object if you want to make use of the Temple features.</p>
+	 * 
+	 * @see temple.Temple#registerObjectsInMemory()
 	 * 
 	 * @author Thijs Broerse
 	 */

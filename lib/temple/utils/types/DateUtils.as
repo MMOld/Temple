@@ -82,7 +82,6 @@ package temple.utils.types
 		
 		/**
 		 * Set language to Dutch
-		 * TODO: Intergrate with LanguageManager 
 		 */
 		public static function setDutch():void
 		{
