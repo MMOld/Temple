@@ -147,4 +147,36 @@
 	 <p>It is not nessessary to store a reference to the DragBehavior since the DragBehavior is automaticly destructed
 	 if the DisplayObject is destructed.</p>
 	 
-	 </div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->
+	 </div><div class="exampleHeader">DragBehaviorExample.as</div><br/><div class="detailBody"><div class="listing"><pre>package  
+{
+    import temple.ui.behaviors.DragBehavior;
+    import temple.core.CoreSprite;
+
+    import flash.display.Sprite;
+
+    public class DragBehaviorExample extends CoreSprite 
+    {
+        public function DragBehaviorExample()
+        {
+            super();
+            
+            // Create a new Sprite
+            var sprite:Sprite = new Sprite();
+            
+            // Draw a rectangle so we can see something
+            sprite.graphics.beginFill(0x000000);
+            sprite.graphics.drawRect(0, 0, 50, 50);
+            sprite.graphics.endFill();
+            
+            // add to stage
+            this.addChild(sprite);
+            
+            // add DragBehavior to make te sprite draggable
+            new DragBehavior(sprite);
+        }
+    }
+}
+</pre></div><script language="javascript" type="text/javascript"><!-- AC_FL_RunContent( "src", "DragBehaviorExample", "width", "100%",
+					"height","400px", "salign", "TL", "id", "example4", "quality", "high", "bgcolor", "", "name",
+						"example4", "flashvars","", "allowScriptAccess","sameDomain", "type",
+					"application/x-shockwave-flash","pluginspage", "http://www.macromedia.com/go/getflashplayer" ); --></script></div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->
