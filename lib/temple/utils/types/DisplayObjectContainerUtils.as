@@ -41,7 +41,6 @@ package temple.utils.types
 	import temple.debug.errors.TempleArgumentError;
 	import temple.debug.errors.throwError;
 	import temple.debug.getClassName;
-	import temple.debug.log.Log;
 
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;

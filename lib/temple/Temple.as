@@ -38,11 +38,11 @@
 
 package temple 
 {
-
-	import temple.debug.Registry;
-	import temple.debug.log.Log;
-	import temple.debug.getClassName;
 	import temple.debug.DebugMode;
+	import temple.debug.Registry;
+	import temple.debug.getClassName;
+	import temple.debug.log.Log;
+
 	/**
 	 * This class contains information about the Temple Library and some global properties and settings.
 	 * 
@@ -58,12 +58,17 @@ package temple
 		/**
 		 * The current version of the Temple Library
 		 */
-		public static const VERSION:String = "2.2.0";
+		public static const VERSION:String = "2.2.1";
 		
 		/**
 		 * The Authors of the Temple
 		 */
 		public static const AUTHOR:String = "MediaMonks: Thijs Broerse, Arjan van Wijk, Quinten Beek";
+		
+		/**
+		 * Last modified date of the Temple
+		 */
+		public static const DATE:String = "2010-01-26";
 		
 		/**
 		 * When set to true, all Temple objects are registered in the Memory class with a weak reference.

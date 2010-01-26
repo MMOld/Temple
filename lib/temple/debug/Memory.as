@@ -103,12 +103,12 @@ package temple.debug
 				if (!Memory._registry)
 				{
 					Memory._registry = new Dictionary(true);
-					Log.warn("registerObject: register enabled, all Temple Objects are tracked, please don't enable this in a live environment", "temple.debug.Memory");
+					Log.warn("RegisterObjectsInMemory enabled: all Temple Objects are tracked", Memory);
 				}
 				
 				if (Memory._registry[object])
 				{
-					Log.warn("registerObject: object '" + object + "' is already registered in Memory", "temple.debug.Memory");
+					Log.warn("Object '" + object + "' is already registered in Memory", Memory);
 				}
 				else
 				{

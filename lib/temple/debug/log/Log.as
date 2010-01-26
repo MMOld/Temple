@@ -55,6 +55,8 @@ limitations under the License.
 
 package temple.debug.log 
 {
+	import temple.utils.types.TimeUtils;
+
 	import flash.events.EventDispatcher;
 	import flash.utils.getTimer;
 
@@ -90,17 +92,25 @@ package temple.debug.log
 	 * </listing>
 	 * This will show the following output in the Flash IDE output window:
 	 * 
-	 * This is a debug message
-	 * This is an error message
-	 * This is an info message
+	 * @example
+	 * <listing version="3.0">
+	 * 	This is a debug message
+	 * 	This is an error message
+	 * 	This is an info message
+	 * </listing>
 	 * 
 	 * The standard trace output of the Log class looks as follows:
 	 * 
-	 * 13	debug: This is a debug message -- TestClass
-	 * 13	error: This is an error message -- TestClass
-	 * 13	info: This is an info message -- TestClass
+	 * @example
+	 * <listing version="3.0">
+	 *	13	debug: This is a debug message -- TestClass
+	 *	13	error: This is an error message -- TestClass
+	 *	13	info: This is an info message -- TestClass
+	 * </listing>
 	 * 
 	 * The number "13" is the time at which the log message was generated. This time is not kept in the LogEvent class.
+	 * 
+	 * @includeExample LogExample.as
 	 * 
 	 * @author stephan.bezoen
 	 */
@@ -224,7 +234,7 @@ package temple.debug.log
 		{
 			if (this._showTrace) 
 			{
-				trace(getTimer() + "\t" + level + ": " + String(data) + " -- " + (sender ? sender.toString() : 'null') + (objectId == 0 ? '' : " #" + objectId + "#"));
+				trace(TimeUtils.formatTime(getTimer()) + "\t" + level + ": " + String(data) + " -- " + (sender ? sender.toString() : 'null') + (objectId == 0 ? '' : " #" + objectId + "#"));
 			}
 			this.dispatchEvent(new LogEvent(level, data, sender ? sender.toString() : 'null', objectId));
 		}

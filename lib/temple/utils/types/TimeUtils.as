@@ -90,26 +90,15 @@ package temple.utils.types
 		 */
 		public static function secondsToString(seconds:Number):String 
 		{
-			var min:int = Math.floor(seconds / 60);
-			var sec:int = Math.floor(seconds % 60);
-			return StringUtils.padLeft(min.toString(), 2, "0") + ":" + StringUtils.padLeft(sec.toString(), 2, "0");
+			return StringUtils.padLeft(Math.floor(seconds / 60).toString(), 2, "0") + ":" + StringUtils.padLeft(Math.floor(seconds % 60).toString(), 2, "0");
 		}
 
 		/**
-		 * Format miliseconds as mm:ss:mm 
+		 * Format miliseconds as mm:ss.mmm 
 		 */
 		public static function formatTime(miliseconds:Number):String
 		{
-			var mili:String = (Math.round(Math.floor(miliseconds % 1000) / 10)).toString();
-			mili = (mili.length == 1) ? '0' + mili : mili;
-			
-			var seconds:String = (Math.floor(miliseconds / 1000) % 60).toString();
-			seconds = (seconds.length == 1) ? '0' + seconds : seconds;
-			
-			var minutes:String = (Math.floor(miliseconds / 60000)).toString();
-			minutes = (minutes.length == 1) ? '0' + minutes : minutes;
-			
-			return minutes + ':' + seconds + ':' + mili;
+			return StringUtils.padLeft(Math.floor(miliseconds / 60000).toString(), 2, "0") + ':' + StringUtils.padLeft((Math.floor(miliseconds * .001) % 60).toString(), 2, "0") + '.' + StringUtils.padLeft((Math.round(Math.floor(miliseconds % 1000))).toString(), 3, "0");;
 		}
 
 		/**
@@ -117,13 +106,7 @@ package temple.utils.types
 		 */
 		public static function formatMinutesSeconds(miliseconds:Number):String
 		{
-			var seconds:String = (Math.floor(miliseconds / 1000) % 60).toString();
-			seconds = (seconds.length == 1) ? '0' + seconds : seconds;
-			
-			var minutes:String = (Math.floor(miliseconds / 60000)).toString();
-			minutes = (minutes.length == 1) ? '0' + minutes : minutes;
-			
-			return minutes + ':' + seconds;
+			return StringUtils.padLeft((Math.floor(miliseconds / 1000) % 60).toString(), 2, "0") + ':' + StringUtils.padLeft((Math.floor(miliseconds / 60000) % 60).toString(), 2, "0");
 		}
 
 		/**
@@ -131,10 +114,7 @@ package temple.utils.types
 		 */
 		public static function formatMinutesSecondsAlt(miliseconds:Number):String
 		{
-			var seconds:String = (Math.floor(miliseconds / 1000) % 60).toString();
-			seconds = (seconds.length == 1) ? '0' + seconds : seconds;
-			
-			return (Math.floor(miliseconds / 60000)).toString() + ':' + seconds;
+			return (Math.floor(miliseconds / 60000)).toString() + ':' + StringUtils.padLeft((Math.floor(miliseconds / 60000) % 60).toString(), 2, "0");
 		}
 		
 		public static function toString():String

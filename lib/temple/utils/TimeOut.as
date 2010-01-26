@@ -40,6 +40,7 @@ package temple.utils
 {
 	import temple.core.CoreObject;
 	import temple.core.CoreTimer;
+	import temple.ui.IPauseable;
 
 	import flash.events.TimerEvent;
 	import flash.utils.getTimer;

@@ -38,8 +38,8 @@
 
 package temple.utils.types 
 {
-	import temple.utils.ObjectType;
 	import temple.debug.getClassName;
+	import temple.utils.ObjectType;
 
 	/**
 	 * This class contains some functions for Booleans.

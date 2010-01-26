@@ -93,6 +93,8 @@ package temple.ui.behaviors
 	 * <p>It is not nessessary to store a reference to the DragBehavior since the DragBehavior is automaticly destructed
 	 * if the DisplayObject is destructed.</p>
 	 * 
+	 * @includeExample DragBehaviorExample.as
+	 * 
 	 * @author Thijs Broerse
 	 */
 	public class DragBehavior extends BoundsBehavior implements IEnableable

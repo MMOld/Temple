@@ -38,9 +38,9 @@
 
 package temple.debug 
 {
-	import temple.destruction.Destructor;
 	import temple.Temple;
 	import temple.debug.log.Log;
+	import temple.destruction.Destructor;
 
 	import flash.utils.Dictionary;
 

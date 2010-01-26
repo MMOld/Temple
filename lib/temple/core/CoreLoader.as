@@ -38,8 +38,8 @@
 
 package temple.core 
 {
-	import temple.data.loader.IPreloader;
-	import temple.data.loader.PreloadableBehavior;
+	import temple.data.loader.preload.IPreloader;
+	import temple.data.loader.preload.PreloadableBehavior;
 	import temple.debug.Registry;
 	import temple.debug.getClassName;
 	import temple.debug.log.Log;
@@ -113,13 +113,13 @@ package temple.core
 		protected var _isLoading:Boolean;
 		protected var _isLoaded:Boolean;
 		protected var _logErrors:Boolean;
+		protected var _url:String;
 		
 		private var _eventListenerManager:EventListenerManager;
 		private var _isDestructed:Boolean;
 		private var _onStage:Boolean;
 		private var _onParent:Boolean;
 		private var _registryId:uint;
-		private var _url:String;
 
 		/**
 		 * Creates a new CoreLoader

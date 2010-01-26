@@ -49,63 +49,96 @@ package temple.utils.types
 	 */
 	public class StringUtils 
 	{
-
-		public static function repeat(source:String, amount:int):String
+		/**
+		 * Repeats a string
+		 * @param string the string to repeat
+		 * @param amount how many times the string should be repeated
+		 * 
+		 * @example
+		 * <listing version="3.0">
+		 * var string:String = "abc";
+		 * var result:String = StringUtils.repeat(string, 3);
+		 * trace(result); // abcabcabc
+		 * </listing>
+		 */
+		public static function repeat(string:String, amount:int):String
 		{
 			var ret:String = '';
 			for(var i:int = 0;i < amount;i++)
 			{
-				ret += source;
+				ret += string;
 			}
 			return ret;
 		}
 
-		public static function trimWhite(value:String):String
+		/**
+		 * Add a character to the left of a string till it has a specified length
+		 * @param string the original string
+		 * @param length the length of the result string
+		 * @param fillChar the character that need the be attached to the left of string
+		 * 
+		 * @example
+		 * <listing version="3.0">
+		 * var string:String = "1";
+		 * var result:String = StringUtils.padLeft(string, 3, "0");
+		 * trace(result); // 001
+		 * </listing>
+		 */
+		public static function padLeft(string:String, length:int, fillChar:String = ' '):String
 		{
-			var arr:Array = value.split('');
+			if (fillChar == null || fillChar.length == 0) throwError(new TempleArgumentError(StringUtils, "invalid value for fillChar: '" + fillChar + "'"))
 			
-			for(var i:int = value.length - 1;arr[i] == ' ';--i)
+			if(string.length < length)
 			{
-				arr.pop();
-			}
-			
-			for(i = 0;arr[i] == ' ';++i)
-			{
-				arr.shift();
-			}
-			
-			return arr.join('');
-		}
-
-		public static function padLeft(subject:String, length:int, fillChar:String = ' '):String
-		{
-			if(subject.length < length)
-			{
-				var iLim:Number = length - subject.length;
+				var iLim:Number = length - string.length;
 				for(var i:Number = 0;i < iLim;i++)
 				{
-					subject = fillChar + subject;
+					string = fillChar + string;
 				}
 			}
-			return subject;
+			return string;
 		}
 
-		public static function padRight(subject:String, length:int, fillChar:String = ' '):String
+		/**
+		 * Add a character to the right of a string till it has a specified length
+		 * @param string the original string
+		 * @param length the length of the result string
+		 * @param fillChar the character that need the be attached to the right of string
+		 * 
+		 * @example
+		 * <listing version="3.0">
+		 * var string:String = "1";
+		 * var result:String = StringUtils.padRight(string, 3, "0");
+		 * trace(result); // 100
+		 * </listing>
+		 */
+		public static function padRight(string:String, length:int, fillChar:String = ' '):String
 		{
-			if(subject.length < length)
+			if(string.length < length)
 			{
-				var iLim:Number = length - subject.length;
+				var iLim:Number = length - string.length;
 				for(var i:Number = 0;i < iLim;i++)
 				{
-					subject += fillChar;
+					string += fillChar;
 				}
 			}
-			return subject;
+			return string;
 		}
 
-		public static function toUpperCase(value:String):String
+		/**
+		 * Uppercases a string
+		 * @param string the string yo uppercase
+		 * 
+		 * @example
+		 * <listing version="3.0">
+		 * var string:String = "temple";
+		 * var result:String = StringUtils.toUpperCase(string);
+		 * trace(result); // TEMPLE
+		 * </listing>
+		 */
+		public static function toUpperCase(string:String):String
 		{
-			return value.toUpperCase();
+			return string.toUpperCase();
 		}
 
 		/**
@@ -119,46 +152,46 @@ package temple.utils.types
 
 		/**
 		 * Does a case insensitive compare or two strings and returns true if they are equal.
-		 * @param s1 The first string to compare.
+		 * @param string1 The first string to compare.
 		 * @param s2 The second string to compare.
+		 * @param An optional boolean indicating if the equal is case sensitive. Default is true.
 		 * @return A boolean value indicating whether the strings' values are equal in a case sensitive compare.	
 		 */			
-		public static function stringsAreEqual(s1:String, s2:String, 
-											caseSensitive:Boolean):Boolean
+		public static function stringsAreEqual(string1:String, string2:String, caseSensitive:Boolean = true):Boolean
 		{
 			if(caseSensitive)
 			{
-				return (s1 == s2);
+				return (string1 == string2);
 			}
 			else
 			{
-				return (s1.toUpperCase() == s2.toUpperCase());
+				return (string1.toUpperCase() == string2.toUpperCase());
 			}
 		}
 
 		/**
 		 * Removes whitespace from the front and the end of the specified string.
-		 * @param input The String whose beginning and ending whitespace will be removed.
+		 * @param string The String whose beginning and ending whitespace will be removed.
 		 * @return A String with whitespace removed from the begining and end	
 		 */			
-		public static function trim(input:String):String
+		public static function trim(string:String):String
 		{
-			return StringUtils.ltrim(StringUtils.rtrim(input));
+			return StringUtils.ltrim(StringUtils.rtrim(string));
 		}
 
 		/**
 		 * Removes whitespace from the front of the specified string.
-		 * @param input The String whose beginning whitespace will will be removed.
+		 * @param string The String whose beginning whitespace will will be removed.
 		 * @return A String with whitespace removed from the begining	
 		 */	
-		public static function ltrim(input:String):String
+		public static function ltrim(string:String):String
 		{
-			var size:Number = input.length;
+			var size:Number = string.length;
 			for(var i:Number = 0;i < size;i++)
 			{
-				if(input.charCodeAt(i) > 32)
+				if(string.charCodeAt(i) > 32)
 				{
-					return input.substring(i);
+					return string.substring(i);
 				}
 			}
 			return "";
@@ -166,17 +199,17 @@ package temple.utils.types
 
 		/**
 		 * Removes whitespace from the end of the specified string.
-		 * @param input The String whose ending whitespace will will be removed.
+		 * @param string The String whose ending whitespace will will be removed.
 		 * @return A String with whitespace removed from the end	
 		 */	
-		public static function rtrim(input:String):String
+		public static function rtrim(string:String):String
 		{
-			var size:Number = input.length;
+			var size:Number = string.length;
 			for(var i:Number = size;i > 0;i--)
 			{
-				if(input.charCodeAt(i - 1) > 32)
+				if(string.charCodeAt(i - 1) > 32)
 				{
-					return input.substring(0, i);
+					return string.substring(0, i);
 				}
 			}
 
@@ -185,49 +218,38 @@ package temple.utils.types
 
 		/**
 		 * Determines whether the specified string begins with the spcified prefix.
-		 * @param input The string that the prefix will be checked against.
+		 * @param string The string that the prefix will be checked against.
 		 * @param prefix The prefix that will be tested against the string.
 		 * @return true if the string starts with the prefix, false if it does not.
 		 */	
-		public static function beginsWith(input:String, prefix:String):Boolean
+		public static function beginsWith(string:String, prefix:String):Boolean
 		{			
-			return (prefix == input.substring(0, prefix.length));
+			return (prefix == string.substring(0, prefix.length));
 		}	
 
 		/**
 		 * Determines whether the specified string ends with the spcified suffix.
-		 * @param input The string that the suffic will be checked against.
+		 * @param string The string that the suffic will be checked against.
 		 * @param prefix The suffic that will be tested against the string.
 		 * @return true if the string ends with the suffix, false if it does not.
 		 */	
-		public static function endsWith(input:String, suffix:String):Boolean
+		public static function endsWith(string:String, suffix:String):Boolean
 		{
-			return (suffix == input.substring(input.length - suffix.length));
+			return (suffix == string.substring(string.length - suffix.length));
 		}	
 
 		/**
 		 * Removes all instances of the remove string in the input string.
-		 * @param input The string that will be checked for instances of remove
-		 * @param remove The string that will be removed from the input string.
-		 * @return A String with the remove string removed.
-		 */	
-		public static function remove(input:String, remove:String):String
-		{
-			return StringUtils.replace(input, remove, "");
-		}
-
-		/**
-		 * Removes all instances of the remove string in the input string.
-		 * @param source The string that will be checked for instances of remove
+		 * @param string The string that will be checked for instances of remove
 		 * @param remove The string that will be removed from the input string.
 		 * @param caseSensitive An optional boolean indicating if the replace is case sensitive. Default is true.
 		 */
-		public static function remove2(source:String, remove:String, caseSensitive:Boolean = true):String
+		public static function remove(string:String, remove:String, caseSensitive:Boolean = true):String
 		{
-			if (source == null) return '';
+			if (string == null) return '';
 			var rem:String = StringUtils.escapePattern(remove);
 			var flags:String = (!caseSensitive) ? 'ig' : 'g';
-			return source.replace(new RegExp(rem, flags), '');
+			return string.replace(new RegExp(rem, flags), '');
 		}
 
 		private static function escapePattern(pattern:String):String 
@@ -237,27 +259,27 @@ package temple.utils.types
 
 		/**
 		 * Replaces all instances of the replace string in the input string with the replaceWith string.
-		 * @param input The string that instances of replace string will be replaces with removeWith string.
+		 * @param string The string that instances of replace string will be replaces with removeWith string.
 		 * @param replace The string that will be replaced by instances of the replaceWith string.
 		 * @param replaceWith The string that will replace instances of replace string.
 		 * @return A new String with the replace string replaced with the replaceWith string.
 		 */
-		public static function replace(input:String, replace:String, replaceWith:String):String
+		public static function replace(string:String, replace:String, replaceWith:String):String
 		{
 			var sb:String = new String();
 			var found:Boolean = false;
 
-			var sLen:Number = input.length;
+			var sLen:Number = string.length;
 			var rLen:Number = replace.length;
 
 			for (var i:Number = 0;i < sLen;i++)
 			{
-				if(input.charAt(i) == replace.charAt(0))
+				if(string.charAt(i) == replace.charAt(0))
 				{   
 					found = true;
 					for(var j:Number = 0;j < rLen;j++)
 					{
-						if(!(input.charAt(i + j) == replace.charAt(j)))
+						if(!(string.charAt(i + j) == replace.charAt(j)))
 						{
 							found = false;
 							break;
@@ -271,38 +293,18 @@ package temple.utils.types
 						continue;
 					}
 				}
-				sb += input.charAt(i);
+				sb += string.charAt(i);
 			}
 			return sb;
 		}
 
 		/**
-		 * Replace template fields in a String 
-		 * @param input The string that instances of replace string will be 
-		 * replaces with removeWith string.
-		 * @param templateHash Object which property-names will be replaced with those values
-		 * {name:'Henk',age:'12'}
-		 */
-		public static function replaceTemplateFields(input:String, templateHash:Object):String
-		{
-			for (var key:String in templateHash)
-			{
-				input = StringUtils.replace(input, '{' + key + '}', templateHash[key]);
-			}
-			return input;
-		}
-
-		/**
-		 * Same as replaceTemplateFields but can also handle typed objects
-		 * 
 		 * Replaces vars in a String. Vars defined between {}: '{var}'.
 		 * Searches for a value in de object with the same name as the var
 		 * 
 		 * @example
 		 * <listing version="3.0">
-		 * trace(StringUtils.replaceVars("hi, my name is {name}", {name:'Thijs'});
-		 * 
-		 * // output: hi, my name is Thijs
+		 * trace(StringUtils.replaceVars("hi, my name is {name}", {name:'Thijs'}); // hi, my name is Thijs
 		 * </listing>
 		 */
 		public static function replaceVars(string:String, object:Object, debug:Boolean = false):String
@@ -322,119 +324,116 @@ package temple.utils.types
 		/**
 		 * Returns everything after the first occurrence of the provided character in the string.
 		 */
-		public static function afterFirst(source:String, character:String):String 
+		public static function afterFirst(string:String, character:String):String 
 		{
-			if (source == null) 
+			if (string == null) 
 			{ 
 				return ''; 
 			}
-			var idx:int = source.indexOf(character);
+			var idx:int = string.indexOf(character);
 			if (idx == -1) 
 			{ 
 				return ''; 
 			}
 			idx += character.length;
-			return source.substr(idx);
+			return string.substr(idx);
 		}
 
 		/**
 		 * Returns everything after the last occurence of the provided character in source.
 		 */
-		public static function afterLast(source:String, character:String):String 
+		public static function afterLast(string:String, character:String):String 
 		{
-			if (source == null) 
+			if (string == null) 
 			{ 
 				return ''; 
 			}
-			var idx:int = source.lastIndexOf(character);
+			var idx:int = string.lastIndexOf(character);
 			if (idx == -1) 
 			{ 
 				return ''; 
 			}
 			idx += character.length;
-			return source.substr(idx);
+			return string.substr(idx);
 		}
 
 		/**
 		 * Returns everything before the first occurrence of the provided character in the string.
 		 */
-		public static function beforeFirst(source:String, character:String):String 
+		public static function beforeFirst(string:String, character:String):String 
 		{
-			if (source == null) 
+			if (string == null) 
 			{ 
 				return ''; 
 			}
-			var characterIndex:int = source.indexOf(character);
+			var characterIndex:int = string.indexOf(character);
 			if (characterIndex == -1) 
 			{ 
 				return ''; 
 			}
-			return source.substr(0, characterIndex);
+			return string.substr(0, characterIndex);
 		}
 
 		/**
 		 * Returns everything before the last occurrence of the provided character in the string.
 		 */
-		public static function beforeLast(source:String, character:String):String 
+		public static function beforeLast(string:String, character:String):String 
 		{
-			if (source == null) 
+			if (string == null) 
 			{ 
 				return ''; 
 			}
-			var characterIndex:int = source.lastIndexOf(character);
+			var characterIndex:int = string.lastIndexOf(character);
 			if (characterIndex == -1) 
 			{ 
 				return ''; 
 			}
-			return source.substr(0, characterIndex);
+			return string.substr(0, characterIndex);
 		}
 
 		/**
 		 * Returns everything after the first occurance of start and before the first occurrence of end in the given string.
 		 */
-		public static function between(source:String, start:String, end:String):String 
+		public static function between(string:String, start:String, end:String):String 
 		{
 			var str:String = '';
-			if (source == null) 
+			if (string == null) 
 			{ 
 				return str; 
 			}
-			var startIdx:int = source.indexOf(start);
+			var startIdx:int = string.indexOf(start);
 			if (startIdx != -1) 
 			{
 				startIdx += start.length; 
 				
-				var endIdx:int = source.indexOf(end, startIdx);
+				var endIdx:int = string.indexOf(end, startIdx);
 				if (endIdx != -1) 
 				{ 
-					str = source.substr(startIdx, endIdx - startIdx); 
+					str = string.substr(startIdx, endIdx - startIdx); 
 				}
 			}
 			return str;
 		}
 
 		/**
-		 * Utility method that intelligently breaks up your string,
-		 * allowing you to create blocks of readable text.
-		 * This method returns you the closest possible match to the delim paramater,
-		 * while keeping the text length within the len paramter.
-		 * If a match can't be found in your specified length an  '...' is added to that block,
-		 * and the blocking continues untill all the text is broken apart.
-		 * @param source The string to break up.
+		 * Utility method that intelligently breaks up your string, allowing you to create blocks of readable text.
+		 * This method returns you the closest possible match to the delim paramater, while keeping the text length within the len paramter.
+		 * If a match can't be found in your specified length an  '...' is added to that block, and the blocking continues untill all the text is broken apart.
+		 * @param string The string to break up.
 		 * @param len Maximum length of each block of text.
 		 * @param delim delimter to end text blocks on, default = '.'
 		 */
-		public static function block(source:String, len:uint, delim:String = "."):Array
+		public static function block(string:String, len:uint, delim:String = "."):Array
 		{
 			var array:Array = new Array();
-			if (source == null || !contains(source, delim)) return array;
+			if (string == null || !contains(string, delim)) return array;
 			
 			var chrIndex:uint = 0;
-			var strLen:uint = source.length;
+			var strLen:uint = string.length;
 			var replPatt:RegExp = new RegExp("[^" + escapePattern(delim) + "]+$");
 			while (chrIndex < strLen)
 			{
-				var subString:String = source.substr(chrIndex, len);
+				var subString:String = string.substr(chrIndex, len);
 				if (!contains(subString, delim))
 				{
 					array.push(truncate(subString, subString.length));
@@ -449,24 +448,24 @@ package temple.utils.types
 
 		/**
 		 * Capitallizes all words in a string
-		 * @param source The string.
+		 * @param string The string.
+		 * 
+		 * @example
+		 * <listing version="3.0">
+		 * trace(StringUtils.capitalize("all words should be capitalized")); // All Words Should Be Capitalized
+		 * </listing>
 		 */
-		public static function capitalize(source:String):String
+		public static function capitalize(string:String):String
 		{
-			return StringUtils.ltrim(source).replace(/^[^\s:,.\-'"]|(?<=[\s:,.\-'"])[^\s:,.\-'"]/g, StringUtils._upperCase);
-		}
-
-		private static function _upperCase(char:String, ...args):String
-		{
-			return char.toUpperCase();
+			return StringUtils.ltrim(string).replace(/^[^\s:,.\-'"]|(?<=[\s:,.\-'"])[^\s:,.\-'"]/g, function (string:String, ...args):String{ return string.toUpperCase();});
 		}
 
 		/**
 		 * Returns a string with the first character of source capitalized, if that character is alphabetic.
 		 */
-		public static function ucFirst(source:String):String
+		public static function ucFirst(string:String):String
 		{
-			return source.substr(0, 1).toUpperCase() + source.substr(1);
+			return string.substr(0, 1).toUpperCase() + string.substr(1);
 		}
 
 		/**
@@ -480,46 +479,46 @@ package temple.utils.types
 
 		/**
 		 * Determines the number of times a charactor or sub-string appears within the string.
-		 * @param source The string.
+		 * @param string The string.
 		 * @param char The character or sub-string to count.
 		 * @param caseSensitive (optional, default is true) A boolean flag to indicate if the search is case sensitive.
 		 */
-		public static function countOf(source:String, char:String, caseSensitive:Boolean = true):uint 
+		public static function countOf(string:String, char:String, caseSensitive:Boolean = true):uint 
 		{
-			if (source == null) 
+			if (string == null) 
 			{ 
 				return 0; 
 			}
 			char = escapePattern(char);
 			var flags:String = (!caseSensitive) ? 'ig' : 'g';
-			return source.match(new RegExp(char, flags)).length;
+			return string.match(new RegExp(char, flags)).length;
 		}
 
 		/**
 		 * Counts the total amount of words in a text
 		 * NOTE: does only work correctly for English texts
 		 */
-		public static function countWords(source:String):uint
+		public static function countWords(string:String):uint
 		{
-			if (source == null) return 0;
-			return source.match(/\b\w+\b/g).length;
+			if (string == null) return 0;
+			return string.match(/\b\w+\b/g).length;
 		}
 
 		/**
 		 * Levenshtein distance (editDistance) is a measure of the similarity between two strings. The distance is the number of deletions, insertions, or substitutions required to transform source into target.
 		 */
-		public static function editDistance(source:String, target:String):uint 
+		public static function editDistance(string:String, target:String):uint 
 		{
 			var i:uint;
 
-			if (source == null) source = '';
+			if (string == null) string = '';
 			if (target == null) target = '';
 
-			if (source == target) return 0;
+			if (string == target) return 0;
 
 			var d:Array = new Array();
 			var cost:uint;
-			var n:uint = source.length;
+			var n:uint = string.length;
 			var m:uint = target.length;
 			var j:uint;
 
@@ -532,7 +531,7 @@ package temple.utils.types
 
 			for (i = 1;i <= n;i++)
 			{
-				var s_i:String = source.charAt(i - 1);
+				var s_i:String = string.charAt(i - 1);
 				for (j = 1;j <= m;j++) 
 				{
 
@@ -629,23 +628,23 @@ package temple.utils.types
 		/**
 		 * Properly cases' the string in "sentence format".
 		 */
-		public static function properCase(source:String):String
+		public static function properCase(string:String):String
 		{
-			if (source == null) 
+			if (string == null) 
 			{ 
 				return ''; 
 			}
-			var str:String = source.toLowerCase().replace(/\b([^.?;!]+)/, capitalize);
+			var str:String = string.toLowerCase().replace(/\b([^.?;!]+)/, capitalize);
 			return str.replace(/\b[i]\b/, "I");
 		}
 
 		/**
 		 * Escapes all of the characters in a string to create a friendly "quotable" sting
 		 */
-		public static function quote(source:String):String
+		public static function quote(string:String):String
 		{
 			var regx:RegExp = /[\\"\r\n]/g;
-			return '"' + source.replace(regx, _quote) + '"'; //"
+			return '"' + string.replace(regx, _quote) + '"'; //"
 		}
 
 		private static function _quote(source:String, ...args):String
@@ -668,38 +667,38 @@ package temple.utils.types
 		/**
 		 * Removes extraneous whitespace (extra spaces, tabs, line breaks, etc) from the specified string.
 		 */
-		public static function removeExtraWhitespace(source:String):String
+		public static function removeExtraWhitespace(string:String):String
 		{
-			if (source == null) return '';
-			var str:String = trim(source);
+			if (string == null) return '';
+			var str:String = trim(string);
 			return str.replace(/\s+/g, ' ');
 		}
 
 		/**
 		 * Returns the specified string in reverse character order.
 		 */
-		public static function reverse(source:String):String
+		public static function reverse(string:String):String
 		{
-			if (source == null) return '';
-			return source.split('').reverse().join('');
+			if (string == null) return '';
+			return string.split('').reverse().join('');
 		}
 
 		/**
 		 * Returns the specified string in reverse word order.
 		 */
-		public static function reverseWords(source:String):String
+		public static function reverseWords(string:String):String
 		{
-			if (source == null) return '';
-			return source.split(/\s+/).reverse().join('');
+			if (string == null) return '';
+			return string.split(/\s+/).reverse().join('');
 		}
 
 		/**
 		 * Determines the percentage of similiarity, based on editDistance
 		 */
-		public static function similarity(source:String, target:String):Number 
+		public static function similarity(string:String, target:String):Number 
 		{
-			var ed:uint = editDistance(source, target);
-			var maxLen:uint = Math.max(source.length, target.length);
+			var ed:uint = editDistance(string, target);
+			var maxLen:uint = Math.max(string.length, target.length);
 			if (maxLen == 0)
 			{
 				return 100;
@@ -713,13 +712,13 @@ package temple.utils.types
 		/**
 		 * Removes all &lt; and &gt; based tags from a string
 		 */
-		public static function stripTags(source:String):String
+		public static function stripTags(string:String):String
 		{
-			if (source == null) 
+			if (string == null) 
 			{ 
 				return ''; 
 			}
-			return source.replace(/<\/?[^>]+>/igm, '');
+			return string.replace(/<\/?[^>]+>/igm, '');
 		}
 
 		/**
@@ -748,19 +747,19 @@ package temple.utils.types
 
 		/**
 		 * Returns a string truncated to a specified length with optional suffix
-		 * @param source The string.
+		 * @param string The string.
 		 * @param len The length the string should be shortend to
 		 * @param suffix (optional, default=...) The string to append to the end of the truncated string.
 		 */
-		public static function truncate(source:String, len:uint, suffix:String = "..."):String 
+		public static function truncate(string:String, len:uint, suffix:String = "..."):String 
 		{
-			if (source == null) return '';
+			if (string == null) return '';
 			len -= suffix.length;
-			var trunc:String = source;
+			var trunc:String = string;
 			if (trunc.length > len)
 			{
 				trunc = trunc.substr(0, len);
-				if ((/[^\s]/ as RegExp).test(source.charAt(len)))
+				if ((/[^\s]/ as RegExp).test(string.charAt(len)))
 				{
 					trunc = StringUtils.rtrim(trunc.replace(/\w+$|\s+$/, ''));
 				}

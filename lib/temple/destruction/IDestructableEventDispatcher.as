@@ -39,7 +39,7 @@
 package temple.destruction 
 {
 	import flash.events.IEventDispatcher;
-	
+
 	/**
 	 * @eventType temple.destruction.DestructEvent.DESTRUCT
 	 */

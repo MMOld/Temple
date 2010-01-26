@@ -39,9 +39,9 @@
 package temple.utils.types 
 {
 	import temple.Temple;
-	import temple.utils.ObjectType;
 	import temple.data.xml.XMLParser;
 	import temple.debug.getClassName;
+	import temple.utils.ObjectType;
 
 	import flash.utils.describeType;
 	import flash.utils.getDefinitionByName;
@@ -274,7 +274,6 @@ package temple.utils.types
 			{
 				result[node.@name] = object[node.@name];
 			};
-			
 			return result;
 		}
 		

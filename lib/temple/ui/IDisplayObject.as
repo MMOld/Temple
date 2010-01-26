@@ -38,7 +38,6 @@
 
 package temple.ui 
 {
-
 	import flash.accessibility.AccessibilityProperties;
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;

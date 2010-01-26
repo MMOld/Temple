@@ -39,7 +39,7 @@
 package temple.core 
 {
 	import temple.data.loader.ILoader;
-	import temple.data.loader.IPreloadable;
+	import temple.data.loader.preload.IPreloadable;
 	import temple.destruction.IDestructableEventDispatcher;
 
 	/**

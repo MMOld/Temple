@@ -47,7 +47,9 @@ package temple.ui.behaviors
 	[Event(name = "BoundsBehaviorEvent.bounced", type = "temple.ui.behaviors.BoundsBehaviorEvent")]
 
 	/**
-	 * Behavior the keep DisplayObject whitin a bounds. Used as base class for other Behaviors like DragBehavior
+	 * Behavior the keep DisplayObject within a bounds. Used as base class for other Behaviors like DragBehavior
+	 * 
+	 * @includeExample BoundsBehaviorExample.as
 	 * 
 	 * @author Arjan (arjan at mediamonks dot com)
 	 */

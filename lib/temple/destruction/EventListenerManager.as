@@ -37,14 +37,14 @@
  */
 
 package temple.destruction 
-{	import temple.debug.errors.TempleError;
+{	import temple.core.CoreObject;
 	import temple.debug.errors.TempleArgumentError;
+	import temple.debug.errors.TempleError;
 	import temple.debug.errors.throwError;
-	import temple.core.CoreObject;
 
 	import flash.events.Event;
 	import flash.events.IEventDispatcher;
-	
+
 	/**
 	 * The EventListenerManager store information about event listeners on an object. Since all listeners are stored they can easely be removed, by type, listener or all.
 	 * The EventListenerManager only stores information about strong (non weak) listeners. Since storing a reference to listener will make the listener strong.

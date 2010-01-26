@@ -39,6 +39,7 @@
 package temple.ui.behaviors 
 {
 	import temple.behaviors.AbstractBehaviorEvent;
+
 	import flash.display.DisplayObject;
 
 	/**

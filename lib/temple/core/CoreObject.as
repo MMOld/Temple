@@ -38,10 +38,10 @@
 
 package temple.core 
 {
-	import temple.destruction.Destructor;
 	import temple.debug.Registry;
 	import temple.debug.getClassName;
 	import temple.debug.log.Log;
+	import temple.destruction.Destructor;
 
 	/**
 	 * Base class for all Objects in the Temple. The CoreObject handles some core features of the Temple:

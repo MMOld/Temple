@@ -42,7 +42,6 @@ package temple.debug
 
 	import flash.utils.getQualifiedClassName;
 	
-
 	/**
 	 * Creates a nice readable string of a object or class. Uses getQualifiedClassName internally but you can disable full package display in the Temple.as file
 	 * 

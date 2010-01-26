@@ -89,7 +89,7 @@ package temple.core
 		public function CoreShape(name:String = null)
 		{
 			this._eventListenerManager = new EventListenerManager(this);
-			this.name = name;
+			if (name) this.name = name;
 			super();
 			
 			if (this.loaderInfo) this.loaderInfo.addEventListener(Event.UNLOAD, temple::handleCoreUnload, false, 0, true);

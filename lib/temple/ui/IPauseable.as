@@ -36,7 +36,7 @@
  *	
  */
 
-package temple.utils 
+package temple.ui 
 {
 
 	/**

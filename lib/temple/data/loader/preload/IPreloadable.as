@@ -36,7 +36,7 @@
  *	
  */
 
-package temple.data.loader 
+package temple.data.loader.preload 
 {
 
 	/**

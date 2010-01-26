@@ -39,7 +39,7 @@
 package temple.utils.types 
 {
 	import temple.debug.getClassName;
-	
+
 	/**
 	 * This class contains some functions for Numbers.
 	 */

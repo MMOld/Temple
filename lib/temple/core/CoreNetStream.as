@@ -38,8 +38,8 @@
  
 package temple.core 
 {
-	import temple.data.loader.IPreloader;
-	import temple.data.loader.PreloadableBehavior;
+	import temple.data.loader.preload.IPreloader;
+	import temple.data.loader.preload.PreloadableBehavior;
 	import temple.debug.Registry;
 	import temple.debug.getClassName;
 	import temple.debug.log.Log;

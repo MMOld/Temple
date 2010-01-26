@@ -38,12 +38,11 @@
 
 package temple.data.collections 
 {
-	import temple.destruction.Destructor;
-	import temple.debug.Registry;
-
 	import Array;
 	import Boolean;
 	import temple.core.ICoreObject;
+	import temple.debug.Registry;
+	import temple.destruction.Destructor;
 
 	import uint;
 

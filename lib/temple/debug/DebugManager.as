@@ -38,18 +38,18 @@
 
 package temple.debug 
 {
-	import temple.debug.errors.throwError;
-	import temple.debug.errors.TempleError;
 	import temple.Temple;
 	import temple.core.CoreObject;
+	import temple.debug.errors.TempleError;
+	import temple.debug.errors.throwError;
 
 	import flash.external.ExternalInterface;
 	import flash.utils.Dictionary;
 
 	/**
-	 * <p>This class is used to manage objects that can be debugged</p>
-	 * <p>Object(-trees) can be added so they can be listed and managed by external tools</p>
-	 * <p>There also is a global setting to apply debugging to all added objects</p>
+	 * This class is used to manage objects that can be debugged.
+	 * <p>Object(-trees) can be added so they can be listed and managed by external tools.</p>
+	 * <p>There also is a global setting to apply debugging to all added objects.</p>
 	 * 
 	 * @author Arjan van Wijk, Thijs Broerse
 	 * 
