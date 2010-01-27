@@ -47,7 +47,7 @@ package temple.utils
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class TraceUtils 
+	public final class TraceUtils 
 	{
 		public static const STACK_TRACE_NEWLINE_INDENT:String = "\n   ";
 		

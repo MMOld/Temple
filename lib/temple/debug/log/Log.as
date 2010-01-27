@@ -114,7 +114,7 @@ package temple.debug.log
 	 * 
 	 * @author stephan.bezoen
 	 */
-	public class Log extends EventDispatcher 
+	public final class Log extends EventDispatcher 
 	{
 		private static var _instance:Log;
 

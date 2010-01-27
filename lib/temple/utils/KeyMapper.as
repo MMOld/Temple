@@ -48,7 +48,7 @@ package temple.utils
 	import flash.events.KeyboardEvent;
 
 	/**
-	 * Class for directly coupling Keyboard events to actions, without having to bother about event filtering
+	 * Class for directly coupling Keyboard events to actions, without having to bother about event filtering.
 	 * 
 	 * @example
 	 * <listing version="3.0">
@@ -69,6 +69,8 @@ package temple.utils
 	 * <listing version="3.0">
 	 * keyMapper.destruct();
 	 * </listing>
+	 * 
+	 * @includeExample KeyMapperExample.as
 	 * 
 	 * @author Thijs Broerse
 	 */

@@ -36,6 +36,7 @@
  *	
  */
 
+
 package temple 
 {
 	import temple.debug.DebugMode;
@@ -48,7 +49,7 @@ package temple
 	 * 
 	 * <p>Note: This class contains only static properties. Therefore this class cannot be instantiated.</p> 
 	 */
-	public class Temple 
+	public final class Temple 
 	{
 		/**
 		 * The name of the Temple
@@ -58,7 +59,7 @@ package temple
 		/**
 		 * The current version of the Temple Library
 		 */
-		public static const VERSION:String = "2.2.1";
+		public static const VERSION:String = "2.2.2";
 		
 		/**
 		 * The Authors of the Temple
@@ -68,7 +69,13 @@ package temple
 		/**
 		 * Last modified date of the Temple
 		 */
-		public static const DATE:String = "2010-01-26";
+		public static const DATE:String = "2010-01-27";
+
+		/**
+		 * The official website of the Temple.
+		 * <a href="http://code.google.com/p/templelibrary/" target="_blank">http://code.google.com/p/templelibrary/</a>
+		 */
+		public static const WEBSITE:String = "http://code.google.com/p/templelibrary/";
 		
 		/**
 		 * When set to true, all Temple objects are registered in the Memory class with a weak reference.

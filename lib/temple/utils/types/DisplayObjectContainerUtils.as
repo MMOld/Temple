@@ -53,7 +53,7 @@ package temple.utils.types
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class DisplayObjectContainerUtils 
+	public final class DisplayObjectContainerUtils 
 	{
 		/**
 		 * Searches the display list for a child of a specific type. Returns the first found child

@@ -44,7 +44,7 @@ package temple.utils
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class HTMLEntities 
+	public final class HTMLEntities 
 	{
 		private static var _ENTITIES:Object;
 		

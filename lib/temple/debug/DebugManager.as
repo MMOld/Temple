@@ -71,7 +71,7 @@ package temple.debug
 	 * DebugManager.debugMode = DebugManager.ALL;
 	 * </listing>
 	 */
-	public class DebugManager extends CoreObject implements IDebuggable
+	public final class DebugManager extends CoreObject implements IDebuggable
 	{
 		private static var _instance:DebugManager;
 		private static var _debugMode:uint;

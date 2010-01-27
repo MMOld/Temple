@@ -36,19 +36,13 @@
  *	
  */
 
-/*
-Copyright (c) 2008 Yahoo! Inc.  All rights reserved.  
-The copyrights embodied in the content of this file are licensed under the BSD (revised) open source license
- */
 package temple.utils
 {
 
 	/**
 	 * A collection of constants for date and time units.
-	 * 
-	 * @author Josh Tynjala
 	 */
-	public class TimeUnit
+	public final class TimeUnit
 	{
 		/**
 		 * A constant representing the year unit in date and time values.

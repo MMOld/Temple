@@ -64,7 +64,7 @@ package temple.utils
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class SiteDisabler extends CoreObject
+	public final class SiteDisabler extends CoreObject
 	{
 		/**
 		 * Disables the site (not the SiteDisabler)

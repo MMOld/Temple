@@ -53,7 +53,7 @@ package temple.utils.types
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class TextFieldUtils 
+	public final class TextFieldUtils 
 	{
 		private static const _MAGICAL_TEXTWIDTH_PADDING:Number = 3;
 

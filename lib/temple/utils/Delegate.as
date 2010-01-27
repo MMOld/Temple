@@ -36,70 +36,33 @@
  *	
  */
 
-package temple.ui.layout 
+package temple.utils 
 {
 
 	/**
-	 * This class contains possible values for alignments. Not all alignments are valid for all alignable objects.
+	 * Allows you to delegate a function call (with arguments) to specific scopes and function.
 	 * 
-	 * @author Thijs Broerse
+	 * <p>Usefull when you need to wrap arguments inside a function.</p> 
+	 * 
+	 * @includeExample DelegateExample.as
+	 * 
+	 * @author Arjan van Wijk (arjan at mediamonks dot com)
 	 */
-	public final class Align 
+	public final class Delegate 
 	{
 		/**
-		 * Align to the left
+		 * Creates a function delegate
+		 * @param handler the function that needs to be delegated
+		 * @param scope the scope of the funtion
+		 * @param args a list of arguments to be passed to the function
+		 * @return a function
 		 */
-		public static const LEFT:String = "left";
-		
-		/**
-		 * Align to the center
-		 */
-		public static const CENTER:String = "center";
-		
-		/**
-		 * Align to the right
-		 */
-		public static const RIGHT:String = "right";
-		
-		/**
-		 * Align to the top
-		 */
-		public static const TOP:String = "top";
-		
-		/**
-		 * Align to the middle
-		 */
-		public static const MIDDLE:String = "middle";
-		
-		/**
-		 * Align to the bottom
-		 */
-		public static const BOTTOM:String = "bottom";
-		
-		
-		/**
-		 * Align to the top and the left
-		 */
-		public static const TOP_LEFT:String = "topLeft";
-		
-		/**
-		 * Align to the top and the right
-		 */
-		public static const TOP_RIGHT:String = "topRight";
-		
-		/**
-		 * Align to the bottom and the left
-		 */
-		public static const BOTTOM_LEFT:String = "bottomLeft";
-		
-		/**
-		 * Align to the bottom and the right
-		 */
-		public static const BOTTOM_RIGHT:String = "bottomRight";
-		
-		/**
-		 * No alignment
-		 */
-		public static const NONE:String = "none";
+		public static function create(handler:Function, scope:Object = null,...args):Function
+		{
+			return function(...innerArgs):void
+			{
+				handler.apply(scope, (innerArgs as Array).concat(args));
+			};
+		}
 	}
 }

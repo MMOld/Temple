@@ -65,7 +65,7 @@ package temple.debug
 	 * @date 9 jun 2009 15:05:27
 	 * @author Arjan van Wijk (arjan at mediamonks dot com)
 	 */
-	public class Registry 
+	public final class Registry 
 	{
 		private static var _objectList:Dictionary;
 		private static var _object_id:uint = 0;

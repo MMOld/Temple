@@ -86,7 +86,7 @@ package temple.utils
 	 * }
 	 * </listing>
 	 */
-	public class FrameDelay extends CoreObject
+	public final class FrameDelay extends CoreObject
 	{
 		private var _isDone:Boolean = false;
 		private var _currentFrame:int;

@@ -49,7 +49,7 @@ package temple.utils.types
 	 * @author Bart (bart at mediamonks dot com)
 	 * 
 	 */
-	public class ClassUtils 
+	public final class ClassUtils 
 	{
 		/**
 		 * Check if a given Class is a subClass of another Class or implements a Class or Interface.

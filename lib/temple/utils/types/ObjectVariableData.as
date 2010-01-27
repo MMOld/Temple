@@ -43,7 +43,7 @@ package temple.utils.types
 	/**
 	 * @author Thijs Broerse
 	 */
-	internal class ObjectVariableData implements IXMLParsable 
+	internal final class ObjectVariableData implements IXMLParsable 
 	{
 		public var name:*;
 		public var type:String;

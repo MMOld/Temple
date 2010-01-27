@@ -45,7 +45,7 @@ package temple.utils.types
 	 * @date 3 dec 2008 10:13:51
 	 * @author Arjan van Wijk (arjan at mediamonks dot com)
 	 */
-	public class RegExpUtils 
+	public final class RegExpUtils 
 	{
 		/**
 		 * Searches text for all matches to the regular expression given in pattern and return the result.

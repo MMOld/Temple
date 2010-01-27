@@ -45,7 +45,7 @@ package temple.utils.types
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class URLUtils 
+	public final class URLUtils 
 	{
 		 /**
          * Provides the value of a specific query parameter.

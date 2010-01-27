@@ -43,7 +43,7 @@ package temple.utils.types
 	/**
 	 * This class contains some functions for Integers.
 	 */
-	public class IntUtils 
+	public final class IntUtils 
 	{
 
 		/**

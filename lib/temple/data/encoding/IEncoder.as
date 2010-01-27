@@ -35,71 +35,22 @@
  *	along with Temple Library.  If not, see <http://www.gnu.org/licenses/>.
  *	
  */
-
-package temple.ui.layout 
+ 
+ package temple.data.encoding 
 {
 
 	/**
-	 * This class contains possible values for alignments. Not all alignments are valid for all alignable objects.
+	 * Interface for objects that can encode data.
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public final class Align 
+	public interface IEncoder 
 	{
 		/**
-		 * Align to the left
+		 * Encodes the data.
+		 * @param data the data to be encoded
+		 * @return the encoded data
 		 */
-		public static const LEFT:String = "left";
-		
-		/**
-		 * Align to the center
-		 */
-		public static const CENTER:String = "center";
-		
-		/**
-		 * Align to the right
-		 */
-		public static const RIGHT:String = "right";
-		
-		/**
-		 * Align to the top
-		 */
-		public static const TOP:String = "top";
-		
-		/**
-		 * Align to the middle
-		 */
-		public static const MIDDLE:String = "middle";
-		
-		/**
-		 * Align to the bottom
-		 */
-		public static const BOTTOM:String = "bottom";
-		
-		
-		/**
-		 * Align to the top and the left
-		 */
-		public static const TOP_LEFT:String = "topLeft";
-		
-		/**
-		 * Align to the top and the right
-		 */
-		public static const TOP_RIGHT:String = "topRight";
-		
-		/**
-		 * Align to the bottom and the left
-		 */
-		public static const BOTTOM_LEFT:String = "bottomLeft";
-		
-		/**
-		 * Align to the bottom and the right
-		 */
-		public static const BOTTOM_RIGHT:String = "bottomRight";
-		
-		/**
-		 * No alignment
-		 */
-		public static const NONE:String = "none";
+		function encode(data:*):*;
 	}
 }

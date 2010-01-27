@@ -55,7 +55,7 @@ package temple.utils.types
 	 * 
 	 * @author Arjan van Wijk (arjan at mediamonks dot com)
 	 */
-	public class MovieClipUtils 
+	public final class MovieClipUtils 
 	{
 		/**
 		 * Stores all playing movieclip as [movieclip] = speed

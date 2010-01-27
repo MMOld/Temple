@@ -53,7 +53,7 @@ package temple.utils.types
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class StageUtils 
+	public final class StageUtils 
 	{
 		/**
 		 * Returns the most left x value of the stage, whatever the stageAlign is.

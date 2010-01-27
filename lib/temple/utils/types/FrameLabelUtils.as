@@ -50,7 +50,7 @@ package temple.utils.types
 	 * 
 	 * @author Bart (bart[at]mediamonks.com)
 	 */
-	public class FrameLabelUtils 
+	public final class FrameLabelUtils 
 	{
 
 		public static function getFrameForLabel(clip:MovieClip, label:String):int

@@ -49,7 +49,7 @@ package temple.utils.types
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class RectangleUtils 
+	public final class RectangleUtils 
 	{
 
 		/**

@@ -52,7 +52,7 @@ package temple.destruction
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class Destructor 
+	public final class Destructor 
 	{
 		/**
 		 * Recursively destructs the object and all his descendants

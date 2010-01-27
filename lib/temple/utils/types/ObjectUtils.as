@@ -52,7 +52,7 @@ package temple.utils.types
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class ObjectUtils 
+	public final class ObjectUtils 
 	{
 		/**
 		 * Indicates if a Date will be fully traced (including all properties) on traceObject() (true) or only as a simple String (false)

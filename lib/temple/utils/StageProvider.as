@@ -55,7 +55,7 @@ package temple.utils
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class StageProvider 
+	public final class StageProvider 
 	{
 		private static var _STAGE:Stage;
 		

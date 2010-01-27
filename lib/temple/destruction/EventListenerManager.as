@@ -49,7 +49,7 @@ package temple.destruction
 	 * The EventListenerManager store information about event listeners on an object. Since all listeners are stored they can easely be removed, by type, listener or all.
 	 * The EventListenerManager only stores information about strong (non weak) listeners. Since storing a reference to listener will make the listener strong.
 	 */
-	public class EventListenerManager extends CoreObject implements IEventDispatcher, IDestructableEventDispatcher 	{		private var _eventDispatcher:IEventDispatcher;		private var _events:Array;		private var _blockRequest:Boolean;
+	public final class EventListenerManager extends CoreObject implements IEventDispatcher, IDestructableEventDispatcher 	{		private var _eventDispatcher:IEventDispatcher;		private var _events:Array;		private var _blockRequest:Boolean;
 
 		/**
 		 * Returns a list of all listeners of the dispatcher (registered by the EventListenerManager)

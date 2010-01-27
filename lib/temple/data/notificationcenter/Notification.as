@@ -52,7 +52,7 @@ package temple.data.notificationcenter
 	 * 
 	 * @see temple.data.notificationcenter.NotificationCenter
 	 */
-	public class Notification extends Event
+	public final class Notification extends Event
 	{
 		private var _notificationCenter:NotificationCenter;
 		private var _data:*;

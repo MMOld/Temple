@@ -45,7 +45,7 @@ package temple.utils.types
 	 * 
 	 * @author Arjan van Wijk
 	 */
-	public class ArrayUtils 
+	public final class ArrayUtils 
 	{
 		/**
 		 * Checks if an array contains a specific value

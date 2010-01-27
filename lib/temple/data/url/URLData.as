@@ -35,71 +35,92 @@
  *	along with Temple Library.  If not, see <http://www.gnu.org/licenses/>.
  *	
  */
-
-package temple.ui.layout 
+ 
+ package temple.data.url 
 {
+	import temple.core.CoreObject;
+	import temple.data.xml.IXMLParsable;
 
 	/**
-	 * This class contains possible values for alignments. Not all alignments are valid for all alignable objects.
-	 * 
-	 * @author Thijs Broerse
+	 * Data object class to hold information about an url.
 	 */
-	public final class Align 
+	public class URLData extends CoreObject implements IXMLParsable 
 	{
+		protected var _name:String;
+		protected var _url:String;
+		protected var _target:String;
+
 		/**
-		 * Align to the left
+		 * Creates a new URLData.
+		 * The constructor will be called without parameters by the Parser.
 		 */
-		public static const LEFT:String = "left";
+		public function URLData(name:String = null, url:String = null, target:String = null) 
+		{
+			this._name = name;
+			this._url = url;
+			this._target = target;
+			
+			super();
+		}
 		
 		/**
-		 * Align to the center
+		 * Unique identifying name of the url
 		 */
-		public static const CENTER:String = "center";
+		public function get name():String
+		{
+			return this._name;
+		}
 		
 		/**
-		 * Align to the right
+		 * Actual url
 		 */
-		public static const RIGHT:String = "right";
+		public function get url():String
+		{
+			return this._url;
+		}
 		
 		/**
-		 * Align to the top
+		 * @private
 		 */
-		public static const TOP:String = "top";
+		public function set url(value:String):void
+		{
+			this._url = value;
+		}
 		
 		/**
-		 * Align to the middle
+		 * Target of getURL function.
 		 */
-		public static const MIDDLE:String = "middle";
+		public function get target():String
+		{
+			return this._target;
+		}
+
+		/**
+		 * @inheritDoc
+		 */
+		public function parseXML(xml:XML):Boolean 
+		{
+			this._name = xml.@name;
+			this._url = xml.@url;
+			this._target = xml.@target;
+			
+			return ((this._name != null) && (this._url != null));
+		}
+
+		/**
+		 * Creates a copy
+		 */
+		public function clone():URLData
+		{
+			return new URLData(this._name, this._url, this._target);
+		}
 		
 		/**
-		 * Align to the bottom
+		 * @inheritDoc
 		 */
-		public static const BOTTOM:String = "bottom";
-		
-		
-		/**
-		 * Align to the top and the left
-		 */
-		public static const TOP_LEFT:String = "topLeft";
-		
-		/**
-		 * Align to the top and the right
-		 */
-		public static const TOP_RIGHT:String = "topRight";
-		
-		/**
-		 * Align to the bottom and the left
-		 */
-		public static const BOTTOM_LEFT:String = "bottomLeft";
-		
-		/**
-		 * Align to the bottom and the right
-		 */
-		public static const BOTTOM_RIGHT:String = "bottomRight";
-		
-		/**
-		 * No alignment
-		 */
-		public static const NONE:String = "none";
+		override public function toString():String
+		{
+			return super.toString() + ' (name="' + this._name + '", url="' + this._url + '")';
+		}
 	}
 }

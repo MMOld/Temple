@@ -47,7 +47,7 @@ package temple.utils.types
 	 * 
 	 * @author Arjan van Wijk, Thijs Broerse
 	 */
-	public class StringUtils 
+	public final class StringUtils 
 	{
 		/**
 		 * Repeats a string

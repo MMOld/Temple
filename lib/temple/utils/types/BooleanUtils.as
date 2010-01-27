@@ -44,7 +44,7 @@ package temple.utils.types
 	/**
 	 * This class contains some functions for Booleans.
 	 */
-	public class BooleanUtils 
+	public final class BooleanUtils 
 	{
 		/**
 		 * Attempts to convert a object to a native Boolean.

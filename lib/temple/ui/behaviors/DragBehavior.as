@@ -65,9 +65,11 @@ package temple.ui.behaviors
 	 * The DragBehavior makes a DisplayObject draggable. The DragBehavior uses the decorator pattern,
 	 * so you won't have to change the code of the DisplayObject.
 	 * 
-	 * <p>If you have a MovieClip called 'mcClip' add DragBehavior like:</p>
+	 * <p>It is not nessessary to store a reference to the DragBehavior since the DragBehavior is automaticly destructed
+	 * when the DisplayObject is destructed.</p>
 	 * 
 	 * @example
+	 * <p>If you have a MovieClip called 'mcClip' add DragBehavior like:</p>
 	 * <listing version="3.0">
 	 * new DragBehavior(mcClip);
 	 * </listing> 
@@ -89,9 +91,6 @@ package temple.ui.behaviors
 	 * <listing version="3.0">
 	 * new DragBehavior(mcClip, null, mcClip.mcDragButton);
 	 * </listing> 
-	 * 
-	 * <p>It is not nessessary to store a reference to the DragBehavior since the DragBehavior is automaticly destructed
-	 * if the DisplayObject is destructed.</p>
 	 * 
 	 * @includeExample DragBehaviorExample.as
 	 * 

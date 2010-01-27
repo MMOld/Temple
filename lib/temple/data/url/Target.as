@@ -36,70 +36,34 @@
  *	
  */
 
-package temple.ui.layout 
+package temple.data.url 
 {
 
 	/**
-	 * This class contains possible values for alignments. Not all alignments are valid for all alignable objects.
+	 * This class contains possible values for target when opening an URL.
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public final class Align 
+	public class Target 
 	{
 		/**
-		 * Align to the left
+		 * Open the linked document in a new window
 		 */
-		public static const LEFT:String = "left";
+		public static const BLANK:String = "_blank";
 		
 		/**
-		 * Align to the center
+		 * Open the linked document in the same frame as it was clicked (this is default)
 		 */
-		public static const CENTER:String = "center";
+		public static const SELF:String = "_self";
 		
 		/**
-		 * Align to the right
+		 * Open the linked document in the full body of the window
 		 */
-		public static const RIGHT:String = "right";
+		public static const TOP:String = "_top";
 		
 		/**
-		 * Align to the top
+		 * Open the linked document in the parent frameset
 		 */
-		public static const TOP:String = "top";
-		
-		/**
-		 * Align to the middle
-		 */
-		public static const MIDDLE:String = "middle";
-		
-		/**
-		 * Align to the bottom
-		 */
-		public static const BOTTOM:String = "bottom";
-		
-		
-		/**
-		 * Align to the top and the left
-		 */
-		public static const TOP_LEFT:String = "topLeft";
-		
-		/**
-		 * Align to the top and the right
-		 */
-		public static const TOP_RIGHT:String = "topRight";
-		
-		/**
-		 * Align to the bottom and the left
-		 */
-		public static const BOTTOM_LEFT:String = "bottomLeft";
-		
-		/**
-		 * Align to the bottom and the right
-		 */
-		public static const BOTTOM_RIGHT:String = "bottomRight";
-		
-		/**
-		 * No alignment
-		 */
-		public static const NONE:String = "none";
+		public static const PARENT:String = "_parent";
 	}
 }

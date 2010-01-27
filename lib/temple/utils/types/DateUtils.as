@@ -49,7 +49,7 @@ package temple.utils.types
 	 * 
 	 * @author Thijs Broerse
 	 */
-	public class DateUtils 
+	public final class DateUtils 
 	{
 		public static const WEEKDAYS_NL:Array = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
 		public static const WEEKDAYS_EN:Array = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saterday'];

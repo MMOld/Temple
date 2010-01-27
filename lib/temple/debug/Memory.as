@@ -55,7 +55,7 @@ package temple.debug
 	 * - tracking objects being hold in the memory
 	 * - functions for outputting the memory info
 	 */
-	public class Memory
+	public final class Memory
 	{
 		private static var _registry:Dictionary; 
 
