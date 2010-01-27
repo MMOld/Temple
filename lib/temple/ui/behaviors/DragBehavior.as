@@ -65,7 +65,7 @@ package temple.ui.behaviors
 	 * The DragBehavior makes a DisplayObject draggable. The DragBehavior uses the decorator pattern,
 	 * so you won't have to change the code of the DisplayObject.
 	 * 
-	 * <p>It is not nessessary to store a reference to the DragBehavior since the DragBehavior is automaticly destructed
+	 * <p>It is not nessessary to store a reference to the DragBehavior since the DragBehavior is automatically destructed
 	 * when the DisplayObject is destructed.</p>
 	 * 
 	 * @example

@@ -25,8 +25,8 @@ package
 			// Connect to Yala, so we can see the output of the log in Yala: http://yala.acidcats.nl/
 			YaLogConnector.connect();
 			
-			// load XML named "persons" (see urls.xml) and parse it to PersonData objects.
-			XMLManager.loadListByName("persons", PersonData, "person", this.onData);
+			// load XML named "people" (see urls.xml) and parse it to PersonData objects.
+			XMLManager.loadListByName("people", PersonData, "person", this.onData);
 		}
 
 		private function onData(list:Array):void

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persons>
+<people>
 	<person id="1">
 		<name>Thijs</name>
 		<age>28</age>
@@ -40,4 +40,4 @@
 		<age>24</age>
 		<gender>female</gender>
 	</person>
-</persons>
+</people>

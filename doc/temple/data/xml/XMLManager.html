@@ -236,50 +236,7 @@
 		 Wrapper function for XMLManager.getInstance().removeEventListener
 		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">type</span>:String</code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">listener</span>:Function</code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">useCapture</span>:Boolean</code> (default = <code>false</code>)<code></code></td></tr></table></p></div><div class="detailSectionHeader">Constant Detail</div><a name="constantDetail"></a><a name="CACHE"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">CACHE</td><td class="detailHeaderType">Constant</td></tr></table><div class="detailBody"><code>public static const CACHE:int = 1</code></div><a name="constantDetail"></a><a name="DEFAULT_CACHE_SETTING"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">DEFAULT_CACHE_SETTING</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public static const DEFAULT_CACHE_SETTING:int = 0</code></div><a name="constantDetail"></a><a name="NO_CACHE"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">NO_CACHE</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public static const NO_CACHE:int = 2</code></div><a name="includeExamplesSummary"></a><div class="detailSectionHeader">Examples</div><div class="detailBody">If you want "persons.xml" loaded and parsed to PersonData objects:
 	 
-	 </div><div class="exampleHeader">persons.xml</div><div class="detailBody"><div class="listing"><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;persons&gt;
-    &lt;person id="1"&gt;
-        &lt;name&gt;Thijs&lt;/name&gt;
-        &lt;age&gt;28&lt;/age&gt;
-        &lt;gender&gt;male&lt;/gender&gt;
-    &lt;/person&gt;
-    &lt;person id="2"&gt;
-        &lt;name&gt;Tha Narie&lt;/name&gt;
-        &lt;age&gt;25&lt;/age&gt;
-        &lt;gender&gt;male&lt;/gender&gt;
-    &lt;/person&gt;
-    &lt;person id="3"&gt;
-        &lt;name&gt;Roland&lt;/name&gt;
-        &lt;age&gt;20&lt;/age&gt;
-        &lt;gender&gt;male&lt;/gender&gt;
-    &lt;/person&gt;
-    &lt;person id="4"&gt;
-        &lt;name&gt;Corstiaan&lt;/name&gt;
-        &lt;age&gt;40&lt;/age&gt;
-        &lt;gender&gt;male&lt;/gender&gt;
-    &lt;/person&gt;
-    &lt;person id="5"&gt;
-        &lt;name&gt;Erik&lt;/name&gt;
-        &lt;age&gt;28&lt;/age&gt;
-        &lt;gender&gt;male&lt;/gender&gt;
-    &lt;/person&gt;
-    &lt;person id="6"&gt;
-        &lt;name&gt;Terry&lt;/name&gt;
-        &lt;age&gt;28&lt;/age&gt;
-        &lt;gender&gt;male&lt;/gender&gt;
-    &lt;/person&gt;
-    &lt;person id="7"&gt;
-        &lt;name&gt;Arjen&lt;/name&gt;
-        &lt;age&gt;3&lt;/age&gt;
-        &lt;gender&gt;male&lt;/gender&gt;
-    &lt;/person&gt;
-    &lt;person id="8"&gt;
-        &lt;name&gt;Gwen&lt;/name&gt;
-        &lt;age&gt;24&lt;/age&gt;
-        &lt;gender&gt;female&lt;/gender&gt;
-    &lt;/person&gt;
-&lt;/persons&gt;
-</pre></div><script language="javascript" type="text/javascript"><!-- AC_FL_RunContent( "src", "xml/persons", "width", "100%",
+	 </div><div class="exampleHeader">persons.xml</div><div class="detailBody"><script language="javascript" type="text/javascript"><!-- AC_FL_RunContent( "src", "xml/persons", "width", "100%",
 					"height","400px", "salign", "TL", "id", "example2", "quality", "high", "bgcolor", "", "name",
 						"example2", "flashvars","", "allowScriptAccess","sameDomain", "type",
 					"application/x-shockwave-flash","pluginspage", "http://www.macromedia.com/go/getflashplayer" ); --></script></div><div class="exampleHeader">PersonData.as</div><br/><div class="detailBody"> Example of a value object class that can parse a XML file.
@@ -356,8 +313,8 @@ package
             // Connect to Yala, so we can see the output of the log in Yala: http://yala.acidcats.nl/
             YaLogConnector.connect();
             
-            // load XML named "persons" (see urls.xml) and parse it to PersonData objects.
-            XMLManager.loadListByName("persons", PersonData, "person", this.onData);
+            // load XML named "people" (see urls.xml) and parse it to PersonData objects.
+            XMLManager.loadListByName("people", PersonData, "person", this.onData);
         }
 
         private function onData(list:Array):void
