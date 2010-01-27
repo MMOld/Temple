@@ -1,3 +1,10 @@
+/**
+ * @exampleText
+ * 
+ * <p>This is an example about how to implement the DragBehavior.</p>
+ *  
+ * <p>View this example online at: <a href="http://templelibrary.googlecode.com/svn/trunk/examples/temple/ui/behaviors/DragBehaviorExample.swf" target="_blank">http://templelibrary.googlecode.com/svn/trunk/examples/temple/ui/behaviors/DragBehaviorExample.swf</a></p>
+ */
 package  
 {
 	import temple.ui.behaviors.DragBehavior;

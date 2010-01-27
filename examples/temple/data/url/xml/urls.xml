@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urls currentgroup="temple">
+	<group id="temple">
+		<url name="website" url="http://code.google.com/p/templelibrary/" target="_blank" />
+	</group>
+	<group id="mediamonks">
+		<url name="website" url="http://www.mediamonks.com" target="_blank" />
+	</group>
+</urls>

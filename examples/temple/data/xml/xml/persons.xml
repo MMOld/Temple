@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons>
+	<person id="1">
+		<name>Thijs</name>
+		<age>28</age>
+		<gender>male</gender>
+	</person>
+	<person id="2">
+		<name>Tha Narie</name>
+		<age>25</age>
+		<gender>male</gender>
+	</person>
+	<person id="3">
+		<name>Roland</name>
+		<age>20</age>
+		<gender>male</gender>
+	</person>
+	<person id="4">
+		<name>Corstiaan</name>
+		<age>40</age>
+		<gender>male</gender>
+	</person>
+	<person id="5">
+		<name>Erik</name>
+		<age>28</age>
+		<gender>male</gender>
+	</person>
+	<person id="6">
+		<name>Terry</name>
+		<age>28</age>
+		<gender>male</gender>
+	</person>
+	<person id="7">
+		<name>Arjen</name>
+		<age>3</age>
+		<gender>male</gender>
+	</person>
+	<person id="8">
+		<name>Gwen</name>
+		<age>24</age>
+		<gender>female</gender>
+	</person>
+</persons>
