@@ -14,7 +14,8 @@
 	 The DragBehavior makes a DisplayObject draggable. The DragBehavior uses the decorator pattern,
 	 so you won't have to change the code of the DisplayObject.
 	 
-	 <p>If you have a MovieClip called 'mcClip' add DragBehavior like:</p>
+	 <p>It is not nessessary to store a reference to the DragBehavior since the DragBehavior is automaticly destructed
+	 when the DisplayObject is destructed.</p>
 	 
 	           <p></p><p><a href="#includeExamplesSummary">View the examples</a></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><div class="showHideLinks"><div id="hideInheritedProperty" class="hideInheritedProperty"><a class="showHideLink" href="#propertySummary" onclick="javascript:setInheritedVisible(false,'Property');"><img class="showHideLinkImage" src="../../../images/expanded.gif"> Hide Inherited Public Properties</a></div><div id="showInheritedProperty" class="showInheritedProperty"><a class="showHideLink" href="#propertySummary" onclick="javascript:setInheritedVisible(true,'Property');"><img class="showHideLinkImage" src="../../../images/collapsed.gif"> Show Inherited Public Properties</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../temple/ui/behaviors/BoundsBehavior.html#bounds" class="signatureLink">bounds</a> : Rectangle<div class="summaryTableDescription">
 		 The bounds limits the dragging.</div></td><td class="summaryTableOwnerCol"><a href="../../../temple/ui/behaviors/BoundsBehavior.html">BoundsBehavior</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../temple/ui/behaviors/AbstractDisplayObjectBehavior.html#displayObject" class="signatureLink">displayObject</a> : DisplayObject<div class="summaryTableDescription">[read-only] 
@@ -122,6 +123,7 @@
 	 </p>
 		 Dispatched when the dragging stops
 		 </div><a name="includeExamplesSummary"></a><div class="detailSectionHeader">Examples</div><div class="detailBody">
+	 <p>If you have a MovieClip called 'mcClip' add DragBehavior like:</p>
 	 <div class="listing" version="3.0"><pre>
      new DragBehavior(mcClip);
      </pre></div> 
@@ -144,10 +146,12 @@
      new DragBehavior(mcClip, null, mcClip.mcDragButton);
      </pre></div> 
 	 
-	 <p>It is not nessessary to store a reference to the DragBehavior since the DragBehavior is automaticly destructed
-	 if the DisplayObject is destructed.</p>
-	 
-	 </div><div class="exampleHeader">DragBehaviorExample.as</div><br/><div class="detailBody"><div class="listing"><pre>package  
+	 </div><div class="exampleHeader">DragBehaviorExample.as</div><br/><div class="detailBody"> 
+ <p>This is an example about how to implement the DragBehavior.</p>
+  
+ <p>View this example online at: <a href="http://templelibrary.googlecode.com/svn/trunk/examples/temple/ui/behaviors/DragBehaviorExample.swf" target="external">http://templelibrary.googlecode.com/svn/trunk/examples/temple/ui/behaviors/DragBehaviorExample.swf</a></p>
+<div class="listing"><pre>
+package  
 {
     import temple.ui.behaviors.DragBehavior;
     import temple.core.CoreSprite;

@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../override.css" type="text/css"><meta name="keywords" content="XMLManager,temple.data.xml.XMLManager,ALL_COMPLETE,ALL_COMPLETE,CACHE,COMPLETE,COMPLETE,DEFAULT_CACHE_SETTING,ERROR,LOAD_ERROR,NO_CACHE,PARSE_ERROR,PROGRESS,_cache,_debug,_decoder,_isLoaded,_loader,_method,_preloader,_sendData,_xml,bytesLoaded,bytesTotal,cache,cacheObject,cacheXML,data,data,debug,decoder,error,error,list,loaderCount,loaderCount,method,name,name,name,object,preloader,preloader,sendData,url,xml,xmlObjectDataList,addEventListener,addXMLObjectData,cancel,cancelLoad,cancelLoad,clone,clone,destruct,destruct,destruct,destruct,dispatchEvent,findXMLObjectData,getInstance,handleLoadError,handleLoadError,handleLoaderEvent,handleLoaderEvent,isLoaded,isLoading,load,loadList,loadListByName,loadObject,loadObjectByName,loadXML,onDataParseError,parseList,parseList,parseXML,parseXML,processData,processData,removeAllEventListeners,removeAllEventsForListener,removeAllEventsForType,removeEventListener,setLoaded,toString,toString,toString,toString"><title>temple.data.xml.XMLManager</title><script src="../../../AC_OETags.js" type="text/javascript"></script></head><body><script language="javascript" type="text/javascript" src="../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+				asdocTitle = 'XMLManager - Temple API Documentation';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">Temple API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../package-summary.html" onclick="loadClassListFrame('../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../class-summary.html" onclick="loadClassListFrame('../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../all-index-A.html" onclick="loadClassListFrame('../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../index.html?temple/data/xml/XMLManager.html&amp;temple/data/xml/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">XMLManager</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a>&nbsp;| <a href="#constantSummary">Constants</a>&nbsp;| <a href="#includeExamplesSummary">Examples</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("XMLManager"); titleBar_setSubNav(true,true,false,false,false,false,true,false,true,true,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">temple.data.xml</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public final   class  XMLManager</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">XMLManager  <img src="../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> <a href="../../../temple/data/xml/XMLService.html">XMLService</a> <img src="../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> <a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a> <img src="../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> flash.events.EventDispatcher</td></tr><tr><td class="classHeaderTableLabel">Implements</td><td> <a href="../../../temple/debug/IDebuggable.html">IDebuggable</a></td></tr></table><p></p><p></p>
+	 The XMLManager loads XML files and parses them directly to typed DataObjects.
+	 <p>The XMLManager makes use of the URLManager so you can (also) use names instead of url's. You don't have to load the URLManager
+	 before using the XMLManager, the XMLManager automaticly detects if the URLManager is already loaded and loads it when if not.</p>
+	 
+	              <p>By setting the cache options (XMLManager.cacheXML and/or XMLManager.cacheObject) to true you can use the XMLManager as a DataManager,
+	 since it will store loaded XML files and parsed object in cache. When loading and / or parsing a XML file again, it will take the data
+	 from cache. This allows you to call a load method several times, without make it actually loads the XML's.
+	 This will increase performance.</p>
+	 
+	           <p></p><p><a href="#includeExamplesSummary">View the examples</a></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><div class="showHideLinks"><div id="hideInheritedProperty" class="hideInheritedProperty"><a class="showHideLink" href="#propertySummary" onclick="javascript:setInheritedVisible(false,'Property');"><img class="showHideLinkImage" src="../../../images/expanded.gif"> Hide Inherited Public Properties</a></div><div id="showInheritedProperty" class="showInheritedProperty"><a class="showHideLink" href="#propertySummary" onclick="javascript:setInheritedVisible(true,'Property');"><img class="showHideLinkImage" src="../../../images/collapsed.gif"> Show Inherited Public Properties</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#cacheObject" class="signatureLink">cacheObject</a> : Boolean<div class="summaryTableDescription">[static] 
+		 Returns true is cacheObject is on.</div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#cacheXML" class="signatureLink">cacheXML</a> : Boolean<div class="summaryTableDescription">[static] 
+		 Returns true is cacheXML is on.</div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../temple/data/xml/XMLService.html#debug" class="signatureLink">debug</a> : Boolean<div class="summaryTableDescription">
+		 
+		 Set or get the debug mode of the object
+		 If object is in debug mode more information is logged
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../temple/core/CoreEventDispatcher.html#eventListenerManager" class="signatureLink">eventListenerManager</a> : <a href="../../../temple/destruction/EventListenerManager.html">EventListenerManager</a><div class="summaryTableDescription">[read-only] 
+		 
+		 Returns a reference to the EventListenerManager of the IDestructableEventDispatcher
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../temple/core/CoreEventDispatcher.html#isDestructed" class="signatureLink">isDestructed</a> : Boolean<div class="summaryTableDescription">[read-only] 
+		 
+		 If an object is destructed, this property is set to true.</div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../temple/data/xml/XMLService.html#loaderCount" class="signatureLink">loaderCount</a> : uint<div class="summaryTableDescription">
+		 The number of parallel loaders
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../temple/data/xml/XMLService.html#preloader" class="signatureLink">preloader</a> : <a href="../../../temple/data/loader/preload/IPreloader.html">IPreloader</a><div class="summaryTableDescription">
+		 Get or set the IPreloader
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../temple/core/CoreEventDispatcher.html#registryId" class="signatureLink">registryId</a> : uint<div class="summaryTableDescription">[read-only] 
+		 
+		 The unique identifier of the object.</div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr></table></div><a name="protectedPropertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Properties</div><div class="showHideLinks"><div id="hideInheritedProtectedProperty" class="hideInheritedProtectedProperty"><a class="showHideLink" href="#protectedPropertySummary" onclick="javascript:setInheritedVisible(false,'ProtectedProperty');"><img class="showHideLinkImage" src="../../../images/expanded.gif"> Hide Inherited Protected Properties</a></div><div id="showInheritedProtectedProperty" class="showInheritedProtectedProperty"><a class="showHideLink" href="#protectedPropertySummary" onclick="javascript:setInheritedVisible(true,'ProtectedProperty');"><img class="showHideLinkImage" src="../../../images/collapsed.gif"> Show Inherited Protected Properties</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable hideInheritedProtectedProperty" id="summaryTableProtectedProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../temple/data/xml/XMLService.html#_debug" class="signatureLink">_debug</a> : Boolean<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../temple/data/xml/XMLService.html#_loader" class="signatureLink">_loader</a> : <a href="../../../temple/data/xml/XMLLoader.html">XMLLoader</a><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><div class="showHideLinks"><div id="hideInheritedMethod" class="hideInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(false,'Method');"><img class="showHideLinkImage" src="../../../images/expanded.gif"> Hide Inherited Public Methods</a></div><div id="showInheritedMethod" class="showInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(true,'Method');"><img class="showHideLinkImage" src="../../../images/collapsed.gif"> Show Inherited Public Methods</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#addEventListener()" class="signatureLink">addEventListener</a>(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void</div><div class="summaryTableDescription">[static] 
+		 Wrapper function for XMLManager.getInstance().addEventListener
+		 </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/data/xml/XMLService.html#cancelLoad()" class="signatureLink">cancelLoad</a>(name:String):Boolean</div><div class="summaryTableDescription">
+		 Cancel a load by name
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#destruct()" class="signatureLink">destruct</a>():void</div><div class="summaryTableDescription">[override] 
+		 
+		 
+		 
+		 Destroys the objects, all intern listeners will be removed.</div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#dispatchEvent()" class="signatureLink">dispatchEvent</a>(event:Event):Boolean</div><div class="summaryTableDescription">[static] 
+		 Wrapper function for XMLManager.getInstance().dispatchEvent
+		 </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getInstance()" class="signatureLink">getInstance</a>():<a href="../../../temple/data/xml/XMLManager.html">XMLManager</a></div><div class="summaryTableDescription">[static] 
+		 Returns the instance of the XMLManager
+		 </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/data/xml/XMLService.html#load()" class="signatureLink">load</a>(urlData:<a href="../../../temple/data/url/URLData.html">URLData</a>, sendData:Object = null, method:String):void</div><div class="summaryTableDescription">
+		 Load from specified location, optionally with specified parameters
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#loadList()" class="signatureLink">loadList</a>(url:String, objectClass:Class, repeatingNode:String, callback:Function = null, sendData:Object = null, method:String, forceReload:Boolean = false, cacheXML:int, cacheList:int, decoder:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a> = null):<a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></div><div class="summaryTableDescription">[static] 
+		 Loads an XML and parses the result to a list of objects.</div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#loadListByName()" class="signatureLink">loadListByName</a>(name:String, objectClass:Class, repeatingNode:String, callback:Function = null, sendData:Object = null, method:String, forceReload:Boolean = false, cacheXML:int, cacheList:int, decoder:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a> = null):<a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></div><div class="summaryTableDescription">[static] 
+		 Loads an XML and parses the result to a list of objects.</div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#loadObject()" class="signatureLink">loadObject</a>(url:String, objectClass:Class, node:String = null, callback:Function = null, sendData:Object = null, method:String, forceReload:Boolean = false, cacheXML:int, cacheObject:int, decoder:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a> = null):<a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></div><div class="summaryTableDescription">[static] 
+		 Loads an XML and parses the result to a class.</div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#loadObjectByName()" class="signatureLink">loadObjectByName</a>(name:String, objectClass:Class, node:String = null, callback:Function = null, sendData:Object = null, method:String, forceReload:Boolean = false, cacheXML:int, cacheObject:int, decoder:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a> = null):<a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></div><div class="summaryTableDescription">[static] 
+		 Loads an XML and parses the result to a class.</div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeAllEventListeners()" class="signatureLink">removeAllEventListeners</a>():void</div><div class="summaryTableDescription">[static] 
+		 Wrapper function for XMLManager.getInstance().removeAllEventListeners
+		 </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeAllEventsForListener()" class="signatureLink">removeAllEventsForListener</a>(listener:Function):void</div><div class="summaryTableDescription">[static] 
+		 Wrapper function for XMLManager.getInstance().removeAllEventsForListener
+		 </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeAllEventsForType()" class="signatureLink">removeAllEventsForType</a>(type:String):void</div><div class="summaryTableDescription">[static] 
+		 Wrapper function for XMLManager.getInstance().removeAllEventsForType
+		 </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/core/CoreEventDispatcher.html#removeAllStrongEventListenersForListener()" class="signatureLink">removeAllStrongEventListenersForListener</a>(listener:Function):void</div><div class="summaryTableDescription">
+		 
+		 Removes all strong (non weak) EventListeners that are handled by a specified listener.</div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/core/CoreEventDispatcher.html#removeAllStrongEventListenersForType()" class="signatureLink">removeAllStrongEventListenersForType</a>(type:String):void</div><div class="summaryTableDescription">
+		 
+		 Removes all strong (non-weak) EventListeners of a specific type.</div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeEventListener()" class="signatureLink">removeEventListener</a>(type:String, listener:Function, useCapture:Boolean = false):void</div><div class="summaryTableDescription">[static] 
+		 Wrapper function for XMLManager.getInstance().removeEventListener
+		 </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/core/CoreEventDispatcher.html#toString()" class="signatureLink">toString</a>():String</div><div class="summaryTableDescription">[override] 
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr></table></div><a name="protectedMethodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Methods </div><div class="showHideLinks"><div id="hideInheritedProtectedMethod" class="hideInheritedProtectedMethod"><a class="showHideLink" href="#protectedMethodSummary" onclick="javascript:setInheritedVisible(false,'ProtectedMethod');"><img class="showHideLinkImage" src="../../../images/expanded.gif"> Show Inherited Protected Methods</a></div><div id="showInheritedProtectedMethod" class="showInheritedProtectedMethod"><a class="showHideLink" href="#protectedMethodSummary" onclick="javascript:setInheritedVisible(true,'ProtectedMethod');"><img class="showHideLinkImage" src="../../../images/collapsed.gif"> Show Inherited Protected Methods</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProtectedMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#handleLoaderEvent()" class="signatureLink">handleLoaderEvent</a>(event:<a href="../../../temple/data/xml/XMLLoaderEvent.html">XMLLoaderEvent</a>):void</div><div class="summaryTableDescription">[override] 
+		 Data is loaded.</div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#handleLoadError()" class="signatureLink">handleLoadError</a>(event:<a href="../../../temple/data/xml/XMLLoaderEvent.html">XMLLoaderEvent</a>):void</div><div class="summaryTableDescription">[override] </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/core/CoreEventDispatcher.html#logDebug()" class="signatureLink">logDebug</a>(data:*):void</div><div class="summaryTableDescription">
+		 Does a Log.debug, but has already filled in some known data
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/core/CoreEventDispatcher.html#logError()" class="signatureLink">logError</a>(data:*):void</div><div class="summaryTableDescription">
+		 Does a Log.error, but has already filled in some known data
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/core/CoreEventDispatcher.html#logFatal()" class="signatureLink">logFatal</a>(data:*):void</div><div class="summaryTableDescription">
+		 Does a Log.fatal, but has already filled in some known data
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/core/CoreEventDispatcher.html#logInfo()" class="signatureLink">logInfo</a>(data:*):void</div><div class="summaryTableDescription">
+		 Does a Log.info, but has already filled in some known data
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/core/CoreEventDispatcher.html#logStatus()" class="signatureLink">logStatus</a>(data:*):void</div><div class="summaryTableDescription">
+		 Does a Log.status, but has already filled in some known data
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/core/CoreEventDispatcher.html#logWarn()" class="signatureLink">logWarn</a>(data:*):void</div><div class="summaryTableDescription">
+		 Does a Log.warn, but has already filled in some known data
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/data/xml/XMLService.html#onDataParseError()" class="signatureLink">onDataParseError</a>(name:String):void</div><div class="summaryTableDescription">
+		 Handle error occurred during parsing of data
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/data/xml/XMLService.html#parseList()" class="signatureLink">parseList</a>(list:XMLList, objectClass:Class, name:String, sendEvent:Boolean = true):Array</div><div class="summaryTableDescription">
+		  Helper function
+		 Parse a list into a vo class
+		 If an error occurs, handleDataParseError() is called
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#processData()" class="signatureLink">processData</a>(data:XML, name:String):void</div><div class="summaryTableDescription">[override] </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr></table></div><a name="eventSummary"></a><div class="summarySection"><div class="summaryTableTitle">Events</div><div class="showHideLinks"><div id="hideInheritedEvent" class="hideInheritedEvent"><a class="showHideLink" href="#eventSummary" onclick="javascript:setInheritedVisible(false,'Event');"><img class="showHideLinkImage" src="../../../images/expanded.gif"> Hide Inherited Events</a></div><div id="showInheritedEvent" class="showInheritedEvent"><a class="showHideLink" href="#eventSummary" onclick="javascript:setInheritedVisible(true,'Event');"><img class="showHideLinkImage" src="../../../images/collapsed.gif"> Show Inherited Events</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable hideInheritedEvent" id="summaryTableEvent"><tr><th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class="hideInheritedEvent"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/core/CoreEventDispatcher.html#event:DestructEvent.destruct" class="signatureLink">DestructEvent.destruct</a></div></td><td class="summaryTableDescription summaryTableCol">
+		 Dispatched just before the object is destructed.</td><td class="summaryTableOwnerCol"><a href="../../../temple/core/CoreEventDispatcher.html">CoreEventDispatcher</a></td></tr><tr class="hideInheritedEvent"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/data/xml/XMLService.html#event:XMLServiceEvent.allComplete" class="signatureLink">XMLServiceEvent.allComplete</a></div></td><td class="summaryTableDescription summaryTableCol">
+		 Event sent when all requests have completed; does not check for errors
+		 </td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class="hideInheritedEvent"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/data/xml/XMLService.html#event:XMLServiceEvent.complete" class="signatureLink">XMLServiceEvent.complete</a></div></td><td class="summaryTableDescription summaryTableCol"> 
+		 Event sent when loading and parsing is completed
+		 </td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class="hideInheritedEvent"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/data/xml/XMLService.html#event:XMLServiceEvent.loadError" class="signatureLink">XMLServiceEvent.loadError</a></div></td><td class="summaryTableDescription summaryTableCol">
+		 Event sent when there was an error loading the data
+		 </td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr><tr class="hideInheritedEvent"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../temple/data/xml/XMLService.html#event:XMLServiceEvent.parseError" class="signatureLink">XMLServiceEvent.parseError</a></div></td><td class="summaryTableDescription summaryTableCol">
+		 Event sent when there was an error parsing the data
+		 </td><td class="summaryTableOwnerCol"><a href="../../../temple/data/xml/XMLService.html">XMLService</a></td></tr></table></div><a name="constantSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Constants</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableConstant"><tr><th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#CACHE" class="signatureLink">CACHE</a> : int = 1<div class="summaryTableDescription">[static] </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#DEFAULT_CACHE_SETTING" class="signatureLink">DEFAULT_CACHE_SETTING</a> : int = 0<div class="summaryTableDescription">[static] </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#NO_CACHE" class="signatureLink">NO_CACHE</a> : int = 2<div class="summaryTableDescription">[static] </div></td><td class="summaryTableOwnerCol">XMLManager</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="cacheObject"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">cacheObject</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>cacheObject:Boolean</code><p></p><p>
+		 Returns true is cacheObject is on. CacheObject keeps the parsed object or list in cache and speeds up the process if this Object is used more once.
+		 This is only the default, at every load call this value can be overruled.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get cacheObject():Boolean</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set cacheObject(value:Boolean):void</code><br/></div><a name="propertyDetail"></a><a name="cacheXML"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">cacheXML</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>cacheXML:Boolean</code><p></p><p>
+		 Returns true is cacheXML is on. CacheXML keeps the loaded XML file in cache and speeds up the process if this XML is used more once.
+		 This is only the default, at every load call this value can be overruled.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get cacheXML():Boolean</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set cacheXML(value:Boolean):void</code><br/></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="addEventListener()"></a><a name="addEventListener(String,Function,Boolean,int,Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">addEventListener</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public static function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void</code><p></p><p>
+		 Wrapper function for XMLManager.getInstance().addEventListener
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">type</span>:String</code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">listener</span>:Function</code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">useCapture</span>:Boolean</code> (default = <code>false</code>)<code></code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">priority</span>:int</code> (default = <code>0</code>)<code></code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">useWeakReference</span>:Boolean</code> (default = <code>false</code>)<code></code></td></tr></table></p></div><a name="destruct()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">destruct</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override public function destruct():void</code><p></p><p>
+		 
+		 
+		 
+		 Destroys the objects, all intern listeners will be removed.
+		 
+		 <p>When overriding this method, always call super.destruct() at the end!</p>
+		 
+		 If you want the object to be available for garbage collection make sure you:
+		 <ul>
+		 	<li>Remove all event listeners on this object (use removeAllEventListeners on Temple objects).</li>
+		 	<li>Remove all event listeners from this object.</li>
+		 	<li>Set all non-primitive variables to null.</li>
+		 	<li>Set all references to this object to null in other objects.</li>
+		 </ul>
+		 
+		 When a Temple object is destructed a DestructEvent.DESTRUCT is dispatched from the object (if the object implements IDestructableEventDispatcher).
+		 
+		 <p>Note: Bear in mind that it is possible an object can be destructed more than once.</p>
+		 
+		  </p></div><a name="dispatchEvent()"></a><a name="dispatchEvent(flash.events.Event)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">dispatchEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function dispatchEvent(event:Event):Boolean</code><p></p><p>
+		 Wrapper function for XMLManager.getInstance().dispatchEvent
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">event</span>:Event</code></td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Boolean</code></td></tr></table></div><a name="getInstance()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getInstance():<a href="../../../temple/data/xml/XMLManager.html">XMLManager</a></code><p></p><p>
+		 Returns the instance of the XMLManager
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../temple/data/xml/XMLManager.html">XMLManager</a></code></td></tr></table></div><a name="handleLoaderEvent()"></a><a name="handleLoaderEvent(temple.data.xml.XMLLoaderEvent)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">handleLoaderEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override protected function handleLoaderEvent(event:<a href="../../../temple/data/xml/XMLLoaderEvent.html">XMLLoaderEvent</a>):void</code><p></p><p>
+		 Data is loaded. If decoder is defined, decode data before parsing
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">event</span>:<a href="../../../temple/data/xml/XMLLoaderEvent.html">XMLLoaderEvent</a></code></td></tr></table></p></div><a name="handleLoadError()"></a><a name="handleLoadError(temple.data.xml.XMLLoaderEvent)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">handleLoadError</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override protected function handleLoadError(event:<a href="../../../temple/data/xml/XMLLoaderEvent.html">XMLLoaderEvent</a>):void</code><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">event</span>:<a href="../../../temple/data/xml/XMLLoaderEvent.html">XMLLoaderEvent</a></code></td></tr></table></p></div><a name="loadList()"></a><a name="loadList(String,Class,String,Function,Object,String,Boolean,int,int,temple.data.encoding.IDecoder)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">loadList</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function loadList(url:String, objectClass:Class, repeatingNode:String, callback:Function = null, sendData:Object = null, method:String, forceReload:Boolean = false, cacheXML:int, cacheList:int, decoder:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a> = null):<a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></code><p></p><p>
+		 Loads an XML and parses the result to a list of objects. When ready the callback function is called with the parsed objects as array argument.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">url</span>:String</code> &mdash; The URL of the XML file
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">objectClass</span>:Class</code> &mdash; the class which the xml is parses to. 
+		 		NOTE: Class must implement IXMLParsable!
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">repeatingNode</span>:String</code> &mdash; the repeating node in the xml file. NOTE use '.' for nested nodes: "node.node.node"
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">callback</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; the function that needs to be called when loading and parsing is complete. 
+		 		NOTE: the function must accept one (and only one) argument of type array (2nd argument), since the parsed object is returned
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">sendData</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; an object (name - value) to send with the request
+		 		NOTE: sendData is not used by compaire previous loads. So allways set forceReload to true with a different sendData
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">method</span>:String</code> (default = <code>NaN</code>)<code></code> &mdash; Method to send the sendData object (GET of POST)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">forceReload</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; if set to true the xml file is loaded even when it has been loaded before. If set to false, the xml file won't be loaded again
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">cacheXML</span>:int</code> (default = <code>NaN</code>)<code></code> &mdash; indicates if the XML should be keept in memory so won't be loaded again (unless forceReload is not true)
+		 		Possible values are:
+		 			XMLManager.CACHE = cache XML file
+		 			XMLManager.NO_CACHE = do not cache XML file
+		 			XMLManager.DEFAULT_CACHE_SETTING = use the default setting (can be set using XMLManager.cacheXML)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">cacheList</span>:int</code> (default = <code>NaN</code>)<code></code> &mdash; indicates if the List should be keept in memory so won't be parsed again (unless forceReload is not true)
+		 		Possible values are:
+		 			XMLManager.CACHE = cache list
+		 			XMLManager.NO_CACHE = do not cache list
+		 			XMLManager.DEFAULT_CACHE_SETTING = use the default setting (can be set using XMLManager.cacheObject)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">decoder</span>:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a></code> (default = <code>null</code>)<code></code> &mdash; an object that decodes the loaded data before parsing. Needed when de XML is encrypted.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></code></td></tr></table></div><a name="loadListByName()"></a><a name="loadListByName(String,Class,String,Function,Object,String,Boolean,int,int,temple.data.encoding.IDecoder)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">loadListByName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function loadListByName(name:String, objectClass:Class, repeatingNode:String, callback:Function = null, sendData:Object = null, method:String, forceReload:Boolean = false, cacheXML:int, cacheList:int, decoder:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a> = null):<a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></code><p></p><p>
+		 Loads an XML and parses the result to a list of objects. When ready the callback function is called with the parsed objects as array argument.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; The name as defined in de url.xml by the URLManager
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">objectClass</span>:Class</code> &mdash; the class which the xml is parses to. 
+		 		NOTE: Class must implement IXMLParsable!
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">repeatingNode</span>:String</code> &mdash; the repeating node in the xml file. NOTE use '.' for nested nodes: "node.node.node"
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">callback</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; the function that needs to be called when loading and parsing is complete. 
+		 		NOTE: the function must accept one (and only one) argument of type array (2nd argument), since the parsed object is returned
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">sendData</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; an object (name - value) to send with the request
+		 		NOTE: sendData is not used by compaire previous loads. So allways set forceReload to true with a different sendData
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">method</span>:String</code> (default = <code>NaN</code>)<code></code> &mdash; Method to send the sendData object (GET of POST)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">forceReload</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; if set to true the xml file is loaded even when it has been loaded before. If set to false, the xml file won't be loaded again
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">cacheXML</span>:int</code> (default = <code>NaN</code>)<code></code> &mdash; indicates if the XML should be keept in memory so won't be loaded again (unless forceReload is not true)
+		 		Possible values are:
+		 			XMLManager.CACHE = cache XML file
+		 			XMLManager.NO_CACHE = do not cache XML file
+		 			XMLManager.DEFAULT_CACHE_SETTING = use the default setting (can be set using XMLManager.cacheXML)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">cacheList</span>:int</code> (default = <code>NaN</code>)<code></code> &mdash; indicates if the List should be keept in memory so won't be parsed again (unless forceReload is not true)
+		 		Possible values are:
+		 			XMLManager.CACHE = cache list
+		 			XMLManager.NO_CACHE = do not cache list
+		 			XMLManager.DEFAULT_CACHE_SETTING = use the default setting (can be set using XMLManager.cacheObject)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">decoder</span>:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a></code> (default = <code>null</code>)<code></code> &mdash; an object that decodes the loaded data before parsing. Needed when de XML is encrypted.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></code></td></tr></table></div><a name="loadObject()"></a><a name="loadObject(String,Class,String,Function,Object,String,Boolean,int,int,temple.data.encoding.IDecoder)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">loadObject</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function loadObject(url:String, objectClass:Class, node:String = null, callback:Function = null, sendData:Object = null, method:String, forceReload:Boolean = false, cacheXML:int, cacheObject:int, decoder:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a> = null):<a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></code><p></p><p>
+		 Loads an XML and parses the result to a class. When ready the callback function is called with the parsed object as argument.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">url</span>:String</code> &mdash; The URL of the XML file
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">objectClass</span>:Class</code> &mdash; the class which the xml is parses to. 
+		 		NOTE: Class must implement IXMLParsable!
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">node</span>:String</code> (default = <code>null</code>)<code></code> &mdash; the node in the xml file. NOTE use '.' for nested nodes: "node.node.node"
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">callback</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; the function that needs to be called when loading and parsing is complete. 
+		 		NOTE: the function must accept one (and only one) argument of type objectClass (2nd argument), since the parsed object is returned
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">sendData</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; an object (name - value) to send with the request
+		 		NOTE: sendData is not used by compaire previous loads. So allways set forceReload to true with a different sendData
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">method</span>:String</code> (default = <code>NaN</code>)<code></code> &mdash; Method to send the sendData object (GET of POST)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">forceReload</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; if set to true the xml file is loaded even when it has been loaded before. If set to false, the xml file won't be loaded again
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">cacheXML</span>:int</code> (default = <code>NaN</code>)<code></code> &mdash; indicates if the XML should be keept in memory so won't be loaded again (unless forceReload is not true)
+		 		Possible values are:
+		 			XMLManager.CACHE = cache XML file
+		 			XMLManager.NO_CACHE = do not cache XML file
+		 			XMLManager.DEFAULT_CACHE_SETTING = use the default setting (can be set using XMLManager.cacheXML)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">cacheObject</span>:int</code> (default = <code>NaN</code>)<code></code> &mdash; indicates if the Object should be keept in memory so won't be parsed again (unless forceReload is not true)
+		 			XMLManager.CACHE = cache object
+		 			XMLManager.NO_CACHE = do not cache object
+		 			XMLManager.DEFAULT_CACHE_SETTING = use the default setting (can be set using XMLManager.cacheObject)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">decoder</span>:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a></code> (default = <code>null</code>)<code></code> &mdash; an object that decodes the loaded data before parsing. Needed when de XML is encrypted.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></code></td></tr></table></div><a name="loadObjectByName()"></a><a name="loadObjectByName(String,Class,String,Function,Object,String,Boolean,int,int,temple.data.encoding.IDecoder)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">loadObjectByName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function loadObjectByName(name:String, objectClass:Class, node:String = null, callback:Function = null, sendData:Object = null, method:String, forceReload:Boolean = false, cacheXML:int, cacheObject:int, decoder:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a> = null):<a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></code><p></p><p>
+		 Loads an XML and parses the result to a class. When ready the callback function is called with the parsed object as argument.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; The name as defined in de url.xml by the URLManager
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">objectClass</span>:Class</code> &mdash; the class which the xml is parses to. 
+		 		NOTE Class must implement IXMLParsable!
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">node</span>:String</code> (default = <code>null</code>)<code></code> &mdash; the node in the xml file. NOTE use '.' for nested nodes: "node.node.node"
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">callback</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; the function that needs to be called when loading and parsing is complete. 
+		 		NOTE: the function must accept one (and only one) argument of type objectClass (2nd argument), since the parsed object is returned
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">sendData</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; an object (name - value) to send with the request
+		 		NOTE: sendData is not used by compaire previous loads. So allways set forceReload to true with a different sendData
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">method</span>:String</code> (default = <code>NaN</code>)<code></code> &mdash;  Method to send the sendData object (GET of POST)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">forceReload</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; if set to true the xml file is loaded even when it has been loaded before. If set to false, the xml file won't be loaded again
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">cacheXML</span>:int</code> (default = <code>NaN</code>)<code></code> &mdash;  indicates if the XML should be keept in memory so won't be loaded again (unless forceReload is not true)
+		 		Possible values are:
+		 			XMLManager.CACHE = cache XML file
+		 			XMLManager.NO_CACHE = do not cache XML file
+		 			XMLManager.DEFAULT_CACHE_SETTING = use the default setting (can be set using XMLManager.cacheXML)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">cacheObject</span>:int</code> (default = <code>NaN</code>)<code></code> &mdash; indicates if the Object should be keept in memory so won't be parsed again (unless forceReload is not true)
+		 			XMLManager.CACHE = cache object
+		 			XMLManager.NO_CACHE = do not cache object
+		 			XMLManager.DEFAULT_CACHE_SETTING = use the default setting (can be set using XMLManager.cacheObject)
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">decoder</span>:<a href="../../../temple/data/encoding/IDecoder.html">IDecoder</a></code> (default = <code>null</code>)<code></code> &mdash; an object that decodes the loaded data before parsing. Needed when de XML is encrypted.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../temple/data/xml/XMLLoadItem.html">XMLLoadItem</a></code></td></tr></table></div><a name="processData()"></a><a name="processData(XML,String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">processData</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override protected function processData(data:XML, name:String):void</code><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">data</span>:XML</code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">name</span>:String</code></td></tr></table></p></div><a name="removeAllEventListeners()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeAllEventListeners</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function removeAllEventListeners():void</code><p></p><p>
+		 Wrapper function for XMLManager.getInstance().removeAllEventListeners
+		 </p></div><a name="removeAllEventsForListener()"></a><a name="removeAllEventsForListener(Function)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeAllEventsForListener</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function removeAllEventsForListener(listener:Function):void</code><p></p><p>
+		 Wrapper function for XMLManager.getInstance().removeAllEventsForListener
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">listener</span>:Function</code></td></tr></table></p></div><a name="removeAllEventsForType()"></a><a name="removeAllEventsForType(String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeAllEventsForType</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function removeAllEventsForType(type:String):void</code><p></p><p>
+		 Wrapper function for XMLManager.getInstance().removeAllEventsForType
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">type</span>:String</code></td></tr></table></p></div><a name="removeEventListener()"></a><a name="removeEventListener(String,Function,Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeEventListener</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void</code><p></p><p>
+		 Wrapper function for XMLManager.getInstance().removeEventListener
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">type</span>:String</code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">listener</span>:Function</code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">useCapture</span>:Boolean</code> (default = <code>false</code>)<code></code></td></tr></table></p></div><div class="detailSectionHeader">Constant Detail</div><a name="constantDetail"></a><a name="CACHE"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">CACHE</td><td class="detailHeaderType">Constant</td></tr></table><div class="detailBody"><code>public static const CACHE:int = 1</code></div><a name="constantDetail"></a><a name="DEFAULT_CACHE_SETTING"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">DEFAULT_CACHE_SETTING</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public static const DEFAULT_CACHE_SETTING:int = 0</code></div><a name="constantDetail"></a><a name="NO_CACHE"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">NO_CACHE</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public static const NO_CACHE:int = 2</code></div><a name="includeExamplesSummary"></a><div class="detailSectionHeader">Examples</div><div class="detailBody">If you want "persons.xml" loaded and parsed to PersonData objects:
+	 
+	 </div><div class="exampleHeader">persons.xml</div><div class="detailBody"><div class="listing"><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;persons&gt;
+    &lt;person id="1"&gt;
+        &lt;name&gt;Thijs&lt;/name&gt;
+        &lt;age&gt;28&lt;/age&gt;
+        &lt;gender&gt;male&lt;/gender&gt;
+    &lt;/person&gt;
+    &lt;person id="2"&gt;
+        &lt;name&gt;Tha Narie&lt;/name&gt;
+        &lt;age&gt;25&lt;/age&gt;
+        &lt;gender&gt;male&lt;/gender&gt;
+    &lt;/person&gt;
+    &lt;person id="3"&gt;
+        &lt;name&gt;Roland&lt;/name&gt;
+        &lt;age&gt;20&lt;/age&gt;
+        &lt;gender&gt;male&lt;/gender&gt;
+    &lt;/person&gt;
+    &lt;person id="4"&gt;
+        &lt;name&gt;Corstiaan&lt;/name&gt;
+        &lt;age&gt;40&lt;/age&gt;
+        &lt;gender&gt;male&lt;/gender&gt;
+    &lt;/person&gt;
+    &lt;person id="5"&gt;
+        &lt;name&gt;Erik&lt;/name&gt;
+        &lt;age&gt;28&lt;/age&gt;
+        &lt;gender&gt;male&lt;/gender&gt;
+    &lt;/person&gt;
+    &lt;person id="6"&gt;
+        &lt;name&gt;Terry&lt;/name&gt;
+        &lt;age&gt;28&lt;/age&gt;
+        &lt;gender&gt;male&lt;/gender&gt;
+    &lt;/person&gt;
+    &lt;person id="7"&gt;
+        &lt;name&gt;Arjen&lt;/name&gt;
+        &lt;age&gt;3&lt;/age&gt;
+        &lt;gender&gt;male&lt;/gender&gt;
+    &lt;/person&gt;
+    &lt;person id="8"&gt;
+        &lt;name&gt;Gwen&lt;/name&gt;
+        &lt;age&gt;24&lt;/age&gt;
+        &lt;gender&gt;female&lt;/gender&gt;
+    &lt;/person&gt;
+&lt;/persons&gt;
+</pre></div><script language="javascript" type="text/javascript"><!-- AC_FL_RunContent( "src", "xml/persons", "width", "100%",
+					"height","400px", "salign", "TL", "id", "example2", "quality", "high", "bgcolor", "", "name",
+						"example2", "flashvars","", "allowScriptAccess","sameDomain", "type",
+					"application/x-shockwave-flash","pluginspage", "http://www.macromedia.com/go/getflashplayer" ); --></script></div><div class="exampleHeader">PersonData.as</div><br/><div class="detailBody"> Example of a value object class that can parse a XML file.
+<div class="listing"><pre>
+package vo 
+{
+    import temple.data.xml.IXMLParsable;
+
+    public class PersonData implements IXMLParsable 
+    {
+        private var _id:uint;
+        private var _name:String;
+        private var _age:uint;
+        private var _gender:String;
+        
+        public function parseXML(xml:XML):Boolean
+        {
+            // map XML values to properties
+            this._id = xml.@id;
+            this._name = xml['name'];
+            this._age = xml['age'];
+            this._gender = xml['gender'];
+            
+            // check if id and name are filled
+            return this._id && this._name != null;
+        }
+        
+        public function get id():uint
+        {
+            return this._id;
+        }
+        
+        public function get name():String
+        {
+            return this._name;
+        }
+        
+        public function get age():uint
+        {
+            return this._age;
+        }
+        
+        public function get gender():*
+        {
+            return this._gender;
+        }
+    }
+}
+</pre></div><script language="javascript" type="text/javascript"><!-- AC_FL_RunContent( "src", "vo/PersonData", "width", "100%",
+					"height","400px", "salign", "TL", "id", "example3", "quality", "high", "bgcolor", "", "name",
+						"example3", "flashvars","", "allowScriptAccess","sameDomain", "type",
+					"application/x-shockwave-flash","pluginspage", "http://www.macromedia.com/go/getflashplayer" ); --></script></div><div class="exampleHeader">XMLManagerExample.as</div><br/><div class="detailBody"> 
+ <p>This is an example about how to use the XMLManager.</p>
+ 
+ <p>View this example online at: <a href="http://templelibrary.googlecode.com/svn/trunk/examples/temple/data/xml/XMLManagerExample.swf" target="external">http://templelibrary.googlecode.com/svn/trunk/examples/temple/data/xml/XMLManagerExample.swf</a></p>
+<div class="listing"><pre>
+package  
+{
+    import temple.utils.types.ObjectUtils;
+    import temple.debug.log.Log;
+    import nl.acidcats.yalog.util.YaLogConnector;
+
+    import temple.core.CoreSprite;
+    import temple.data.xml.XMLManager;
+
+    import vo.PersonData;
+
+    public class XMLManagerExample extends CoreSprite 
+    {
+        public function XMLManagerExample()
+        {
+            super();
+            
+            // Connect to Yala, so we can see the output of the log in Yala: http://yala.acidcats.nl/
+            YaLogConnector.connect();
+            
+            // load XML named "persons" (see urls.xml) and parse it to PersonData objects.
+            XMLManager.loadListByName("persons", PersonData, "person", this.onData);
+        }
+
+        private function onData(list:Array):void
+        {
+            // This method is called after loading and paring is complete, with the list of all PersonData objects.
+            
+            Log.info("XML loaded and parsed: " + ObjectUtils.traceObject(list, 3, false), this);
+        }
+    }
+}
+</pre></div><script language="javascript" type="text/javascript"><!-- AC_FL_RunContent( "src", "XMLManagerExample", "width", "100%",
+					"height","400px", "salign", "TL", "id", "example4", "quality", "high", "bgcolor", "", "name",
+						"example4", "flashvars","", "allowScriptAccess","sameDomain", "type",
+					"application/x-shockwave-flash","pluginspage", "http://www.macromedia.com/go/getflashplayer" ); --></script></div><br/><br/><hr><br/><p></p><center class="copyright"><footer> </footer><br/> </center></div></body></html><!-- <br/> -->
